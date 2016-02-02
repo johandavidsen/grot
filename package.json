@@ -4,6 +4,7 @@
   "description": "This package contains a selection of React components, which I use as general building blocks in different React applications.",
   "main": "src/index.js",
   "scripts": {
+    "prestart": "./node_modules/.bin/gulp",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -13,8 +14,15 @@
   "author": "Johan Davidsen",
   "license": "MIT",
   "dependencies": {
+    "babel-preset-es2015": "^6.3.13",
+    "babel-preset-react": "^6.3.13",
+    "babel-preset-stage-0": "^6.3.13",
+    "babelify": "^7.2.0",
+    "browserify": "^13.0.0",
+    "gulp": "^3.9.0",
     "react": "^0.14.7",
     "react-bootstrap": "^0.28.2",
-    "react-dom": "^0.14.7"
+    "react-dom": "^0.14.7",
+    "vinyl-source-stream": "^1.1.0"
   }
 }
