@@ -34,8 +34,7 @@ class GrotPanelHeader extends React.Component {
         var icon = this.props.expanded ? 'chevron-down' : 'chevron-right';
 
         return (
-            <Button
-                onClick={ this.props.toggle } >
+            <Button onClick={ this.props.toggle } bsStyle="link" className="grot-button-link" >
                 <Glyphicon glyph={icon} /> {' '}
                 {this.props.headerTitle}
             </Button>
@@ -44,10 +43,10 @@ class GrotPanelHeader extends React.Component {
 }
 
 class GrotPanel extends React.Component {
-    constructor(...args) {
-        super(...args);
+    constructor( props ) {
+        super( props);
         this.state = {
-            open: true
+            open: props.expanded
         };
         this._toggle = this._toggle.bind(this);
     }
@@ -59,7 +58,7 @@ class GrotPanel extends React.Component {
         );
 
         return (
-            <Panel header={ header } collapsible expanded={this.state.open}>
+            <Panel header={ header } collapsible expanded={this.state.open} className="grot-panel">
                 {this.props.children}
             </Panel>
         );

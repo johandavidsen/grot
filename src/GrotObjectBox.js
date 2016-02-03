@@ -30,6 +30,7 @@ class GrotObjectBox extends React.Component {
         return (
             <GrotPanel
                 header={ this.props.header }
+                expanded={this.props.expanded }
                 children={ table } />
         );
     }

@@ -1,16 +1,19 @@
 var gulp        = require("gulp");
-var sass        = require("gulp-sass");
+var less        = require("gulp-less");
+var minify      = require("gulp-minify");
 var browserify  = require('browserify');
 var source      = require('vinyl-source-stream');
 var babelify    = require("babelify");
 
 gulp.task("style", function(){
-    return gulp.src('sass/grot.scss')
-        .pipe(sass())
+    gulp.src('./node_modules/bootstrap/dist/fonts/*.*')
+        .pipe(gulp.dest('./demo/fonts/'));
+    return gulp.src('less/grot.less')
+        .pipe(less())
         .pipe(gulp.dest('demo/style'));
 });
 
-gulp.task("default", function () {
+gulp.task("demo", ["style"], function () {
     return browserify( {
                         extensions: [".jsx", ".js", ".json"]
                     }).add(
@@ -22,3 +25,9 @@ gulp.task("default", function () {
                     .pipe(source('bundle.js'))
                     .pipe(gulp.dest('./demo/dist/'));
 });
+
+// gulp.task("dist", function(){
+//     return gulp.src('src/*.js')
+//         .pipe(minify({}))
+//         .pipe(gulp.dest('dist/'));
+// });

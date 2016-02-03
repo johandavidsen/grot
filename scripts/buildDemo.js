@@ -7,5 +7,5 @@ import GrotObjectBox from '../src/GrotObjectBox';
 
 ReactDOM.render(<GrotHello />, document.getElementById("header"));
 ReactDOM.render(<GrotTable />, document.getElementById("table"));
-ReactDOM.render(<GrotPanel header="GrotPanel"/>, document.getElementById("panel"));
-ReactDOM.render(<GrotObjectBox header="GrotObjectBox" />, document.getElementById("objectBox"));
+ReactDOM.render(<GrotPanel header="GrotPanel" expanded={false}/>, document.getElementById("panel"));
+ReactDOM.render(<GrotObjectBox header="GrotObjectBox" expanded={false} />, document.getElementById("objectBox"));

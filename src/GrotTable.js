@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Table, Input } from 'react-bootstrap';
+import { Button, Table, Input, Glyphicon } from 'react-bootstrap';
 
 /**
  * TableRow
@@ -20,15 +20,15 @@ class GrotTableRow extends React.Component {
      *
      */
     render(  ){
-        let icon = (<Button value={ this.props.id } onClick={ this.props.remove } >Remove</Button>);
+        let icon = (<Button className="grot-button-link" bsStyle="link" value={ this.props.id } onClick={ this.props.remove } ><Glyphicon glyph="minus" /></Button>);
 
         return(
             <tr>
                 <td>
-                    <Input type='text' defaultValue={ this.props.prop } />
+                    <Input type='text' defaultValue={ this.props.prop } className="grot-table-input"/>
                 </td>
                 <td>
-                    <Input type='text' defaultValue={ this.props.value }/>
+                    <Input type='text' defaultValue={ this.props.value } className="grot-table-input"/>
                 </td>
                 <td>
                     {icon}
@@ -77,7 +77,7 @@ class GrotTable extends React.Component {
         });
 
         return (
-            <Table>
+            <Table className="grot-table">
                 <thead>
                     <tr>
                         <th>Property</th>
@@ -88,9 +88,9 @@ class GrotTable extends React.Component {
                 <tbody>
                     { propComponents }
                     <tr>
-                        <td><Input ref="newProp" type='text' /></td>
-                        <td><Input ref="newValue" type='text' /></td>
-                        <td><Button onClick={ this._addRow }>Add</Button></td>
+                        <td><Input ref="newProp" type='text' className="grot-table-input" /></td>
+                        <td><Input ref="newValue" type='text' className="grot-table-input" /></td>
+                        <td><Button className="grot-button-link" bsStyle="link" onClick={ this._addRow }><Glyphicon glyph="plus" /></Button></td>
                     </tr>
                 </tbody>
             </Table>
