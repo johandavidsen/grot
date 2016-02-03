@@ -2,7 +2,7 @@
   "name": "grot",
   "version": "0.1.2",
   "description": "This package contains a selection of React components, which I use as general building blocks in different React applications.",
-  "main": "src/index.js",
+  "main": "dist/grot-min.js",
   "scripts": {
     "demo": "./node_modules/.bin/gulp demo",
     "dist": "./node_modules/.bin/gulp dist",
@@ -19,11 +19,13 @@
   "author": "Johan Davidsen",
   "license": "MIT",
   "dependencies": {
+    "gulp-babel": "^6.1.2",
     "react": "^0.14.7",
     "react-bootstrap": "^0.28.2",
     "react-dom": "^0.14.7"
   },
   "devDependencies": {
+    "babel-eslint": "^4.1.8",
     "babel-preset-es2015": "^6.3.13",
     "babel-preset-react": "^6.3.13",
     "babel-preset-stage-0": "^6.3.13",
@@ -31,6 +33,7 @@
     "bootstrap": "^3.3.6",
     "browserify": "^13.0.0",
     "gulp": "^3.9.0",
+    "gulp-concat": "^2.6.0",
     "gulp-less": "^3.0.5",
     "gulp-minify": "0.0.5",
     "vinyl-source-stream": "^1.1.0"

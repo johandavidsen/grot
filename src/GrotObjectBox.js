@@ -6,8 +6,6 @@ import GrotTable from './GrotTable';
 /**
  * GrotHello
  *
- * Inspiration https://gist.github.com/joemcbride/7bfd85c45f99418f3701
- *
  * @author Jóhan Davidsen <johan.davidsen@fjakkarin.com>
  *
  */
@@ -31,7 +29,8 @@ class GrotObjectBox extends React.Component {
             <GrotPanel
                 header={ this.props.header }
                 expanded={this.props.expanded }
-                children={ table } />
+                children={ table } >
+            </GrotPanel>
         );
     }
 }

@@ -1,6 +1,8 @@
 var gulp        = require("gulp");
 var less        = require("gulp-less");
 var minify      = require("gulp-minify");
+var babel       = require("gulp-babel");
+var concat      = require("gulp-concat");
 var browserify  = require('browserify');
 var source      = require('vinyl-source-stream');
 var babelify    = require("babelify");
@@ -26,8 +28,10 @@ gulp.task("demo", ["style"], function () {
                     .pipe(gulp.dest('./demo/dist/'));
 });
 
-// gulp.task("dist", function(){
-//     return gulp.src('src/*.js')
-//         .pipe(minify({}))
-//         .pipe(gulp.dest('dist/'));
-// });
+gulp.task("dist", function(){
+    return gulp.src('src/*.js')
+        .pipe(babel({ presets: ["stage-0","es2015", "react"] }))
+        .pipe(concat('grot.js'))
+        .pipe(minify())
+        .pipe(gulp.dest('dist/'));
+});

@@ -21,7 +21,9 @@ class GrotHello extends React.Component {
     render( ){
 
         return (
-            <h1>Grót - Hello from Grót</h1>
+            <h1>
+                Grót - Hello from Grót
+            </h1>
         );
     }
 }
