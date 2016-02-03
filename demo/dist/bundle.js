@@ -35100,8 +35100,6 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 /**
  * GrotHello
  *
- * Inspiration https://gist.github.com/joemcbride/7bfd85c45f99418f3701
- *
  * @author Jóhan Davidsen <johan.davidsen@fjakkarin.com>
  *
  */

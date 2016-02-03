@@ -31,7 +31,7 @@ gulp.task("demo", ["style"], function () {
 gulp.task("dist", function(){
     return gulp.src('src/*.js')
         .pipe(babel({ presets: ["stage-0","es2015", "react"] }))
-        .pipe(concat('grot.js'))
-        .pipe(minify())
+        // .pipe(concat('grot.js'))
+        // .pipe(minify())
         .pipe(gulp.dest('dist/'));
 });
