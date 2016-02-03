@@ -1,13 +1,20 @@
 var gulp        = require("gulp");
+var sass        = require("gulp-sass");
 var browserify  = require('browserify');
 var source      = require('vinyl-source-stream');
 var babelify    = require("babelify");
+
+gulp.task("style", function(){
+    return gulp.src('sass/grot.scss')
+        .pipe(sass())
+        .pipe(gulp.dest('demo/style'));
+});
 
 gulp.task("default", function () {
     return browserify( {
                         extensions: [".jsx", ".js", ".json"]
                     }).add(
-                            'src/index.js'
+                            'scripts/buildDemo.js'
                     ).transform(
                         babelify, { presets: ["stage-0","es2015", "react"] }
                     )

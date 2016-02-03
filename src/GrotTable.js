@@ -1,6 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import { Button, Table, Input, Glyphicon } from 'react-bootstrap';
+import { Button, Table, Input } from 'react-bootstrap';
 
 /**
  * TableRow
@@ -8,7 +7,7 @@ import { Button, Table, Input, Glyphicon } from 'react-bootstrap';
  * @author Jóhan Davidsen <johan.davidsen@fjakkarin.com>
  *
  */
-class TableRow extends React.Component {
+class GrotTableRow extends React.Component {
 
     /**
      *
@@ -21,7 +20,6 @@ class TableRow extends React.Component {
      *
      */
     render(  ){
-        // <Glyphicon glyph='glyphicon-plus' />
         let icon = (<Button value={ this.props.id } onClick={ this.props.remove } >Remove</Button>);
 
         return(
@@ -67,7 +65,7 @@ class GrotTable extends React.Component {
     render( ){
         var propComponents = [];
         this.state.properties.forEach(( element ) => {
-            propComponents.push(<TableRow
+            propComponents.push(<GrotTableRow
                                     key={ element.id }
                                     id={ element.id }
                                     prop={ element.prop }
@@ -106,7 +104,7 @@ class GrotTable extends React.Component {
         let props = this.state.properties;
         let prop = this.refs.newProp.refs.input;
         let value = this.refs.newValue.refs.input;
-        props.push({ id: Math.random(),  prop: prop.value, value: value.value });
+        props.push({ id: Math.random(), prop: prop.value, value: value.value });
         prop.value = "";
         value.value = "";
         this.setState({ properties: props });
@@ -124,6 +122,4 @@ class GrotTable extends React.Component {
     }
 }
 
-ReactDOM.render(<GrotTable/>, document.getElementById("table"));
-
-// export default Grot_Table;
+export default GrotTable;

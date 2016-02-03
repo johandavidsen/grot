@@ -1,7 +1,9 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 
 /**
+ * GrotHello
+ *
+ * @author Jóhan Davidsen <johan.davidsen@fjakkarin.com>
  *
  */
 class GrotHello extends React.Component {
@@ -24,6 +26,4 @@ class GrotHello extends React.Component {
     }
 }
 
-ReactDOM.render(<GrotHello/>, document.getElementById("header"));
-
-// export default HelloGrot;
+export default GrotHello;
