@@ -8,6 +8,10 @@
     "dist": "./node_modules/.bin/gulp dist",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://johandavidsen@bitbucket.org/johandavidsen/grot.git"
+  },
   "keywords": [
     "React",
     "components"
