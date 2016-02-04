@@ -3,6 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
+exports.d = undefined;
 
 var _GrotHello = require('./GrotHello');
 
@@ -25,6 +26,8 @@ var _GrotCredits = require('./GrotCredits');
 var _GrotCredits2 = _interopRequireDefault(_GrotCredits);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var d = exports.d = _GrotHello2.default;
 
 exports.default = {
     GrotHello: _GrotHello2.default,
