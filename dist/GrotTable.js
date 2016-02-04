@@ -30,22 +30,18 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var GrotTableRow = function (_React$Component) {
     _inherits(GrotTableRow, _React$Component);
 
-    /**
-     *
-     */
-
-    function GrotTableRow(props) {
+    function GrotTableRow() {
         _classCallCheck(this, GrotTableRow);
 
-        return _possibleConstructorReturn(this, Object.getPrototypeOf(GrotTableRow).call(this, props));
+        return _possibleConstructorReturn(this, Object.getPrototypeOf(GrotTableRow).apply(this, arguments));
     }
-
-    /**
-     *
-     */
 
     _createClass(GrotTableRow, [{
         key: 'render',
+
+        /**
+         *
+         */
         value: function render() {
             var icon = _react2.default.createElement(
                 _reactBootstrap.Button,

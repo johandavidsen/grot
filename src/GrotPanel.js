@@ -42,7 +42,14 @@ class GrotPanelHeader extends React.Component {
     }
 }
 
+/**
+ *
+ */
 class GrotPanel extends React.Component {
+
+    /**
+     *
+     */
     constructor( props ) {
         super( props);
         this.state = {
@@ -51,6 +58,9 @@ class GrotPanel extends React.Component {
         this._toggle = this._toggle.bind(this);
     }
 
+    /**
+     *
+     */
     render() {
 
         let header = (
@@ -64,6 +74,9 @@ class GrotPanel extends React.Component {
         );
     }
 
+    /**
+     *
+     */
     _toggle(){
         this.setState({ open: !this.state.open });
     }

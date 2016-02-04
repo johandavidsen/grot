@@ -12,13 +12,6 @@ class GrotTableRow extends React.Component {
     /**
      *
      */
-    constructor( props ){
-        super( props );
-    }
-
-    /**
-     *
-     */
     render(  ){
         let icon = (<Button className="grot-button-link" bsStyle="link" value={ this.props.id } onClick={ this.props.remove } ><Glyphicon glyph="minus" /></Button>);
 

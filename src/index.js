@@ -1,11 +1,13 @@
-import GrotHello from "./GrotHello";
+import GrotHello from './GrotHello';
 import GrotTable from './GrotTable';
 import GrotPanel from './GrotPanel';
 import GrotObjectBox from './GrotObjectBox';
+import GrotCredits from './GrotCredits';
 
-export default{
-    GrotHello,
-    GrotTable,
-    GrotPanel,
-    GrotObjectBox
+export default {
+    GrotHello : GrotHello,
+    GrotTable : GrotTable,
+    GrotPanel : GrotPanel,
+    GrotObjectBox : GrotObjectBox,
+    GrotCredits : GrotCredits
 };

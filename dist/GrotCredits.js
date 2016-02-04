@@ -10,6 +10,8 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _reactBootstrap = require('react-bootstrap');
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -19,38 +21,64 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 /**
- * GrotHello
+ * GrotCredits
  *
  * @author Jóhan Davidsen <johan.davidsen@fjakkarin.com>
  *
  */
 
-var GrotHello = function (_React$Component) {
-    _inherits(GrotHello, _React$Component);
+var GrotCredits = function (_React$Component) {
+    _inherits(GrotCredits, _React$Component);
 
-    function GrotHello() {
-        _classCallCheck(this, GrotHello);
+    /**
+     *
+     */
 
-        return _possibleConstructorReturn(this, Object.getPrototypeOf(GrotHello).apply(this, arguments));
+    function GrotCredits(props) {
+        _classCallCheck(this, GrotCredits);
+
+        return _possibleConstructorReturn(this, Object.getPrototypeOf(GrotCredits).call(this, props));
     }
 
-    _createClass(GrotHello, [{
-        key: 'render',
+    /**
+     *
+     */
 
-        /**
-         *
-         */
+    _createClass(GrotCredits, [{
+        key: 'render',
         value: function render() {
 
             return _react2.default.createElement(
-                'h1',
+                _reactBootstrap.Row,
                 null,
-                'Grót - Hello from Grót'
+                _react2.default.createElement(
+                    _reactBootstrap.Col,
+                    { lg: 12 },
+                    'This module was made by ',
+                    _react2.default.createElement(
+                        'a',
+                        { ref: '' },
+                        'Jóhan Davidsen'
+                    ),
+                    ', source code can be found on ',
+                    _react2.default.createElement(
+                        'a',
+                        { href: '' },
+                        'Bitbucket'
+                    ),
+                    ' and the module is available on ',
+                    _react2.default.createElement(
+                        'a',
+                        { href: '' },
+                        'NPM'
+                    ),
+                    '.'
+                )
             );
         }
     }]);
 
-    return GrotHello;
+    return GrotCredits;
 }(_react2.default.Component);
 
-exports.default = GrotHello;
+exports.default = GrotCredits;

@@ -85,8 +85,16 @@ var GrotPanelHeader = function (_React$Component) {
     return GrotPanelHeader;
 }(_react2.default.Component);
 
+/**
+ *
+ */
+
 var GrotPanel = function (_React$Component2) {
     _inherits(GrotPanel, _React$Component2);
+
+    /**
+     *
+     */
 
     function GrotPanel(props) {
         _classCallCheck(this, GrotPanel);
@@ -100,6 +108,10 @@ var GrotPanel = function (_React$Component2) {
         return _this2;
     }
 
+    /**
+     *
+     */
+
     _createClass(GrotPanel, [{
         key: 'render',
         value: function render() {
@@ -112,6 +124,11 @@ var GrotPanel = function (_React$Component2) {
                 this.props.children
             );
         }
+
+        /**
+         *
+         */
+
     }, {
         key: '_toggle',
         value: function _toggle() {

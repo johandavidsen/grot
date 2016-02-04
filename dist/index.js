@@ -20,11 +20,16 @@ var _GrotObjectBox = require('./GrotObjectBox');
 
 var _GrotObjectBox2 = _interopRequireDefault(_GrotObjectBox);
 
+var _GrotCredits = require('./GrotCredits');
+
+var _GrotCredits2 = _interopRequireDefault(_GrotCredits);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = {
     GrotHello: _GrotHello2.default,
     GrotTable: _GrotTable2.default,
     GrotPanel: _GrotPanel2.default,
-    GrotObjectBox: _GrotObjectBox2.default
+    GrotObjectBox: _GrotObjectBox2.default,
+    GrotCredits: _GrotCredits2.default
 };
