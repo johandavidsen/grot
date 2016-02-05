@@ -23,6 +23,9 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 /**
  * GrotCredits
  *
+ * GrotCredits is along, the same lines as the GrotHello component. All it dose
+ * is to display a HTML string.
+ *
  * @author Jóhan Davidsen <johan.davidsen@fjakkarin.com>
  *
  */
@@ -30,22 +33,19 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var GrotCredits = function (_React$Component) {
     _inherits(GrotCredits, _React$Component);
 
-    /**
-     *
-     */
-
-    function GrotCredits(props) {
+    function GrotCredits() {
         _classCallCheck(this, GrotCredits);
 
-        return _possibleConstructorReturn(this, Object.getPrototypeOf(GrotCredits).call(this, props));
+        return _possibleConstructorReturn(this, Object.getPrototypeOf(GrotCredits).apply(this, arguments));
     }
-
-    /**
-     *
-     */
 
     _createClass(GrotCredits, [{
         key: 'render',
+
+        /**
+         * Returns a HTML string.
+         * @return {React Object}
+         */
         value: function render() {
 
             return _react2.default.createElement(

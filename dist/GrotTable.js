@@ -21,8 +21,14 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 /**
- * TableRow
+ * GrotTableRow
  *
+ * GrotTableRow is a little helper class for GrotTable. This row represents a
+ * single line of the GrotTable. Each line has 2 column, which take Text as
+ * input. Each line has a icon indicating either a - sign (remove line) or a +
+ * sign (add new line).
+ *
+ * @since 0.1.1
  * @author Jóhan Davidsen <johan.davidsen@fjakkarin.com>
  *
  */
@@ -40,7 +46,8 @@ var GrotTableRow = function (_React$Component) {
         key: 'render',
 
         /**
-         *
+         * Returns a React HTML String
+         * @return {React Object}
          */
         value: function render() {
             var icon = _react2.default.createElement(
@@ -77,6 +84,10 @@ var GrotTableRow = function (_React$Component) {
 /**
  * GrotTable
  *
+ * The GrotTable is a 2 column table, where the user can add and remove rows as
+ * needed.
+ *
+ * @since 0.1.1
  * @author Jóhan Davidsen <johan.davidsen@fjakkarin.com>
  *
  */
@@ -85,6 +96,13 @@ var GrotTable = function (_React$Component2) {
     _inherits(GrotTable, _React$Component2);
 
     /**
+     * The constructor has a limited set of parameters.
+     *
+     * @param {array} properties - The should be an simple JSON array. If
+     * properties is not set; properties will be set to empty.
+     * @param {function} callback - This is the callback function, which will be
+     * called, when the properties array is changed. This function provides the
+     * parameter properties.
      *
      */
 
@@ -93,16 +111,24 @@ var GrotTable = function (_React$Component2) {
 
         var _this2 = _possibleConstructorReturn(this, Object.getPrototypeOf(GrotTable).call(this, props));
 
-        _this2.state = {
-            properties: []
-        };
+        if (props.properties) {
+            _this2.state = {
+                properties: props.properties
+            };
+        } else {
+            _this2.state = {
+                properties: []
+            };
+        }
+
         _this2._addRow = _this2._addRow.bind(_this2);
         _this2._removeRow = _this2._removeRow.bind(_this2);
         return _this2;
     }
 
     /**
-     *
+     *  Returns a HTML string.
+     *  @return {React Object}
      */
 
     _createClass(GrotTable, [{
@@ -176,7 +202,7 @@ var GrotTable = function (_React$Component2) {
         }
 
         /**
-         *
+         * This function adds a row to the propeties array.
          */
 
     }, {
@@ -189,10 +215,11 @@ var GrotTable = function (_React$Component2) {
             prop.value = "";
             value.value = "";
             this.setState({ properties: props });
+            this.props.callback(props);
         }
 
         /**
-         *
+         * This function removes a row from the properties array.
          */
 
     }, {
@@ -203,6 +230,7 @@ var GrotTable = function (_React$Component2) {
                 return element.id != id;
             });
             this.setState({ properties: props });
+            this.props.callback(props);
         }
     }]);
 

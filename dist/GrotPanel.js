@@ -25,6 +25,12 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 /**
+ * GrotPanelHeader
+ *
+ * This is a helper class for the GrotPanel class.
+ *
+ * @since 0.1.7
+ * @Author Jóhan Davidsen <johan.davidsen@fjakkarin.com>
  *
  */
 
@@ -32,6 +38,15 @@ var GrotPanelHeader = function (_React$Component) {
     _inherits(GrotPanelHeader, _React$Component);
 
     /**
+     * The constructor takes the following parameters:
+     *
+     * @param {string} title - The title of the panel..
+     * @param {boolean} edit - A boolean value to indicate if the panel can be
+     * changed.
+     * @param {function} callback - A callback function, which will be called
+     * everytime the title is changed.
+     * @param {function} toggle - A callback function, which is used to toggle
+     * the open state variable in the parent.
      *
      */
 
@@ -40,45 +55,99 @@ var GrotPanelHeader = function (_React$Component) {
 
         var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(GrotPanelHeader).call(this, props));
 
-        _this._renderButton = _this._renderButton.bind(_this);
+        _this.state = {
+            title: props.title,
+            changeTitle: props.edit,
+            edit: false
+        };
+        _this._toggleEdit = _this._toggleEdit.bind(_this);
+        _this._setTitle = _this._setTitle.bind(_this);
         return _this;
     }
 
     /**
-     *
+     * Returns a HTML string.
+     * @return {React Object}
      */
 
     _createClass(GrotPanelHeader, [{
         key: 'render',
         value: function render() {
+            var icon = this.props.expanded ? 'chevron-down' : 'chevron-right';
+            var title = _react2.default.createElement(
+                'h3',
+                { className: 'panel-title' },
+                _react2.default.createElement(
+                    _reactBootstrap.Button,
+                    { onClick: this.props.toggle, bsStyle: 'link', className: 'grot-button-link grot-button-link-edit' },
+                    _react2.default.createElement(_reactBootstrap.Glyphicon, { glyph: icon }),
+                    ' ',
+                    ' ',
+                    this.state.title
+                )
+            );
+            if (this.state.changeTitle) {
+                title = this.state.edit ? _react2.default.createElement(
+                    'h3',
+                    { className: 'panel-title' },
+                    _react2.default.createElement(_reactBootstrap.Input, { type: 'text', ref: 'titleInput', defaultValue: this.state.title }),
+                    _react2.default.createElement(
+                        _reactBootstrap.Button,
+                        { onClick: this._setTitle },
+                        _react2.default.createElement(_reactBootstrap.Glyphicon, { glyph: 'ok' })
+                    ),
+                    _react2.default.createElement(
+                        _reactBootstrap.Button,
+                        { onClick: this._toggleEdit },
+                        _react2.default.createElement(_reactBootstrap.Glyphicon, { glyph: 'remove' })
+                    )
+                ) : _react2.default.createElement(
+                    'h3',
+                    { className: 'panel-title grot-table-header' },
+                    _react2.default.createElement(
+                        _reactBootstrap.Button,
+                        { onClick: this.props.toggle, bsStyle: 'link', className: 'grot-button-link grot-button-link-edit' },
+                        _react2.default.createElement(_reactBootstrap.Glyphicon, { glyph: icon }),
+                        ' ',
+                        ' ',
+                        this.state.title
+                    ),
+                    _react2.default.createElement(
+                        _reactBootstrap.Button,
+                        { onClick: this._toggleEdit, bsStyle: 'link', className: 'grot-button-link grot-button-edit' },
+                        _react2.default.createElement(_reactBootstrap.Glyphicon, { glyph: 'edit' })
+                    )
+                );
+            }
+
             return _react2.default.createElement(
                 'div',
                 null,
-                _react2.default.createElement(
-                    'h3',
-                    { className: 'panel-title' },
-                    this._renderButton()
-                )
+                title
             );
         }
 
         /**
-         *
+         * This function toggles the edit state variable.
          */
 
     }, {
-        key: '_renderButton',
-        value: function _renderButton() {
-            var icon = this.props.expanded ? 'chevron-down' : 'chevron-right';
+        key: '_toggleEdit',
+        value: function _toggleEdit() {
+            this.setState({ edit: !this.state.edit });
+        }
 
-            return _react2.default.createElement(
-                _reactBootstrap.Button,
-                { onClick: this.props.toggle, bsStyle: 'link', className: 'grot-button-link' },
-                _react2.default.createElement(_reactBootstrap.Glyphicon, { glyph: icon }),
-                ' ',
-                ' ',
-                this.props.headerTitle
-            );
+        /**
+         * The function changes the title of the panel and calls the callback
+         * function.
+         */
+
+    }, {
+        key: '_setTitle',
+        value: function _setTitle() {
+            var title = this.refs.titleInput.getValue();
+            this.props.callback(title);
+            this.setState({ title: title, edit: !this.state.edit });
         }
     }]);
 
@@ -86,6 +155,13 @@ var GrotPanelHeader = function (_React$Component) {
 }(_react2.default.Component);
 
 /**
+ * GrotPanel
+ *
+ * GrotPanel is a simple panel, which can be expanded and collapsed by clicking
+ * on the title.
+ *
+ * @since 0.1.7
+ * @Author Jóhan Davidsen <johan.davidsen@fjakkarin.com>
  *
  */
 
@@ -93,6 +169,16 @@ var GrotPanel = function (_React$Component2) {
     _inherits(GrotPanel, _React$Component2);
 
     /**
+     * This constructor takes the following parameters:
+     *
+     * @param {string} title - Expects a string value to be used as the title of
+     * the panel.
+     * @param {boolean} expanded - A boolean value, which determines if the
+     * intial state of the panel is expanded or not.
+     * @param {boolean} edit - Set if the title can be changed.
+     * @param {function} children - Set component to be viewed inside the panel.
+     * @param {function} callback - A function, which is called everytime the
+     * title is changed.
      *
      */
 
@@ -102,21 +188,25 @@ var GrotPanel = function (_React$Component2) {
         var _this2 = _possibleConstructorReturn(this, Object.getPrototypeOf(GrotPanel).call(this, props));
 
         _this2.state = {
-            open: props.expanded
+            open: props.expanded,
+            title: props.title,
+            edit: props.edit
         };
         _this2._toggle = _this2._toggle.bind(_this2);
+        _this2._changeTitle = _this2._changeTitle.bind(_this2);
         return _this2;
     }
 
     /**
-     *
+     * Returns a HTML string.
+     * @return {React Object}
      */
 
     _createClass(GrotPanel, [{
         key: 'render',
         value: function render() {
 
-            var header = _react2.default.createElement(GrotPanelHeader, { headerTitle: this.props.header, toggle: this._toggle, expanded: this.state.open });
+            var header = _react2.default.createElement(GrotPanelHeader, { title: this.props.title, edit: this.state.edit, toggle: this._toggle, callback: this._changeTitle, expanded: this.state.open });
 
             return _react2.default.createElement(
                 _reactBootstrap.Panel,
@@ -126,13 +216,24 @@ var GrotPanel = function (_React$Component2) {
         }
 
         /**
-         *
+         * This function toggles the open state of the Panel.
          */
 
     }, {
         key: '_toggle',
         value: function _toggle() {
             this.setState({ open: !this.state.open });
+        }
+
+        /**
+         * This function changes the title and calls the callback function.
+         */
+
+    }, {
+        key: '_changeTitle',
+        value: function _changeTitle(title) {
+            this.setState({ title: title });
+            this.props.callback(title);
         }
     }]);
 

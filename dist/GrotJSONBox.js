@@ -10,6 +10,8 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _reactBootstrap = require('react-bootstrap');
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -19,43 +21,62 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 /**
- * GrotHello
+ * GrotJSONBox
  *
- * This is the HelloWorld component for the Grót Module. This function only
- * display a simple HTML string.
+ * GrotJSONBox is a very simple component, which is primarily used to display
+ * data.
  *
- * @since 0.1.1
+ * @since 0.1.8
  * @author Jóhan Davidsen <johan.davidsen@fjakkarin.com>
  *
  */
 
-var GrotHello = function (_React$Component) {
-    _inherits(GrotHello, _React$Component);
+var GrotJSONBox = function (_React$Component) {
+    _inherits(GrotJSONBox, _React$Component);
 
-    function GrotHello() {
-        _classCallCheck(this, GrotHello);
+    /**
+     * The constructor takes the following parameters:
+     *
+     * @param {string} contents - This is the data, which is used to populate,
+     * the textarea.
+     *
+     */
 
-        return _possibleConstructorReturn(this, Object.getPrototypeOf(GrotHello).apply(this, arguments));
+    function GrotJSONBox(props) {
+        _classCallCheck(this, GrotJSONBox);
+
+        var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(GrotJSONBox).call(this, props));
+
+        _this.data = _this.props.contents;
+        return _this;
     }
 
-    _createClass(GrotHello, [{
-        key: 'render',
+    /**
+     * Set the value of the textarea.
+     */
+
+    _createClass(GrotJSONBox, [{
+        key: 'shouldComponentUpdate',
+        value: function shouldComponentUpdate(nextProps, nextState) {
+            var prop = this.refs.JSONBox.refs.input;
+            prop.value = nextProps.contents;
+            return true;
+        }
 
         /**
          * Returns a HTML string.
          * @return {React Object}
          */
+
+    }, {
+        key: 'render',
         value: function render() {
 
-            return _react2.default.createElement(
-                'h1',
-                null,
-                'Grót - Hello from Grót'
-            );
+            return _react2.default.createElement(_reactBootstrap.Input, { rows: '10', ref: 'JSONBox', type: 'textarea', readOnly: true });
         }
     }]);
 
-    return GrotHello;
+    return GrotJSONBox;
 }(_react2.default.Component);
 
-exports.default = GrotHello;
+exports.default = GrotJSONBox;
