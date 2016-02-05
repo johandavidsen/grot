@@ -6,8 +6,10 @@
 
 ## Install
 
-## Usage
+    npm install grot
 
+## Usage
+    
 ## Changelog
 
 ## License
