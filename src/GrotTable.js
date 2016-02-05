@@ -2,18 +2,29 @@ import React from 'react';
 import { Button, Table, Input, Glyphicon } from 'react-bootstrap';
 
 /**
- * TableRow
+ * GrotTableRow
  *
+ * GrotTableRow is a little helper class for GrotTable. This row represents a
+ * single line of the GrotTable. Each line has 2 column, which take Text as
+ * input. Each line has a icon indicating either a - sign (remove line) or a +
+ * sign (add new line).
+ *
+ * @since 0.1.1
  * @author Jóhan Davidsen <johan.davidsen@fjakkarin.com>
  *
  */
 class GrotTableRow extends React.Component {
 
     /**
-     *
+     * Returns a React HTML String
+     * @return {React Object}
      */
     render(  ){
-        let icon = (<Button className="grot-button-link" bsStyle="link" value={ this.props.id } onClick={ this.props.remove } ><Glyphicon glyph="minus" /></Button>);
+        let icon = (
+            <Button className="grot-button-link" bsStyle="link" value={ this.props.id } onClick={ this.props.remove } >
+                <Glyphicon glyph="minus" />
+            </Button>
+        );
 
         return(
             <tr>
@@ -35,25 +46,45 @@ class GrotTableRow extends React.Component {
 /**
  * GrotTable
  *
+ * The GrotTable is a 2 column table, where the user can add and remove rows as
+ * needed.
+ *
+ * @since 0.1.1
  * @author Jóhan Davidsen <johan.davidsen@fjakkarin.com>
  *
  */
 class GrotTable extends React.Component {
 
     /**
+     * The constructor has a limited set of parameters.
+     *
+     * @param {array} properties - The should be an simple JSON array. If
+     * properties is not set; properties will be set to empty.
+     * @param {function} callback - This is the callback function, which will be
+     * called, when the properties array is changed. This function provides the
+     * parameter properties.
      *
      */
     constructor( props ){
         super( props );
-        this.state = {
-            properties: []
-        };
+
+        if( props.properties){
+            this.state = {
+                properties: props.properties
+            };
+        } else {
+            this.state = {
+                properties: []
+            };
+        }
+
         this._addRow = this._addRow.bind(this);
         this._removeRow = this._removeRow.bind(this);
     }
 
     /**
-     *
+     *  Returns a HTML string.
+     *  @return {React Object}
      */
     render( ){
         var propComponents = [];
@@ -91,7 +122,7 @@ class GrotTable extends React.Component {
     }
 
     /**
-     *
+     * This function adds a row to the propeties array.
      */
     _addRow(){
         let props = this.state.properties;
@@ -101,10 +132,11 @@ class GrotTable extends React.Component {
         prop.value = "";
         value.value = "";
         this.setState({ properties: props });
+        this.props.callback( props );
     }
 
     /**
-     *
+     * This function removes a row from the properties array.
      */
     _removeRow( event ){
         let id = event.currentTarget.value;
@@ -112,6 +144,7 @@ class GrotTable extends React.Component {
             return element.id != id;
         });
         this.setState({ properties: props });
+        this.props.callback( props );
     }
 }
 

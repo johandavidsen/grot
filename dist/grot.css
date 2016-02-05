@@ -24,6 +24,7 @@
   box-shadow: none !important;
 }
 .grot-panel .panel-heading {
-  background-color: #fff !important;
-  border: 0px !important;
+    text-align: left !important;
+    background-color: #fff !important;
+    border: 0px !important;
 }

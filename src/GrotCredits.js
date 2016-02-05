@@ -4,20 +4,18 @@ import { Row, Col } from 'react-bootstrap';
 /**
  * GrotCredits
  *
+ * GrotCredits is along, the same lines as the GrotHello component. All it dose
+ * is to display a HTML string.
+ *
  * @author Jóhan Davidsen <johan.davidsen@fjakkarin.com>
  *
  */
 class GrotCredits extends React.Component {
 
-    /**
-     *
-     */
-    constructor( props ){
-        super( props );
-    }
 
     /**
-     *
+     * Returns a HTML string.
+     * @return {React Object}
      */
     render( ){
 

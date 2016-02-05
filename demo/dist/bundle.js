@@ -34973,13 +34973,15 @@ module.exports = require('./lib/React');
 },{"./lib/React":271}],404:[function(require,module,exports){
 'use strict';
 
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
-
-var _reactDom = require('react-dom');
-
-var _reactDom2 = _interopRequireDefault(_reactDom);
 
 var _GrotHello = require('../src/GrotHello');
 
@@ -34997,112 +34999,519 @@ var _GrotObjectBox = require('../src/GrotObjectBox');
 
 var _GrotObjectBox2 = _interopRequireDefault(_GrotObjectBox);
 
+var _GrotJSONBox = require('../src/GrotJSONBox');
+
+var _GrotJSONBox2 = _interopRequireDefault(_GrotJSONBox);
+
 var _GrotCredits = require('../src/GrotCredits');
 
 var _GrotCredits2 = _interopRequireDefault(_GrotCredits);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-_reactDom2.default.render(_react2.default.createElement(_GrotHello2.default, null), document.getElementById("header"));
-_reactDom2.default.render(_react2.default.createElement(_GrotPanel2.default, { header: 'GrotHello', expanded: false, children: _react2.default.createElement(
-    'div',
-    null,
-    _react2.default.createElement(
-      'h3',
-      null,
-      'GrotTable'
-    ),
-    _react2.default.createElement(
-      'h4',
-      null,
-      'Demonstration'
-    ),
-    _react2.default.createElement('div', { id: 'table' }),
-    _react2.default.createElement(
-      'h4',
-      null,
-      'Parameters'
-    )
-  ) }), document.getElementById("GrotHello"));
-_reactDom2.default.render(_react2.default.createElement(_GrotPanel2.default, { header: 'GrotPanel', expanded: false, children: _react2.default.createElement(
-    'div',
-    null,
-    _react2.default.createElement(
-      'h3',
-      null,
-      'GrotPanel'
-    ),
-    _react2.default.createElement(
-      'h4',
-      null,
-      'Demonstration'
-    ),
-    _react2.default.createElement('div', { id: 'panel' }),
-    _react2.default.createElement(
-      'h4',
-      null,
-      'Parameters'
-    ),
-    _react2.default.createElement(
-      'ul',
-      null,
-      _react2.default.createElement(
-        'li',
-        null,
-        'Header'
-      ),
-      _react2.default.createElement(
-        'li',
-        null,
-        'Expanded'
-      ),
-      _react2.default.createElement(
-        'li',
-        null,
-        'Children'
-      )
-    )
-  ) }), document.getElementById("GrotPanel"));
-_reactDom2.default.render(_react2.default.createElement(_GrotPanel2.default, { header: 'GrotObjectBox', expanded: false, children: _react2.default.createElement(
-    'div',
-    null,
-    _react2.default.createElement(
-      'h3',
-      null,
-      'GrotObjectBox'
-    ),
-    _react2.default.createElement(
-      'h4',
-      null,
-      'Demonstration'
-    ),
-    _react2.default.createElement('div', { id: 'objectBox' }),
-    _react2.default.createElement(
-      'h4',
-      null,
-      'Parameters'
-    ),
-    _react2.default.createElement(
-      'ul',
-      null,
-      _react2.default.createElement(
-        'li',
-        null,
-        'Header'
-      ),
-      _react2.default.createElement(
-        'li',
-        null,
-        'Expanded'
-      )
-    )
-  ) }), document.getElementById("GrotObjectBox"));
-_reactDom2.default.render(_react2.default.createElement(_GrotTable2.default, null), document.getElementById("table"));
-_reactDom2.default.render(_react2.default.createElement(_GrotPanel2.default, { header: 'GrotPanel', expanded: false }), document.getElementById("panel"));
-_reactDom2.default.render(_react2.default.createElement(_GrotObjectBox2.default, { header: 'GrotObjectBox', expanded: false }), document.getElementById("objectBox"));
-_reactDom2.default.render(_react2.default.createElement(_GrotCredits2.default, null), document.getElementById("GrotCredits"));
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-},{"../src/GrotCredits":405,"../src/GrotHello":406,"../src/GrotObjectBox":407,"../src/GrotPanel":408,"../src/GrotTable":409,"react":403,"react-dom":247}],405:[function(require,module,exports){
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+/**
+ * APIDOCS
+ *
+ *
+ * @since 0.1.8
+ * @author Jóhan Davidsen <johan.davidsen@fjakkarin.com>
+ *
+ */
+
+var APIDocs = function (_React$Component) {
+    _inherits(APIDocs, _React$Component);
+
+    /**
+     *
+     */
+
+    function APIDocs(props) {
+        _classCallCheck(this, APIDocs);
+
+        var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(APIDocs).call(this, props));
+
+        _this.title = props.title;
+        _this.desc = props.desc;
+        _this.demonstrationElement = props.element;
+        _this.properties = props.props;
+        return _this;
+    }
+
+    /**
+     *
+     */
+
+    _createClass(APIDocs, [{
+        key: 'render',
+        value: function render() {
+
+            var props = [];
+            if (this.properties) {
+                props = _react2.default.createElement(
+                    'ul',
+                    null,
+                    this.properties.map(function (element, index) {
+                        return _react2.default.createElement(
+                            'li',
+                            { key: index },
+                            element
+                        );
+                    })
+                );
+            }
+
+            return _react2.default.createElement(
+                'div',
+                null,
+                _react2.default.createElement(
+                    'h3',
+                    null,
+                    this.title
+                ),
+                _react2.default.createElement(
+                    'h4',
+                    null,
+                    'Description'
+                ),
+                this.desc,
+                _react2.default.createElement(
+                    'h4',
+                    null,
+                    'Demonstration'
+                ),
+                this.demonstrationElement,
+                _react2.default.createElement(
+                    'h4',
+                    null,
+                    'Props'
+                ),
+                props
+            );
+        }
+    }]);
+
+    return APIDocs;
+}(_react2.default.Component);
+
+/**
+ * Demo
+ *
+ * @since 0.1.8
+ * @author Jóhan Davidsen <johan.davidsen@fjakkarin.com>
+ *
+ */
+
+var Demo = function (_React$Component2) {
+    _inherits(Demo, _React$Component2);
+
+    /**
+     *
+     */
+
+    function Demo(props) {
+        _classCallCheck(this, Demo);
+
+        var _this2 = _possibleConstructorReturn(this, Object.getPrototypeOf(Demo).call(this, props));
+
+        _this2.state = {
+            tableData: [],
+            objecBoxData: { title: "GrotObjectBox", properties: [] }
+        };
+        _this2._tableDataIsChanged = _this2._tableDataIsChanged.bind(_this2);
+        _this2._objectBoxChanged = _this2._objectBoxChanged.bind(_this2);
+        return _this2;
+    }
+
+    /**
+     *
+     */
+
+    _createClass(Demo, [{
+        key: 'render',
+        value: function render() {
+
+            return _react2.default.createElement(
+                'div',
+                null,
+                _react2.default.createElement(_GrotHello2.default, null),
+                _react2.default.createElement(
+                    'h2',
+                    null,
+                    'Introduction'
+                ),
+                _react2.default.createElement(
+                    'p',
+                    null,
+                    'The is a demonstation page for the different components in the package Grót. The source code for this package is hosted on ',
+                    _react2.default.createElement(
+                        'a',
+                        { href: '' },
+                        'Bitbucket'
+                    ),
+                    ' and the npm link is ',
+                    _react2.default.createElement(
+                        'a',
+                        { href: 'https://www.npmjs.com/package/grot' },
+                        'grot'
+                    ),
+                    '.',
+                    _react2.default.createElement('br', null),
+                    'The structure of this document is the following: each component in the package is described in the following manner:'
+                ),
+                _react2.default.createElement(
+                    'ul',
+                    null,
+                    _react2.default.createElement(
+                        'li',
+                        null,
+                        'Name of the Component.'
+                    ),
+                    _react2.default.createElement(
+                        'li',
+                        null,
+                        'Demonstration of the component.'
+                    ),
+                    _react2.default.createElement(
+                        'li',
+                        null,
+                        'A description of the parameters for the particular component.'
+                    )
+                ),
+                _react2.default.createElement(
+                    'h2',
+                    null,
+                    'Components'
+                ),
+                _react2.default.createElement(_GrotPanel2.default, {
+                    title: 'GrotHello',
+                    expanded: false,
+                    children: _react2.default.createElement(APIDocs, {
+                        title: 'GrotHello',
+                        desc: 'This is the HelloWorld component for the Grót Package. It dosent take any properties, nore can it be manipulated in any way.',
+                        props: ["There are no props for this object."],
+                        element: _react2.default.createElement(_GrotHello2.default, null)
+                    })
+                }),
+                _react2.default.createElement(_GrotPanel2.default, {
+                    title: 'GrotTable',
+                    expanded: false,
+                    children: _react2.default.createElement(
+                        'div',
+                        null,
+                        _react2.default.createElement(
+                            'h3',
+                            null,
+                            'GrotTable'
+                        ),
+                        _react2.default.createElement(
+                            'h4',
+                            null,
+                            'Description'
+                        ),
+                        _react2.default.createElement(
+                            'p',
+                            null,
+                            'GotTable is a 2 column table, where on can dynamically add and remove rows.'
+                        ),
+                        _react2.default.createElement(
+                            'h4',
+                            null,
+                            'Demonstration'
+                        ),
+                        _react2.default.createElement(_GrotTable2.default, { properties: this.state.tableData, callback: this._tableDataIsChanged }),
+                        _react2.default.createElement(_GrotJSONBox2.default, {
+                            contents: JSON.stringify(this.state.tableData, null, "\t")
+                        }),
+                        _react2.default.createElement(
+                            'h4',
+                            null,
+                            'Props'
+                        ),
+                        _react2.default.createElement(
+                            'ul',
+                            null,
+                            _react2.default.createElement(
+                                'li',
+                                null,
+                                'Properties - The user can specify an array, which will be used to hold the rows in. If properties is not specified, the component will create an internal array.'
+                            ),
+                            _react2.default.createElement(
+                                'li',
+                                null,
+                                'Callback( props ) - If a callback function is provided, this function is called everytime the properties array is updated.'
+                            )
+                        )
+                    ) }),
+                _react2.default.createElement(_GrotPanel2.default, {
+                    title: 'GrotPanel',
+                    edit: false,
+                    expanded: false,
+                    children: _react2.default.createElement(
+                        'div',
+                        null,
+                        _react2.default.createElement(
+                            'h3',
+                            null,
+                            'GrotPanel'
+                        ),
+                        _react2.default.createElement(
+                            'h4',
+                            null,
+                            'Description'
+                        ),
+                        _react2.default.createElement(
+                            'p',
+                            null,
+                            'GrotPanel is a relatively simple panel, which has a open/close button and indicator.'
+                        ),
+                        _react2.default.createElement(
+                            'h4',
+                            null,
+                            'Demonstration'
+                        ),
+                        _react2.default.createElement(_GrotPanel2.default, { title: 'GrotPanel', expanded: false, children: 'contents.' }),
+                        _react2.default.createElement(
+                            'h4',
+                            null,
+                            'Props'
+                        ),
+                        _react2.default.createElement(
+                            'ul',
+                            null,
+                            _react2.default.createElement(
+                                'li',
+                                null,
+                                'Title - Specify the header title.'
+                            ),
+                            _react2.default.createElement(
+                                'li',
+                                null,
+                                'Expanded - The user can specify, if the Panel should initialize expanded or closed. Expanded takes a boolead value.'
+                            ),
+                            _react2.default.createElement(
+                                'li',
+                                null,
+                                'Edit - Boolean value to indicate, if the title can be changed. Default value is false. '
+                            ),
+                            _react2.default.createElement(
+                                'li',
+                                null,
+                                'Children - Specify the contents of the panel'
+                            ),
+                            _react2.default.createElement(
+                                'li',
+                                null,
+                                'Callback - The callback function is called every time the title is changed.'
+                            )
+                        )
+                    ) }),
+                _react2.default.createElement(_GrotPanel2.default, {
+                    title: 'GrotObjectBox',
+                    expanded: false,
+                    children: _react2.default.createElement(
+                        'div',
+                        null,
+                        _react2.default.createElement(
+                            'h3',
+                            null,
+                            'GrotObject'
+                        ),
+                        _react2.default.createElement(
+                            'h4',
+                            null,
+                            'Description'
+                        ),
+                        _react2.default.createElement(
+                            'p',
+                            null,
+                            'The GrotObjectBox is a component specifically buildt to manipulate a particular JSON object. This component is build using the 2 components GrotPanel and GrotTable.'
+                        ),
+                        _react2.default.createElement(
+                            'h4',
+                            null,
+                            'Demonstration'
+                        ),
+                        _react2.default.createElement(_GrotObjectBox2.default, { object: this.state.objecBoxData, edit: true, expanded: false, callback: this._objectBoxChanged }),
+                        _react2.default.createElement(_GrotJSONBox2.default, { contents: JSON.stringify(this.state.objecBoxData, null, "\t") }),
+                        _react2.default.createElement(
+                            'h4',
+                            null,
+                            'Props'
+                        ),
+                        _react2.default.createElement(
+                            'ul',
+                            null,
+                            _react2.default.createElement(
+                                'li',
+                                null,
+                                'Object - Object is expected to have a certain structure.'
+                            ),
+                            _react2.default.createElement(
+                                'li',
+                                null,
+                                'Edit - Boolean value to indicate, if the title can be changed. Default value is false.'
+                            ),
+                            _react2.default.createElement(
+                                'li',
+                                null,
+                                'Expanded - The user can specify, if the Panel should initialize expanded or closed. Expanded takes a boolead value.'
+                            ),
+                            _react2.default.createElement(
+                                'li',
+                                null,
+                                'Callback - The callback function is called every time the title or the properties are changed.'
+                            )
+                        )
+                    ) }),
+                _react2.default.createElement(_GrotPanel2.default, {
+                    title: 'GrotJSONBox',
+                    expanded: false,
+                    children: _react2.default.createElement(
+                        'div',
+                        null,
+                        _react2.default.createElement(
+                            'h3',
+                            null,
+                            'GrotJSONBox'
+                        ),
+                        _react2.default.createElement(
+                            'h4',
+                            null,
+                            'Description'
+                        ),
+                        _react2.default.createElement(
+                            'p',
+                            null,
+                            'GrotJSONBox is a very simple component, which is primarily used to display data.'
+                        ),
+                        _react2.default.createElement(
+                            'h4',
+                            null,
+                            'Demonstration'
+                        ),
+                        _react2.default.createElement(_GrotJSONBox2.default, null),
+                        _react2.default.createElement(
+                            'h4',
+                            null,
+                            'Parameters'
+                        ),
+                        _react2.default.createElement(
+                            'ul',
+                            null,
+                            _react2.default.createElement(
+                                'li',
+                                null,
+                                'There are no props for this object.'
+                            )
+                        )
+                    ) }),
+                _react2.default.createElement(_GrotPanel2.default, {
+                    title: 'GrotCredits',
+                    expanded: false,
+                    children: _react2.default.createElement(
+                        'div',
+                        null,
+                        _react2.default.createElement(
+                            'h3',
+                            null,
+                            'GrotObjectBox'
+                        ),
+                        _react2.default.createElement(
+                            'h4',
+                            null,
+                            'Description'
+                        ),
+                        _react2.default.createElement(
+                            'p',
+                            null,
+                            'GrotCredits is along, the same lines as the GrotHello component. All it dose is to display a HTML string.'
+                        ),
+                        _react2.default.createElement(
+                            'h4',
+                            null,
+                            'Demonstration'
+                        ),
+                        _react2.default.createElement(_GrotCredits2.default, null),
+                        _react2.default.createElement(
+                            'h4',
+                            null,
+                            'Parameters'
+                        ),
+                        _react2.default.createElement(
+                            'ul',
+                            null,
+                            _react2.default.createElement(
+                                'li',
+                                null,
+                                'There are no props for this object.'
+                            )
+                        )
+                    ) }),
+                _react2.default.createElement(
+                    'h2',
+                    null,
+                    'Credits'
+                ),
+                _react2.default.createElement(_GrotCredits2.default, null)
+            );
+        }
+
+        /**
+         *
+         */
+
+    }, {
+        key: '_tableDataIsChanged',
+        value: function _tableDataIsChanged(props) {
+            this.setState({ tableData: props });
+        }
+
+        /**
+         *
+         */
+
+    }, {
+        key: '_objectBoxChanged',
+        value: function _objectBoxChanged(object) {
+            this.setState({ objecBoxData: object });
+        }
+    }]);
+
+    return Demo;
+}(_react2.default.Component);
+
+exports.default = Demo;
+
+},{"../src/GrotCredits":406,"../src/GrotHello":407,"../src/GrotJSONBox":408,"../src/GrotObjectBox":409,"../src/GrotPanel":410,"../src/GrotTable":411,"react":403}],405:[function(require,module,exports){
+'use strict';
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactDom = require('react-dom');
+
+var _reactDom2 = _interopRequireDefault(_reactDom);
+
+var _Demo = require('./Demo');
+
+var _Demo2 = _interopRequireDefault(_Demo);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+_reactDom2.default.render(_react2.default.createElement(_Demo2.default, null), document.getElementById("demo"));
+
+// ReactDOM.render(<GrotObjectBox header="GrotObjectBox" expanded={false} />, document.getElementById("objectBox-demo"));
+// ReactDOM.render(<GrotJSONBox header="GrotJSONBox" contents={ JSON.stringify( tabledata, null, "\t" ) } />, document.getElementById("objectJSONBox-demo"));
+// ReactDOM.render(<GrotCredits />, document.getElementById("credits-demo"));
+
+},{"./Demo":404,"react":403,"react-dom":247}],406:[function(require,module,exports){
 'use strict';
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -35128,6 +35537,9 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 /**
  * GrotCredits
  *
+ * GrotCredits is along, the same lines as the GrotHello component. All it dose
+ * is to display a HTML string.
+ *
  * @author Jóhan Davidsen <johan.davidsen@fjakkarin.com>
  *
  */
@@ -35135,22 +35547,19 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var GrotCredits = function (_React$Component) {
     _inherits(GrotCredits, _React$Component);
 
-    /**
-     *
-     */
-
-    function GrotCredits(props) {
+    function GrotCredits() {
         _classCallCheck(this, GrotCredits);
 
-        return _possibleConstructorReturn(this, Object.getPrototypeOf(GrotCredits).call(this, props));
+        return _possibleConstructorReturn(this, Object.getPrototypeOf(GrotCredits).apply(this, arguments));
     }
-
-    /**
-     *
-     */
 
     _createClass(GrotCredits, [{
         key: 'render',
+
+        /**
+         * Returns a HTML string.
+         * @return {React Object}
+         */
         value: function render() {
 
             return _react2.default.createElement(
@@ -35188,7 +35597,7 @@ var GrotCredits = function (_React$Component) {
 
 exports.default = GrotCredits;
 
-},{"react":403,"react-bootstrap":73}],406:[function(require,module,exports){
+},{"react":403,"react-bootstrap":73}],407:[function(require,module,exports){
 'use strict';
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -35212,6 +35621,10 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 /**
  * GrotHello
  *
+ * This is the HelloWorld component for the Grót Module. This function only
+ * display a simple HTML string.
+ *
+ * @since 0.1.1
  * @author Jóhan Davidsen <johan.davidsen@fjakkarin.com>
  *
  */
@@ -35229,7 +35642,8 @@ var GrotHello = function (_React$Component) {
         key: 'render',
 
         /**
-         *
+         * Returns a HTML string.
+         * @return {React Object}
          */
         value: function render() {
 
@@ -35246,7 +35660,91 @@ var GrotHello = function (_React$Component) {
 
 exports.default = GrotHello;
 
-},{"react":403}],407:[function(require,module,exports){
+},{"react":403}],408:[function(require,module,exports){
+'use strict';
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactBootstrap = require('react-bootstrap');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+/**
+ * GrotJSONBox
+ *
+ * GrotJSONBox is a very simple component, which is primarily used to display
+ * data.
+ *
+ * @since 0.1.8
+ * @author Jóhan Davidsen <johan.davidsen@fjakkarin.com>
+ *
+ */
+
+var GrotJSONBox = function (_React$Component) {
+    _inherits(GrotJSONBox, _React$Component);
+
+    /**
+     * The constructor takes the following parameters:
+     *
+     * @param {string} contents - This is the data, which is used to populate,
+     * the textarea.
+     *
+     */
+
+    function GrotJSONBox(props) {
+        _classCallCheck(this, GrotJSONBox);
+
+        var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(GrotJSONBox).call(this, props));
+
+        _this.data = _this.props.contents;
+        return _this;
+    }
+
+    /**
+     * Set the value of the textarea.
+     */
+
+    _createClass(GrotJSONBox, [{
+        key: 'shouldComponentUpdate',
+        value: function shouldComponentUpdate(nextProps, nextState) {
+            var prop = this.refs.JSONBox.refs.input;
+            prop.value = nextProps.contents;
+            return true;
+        }
+
+        /**
+         * Returns a HTML string.
+         * @return {React Object}
+         */
+
+    }, {
+        key: 'render',
+        value: function render() {
+
+            return _react2.default.createElement(_reactBootstrap.Input, { rows: '10', ref: 'JSONBox', type: 'textarea', readOnly: true });
+        }
+    }]);
+
+    return GrotJSONBox;
+}(_react2.default.Component);
+
+exports.default = GrotJSONBox;
+
+},{"react":403,"react-bootstrap":73}],409:[function(require,module,exports){
 'use strict';
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -35278,8 +35776,21 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 /**
- * GrotHello
+ * GrotObjectBox
  *
+ * The GrotObjectBox is a component specifically buildt to manipulate a
+ * particular JSON object. The structure of this object is the following:
+ *
+ *  {
+ *      title: string,
+ *      properties: [
+ *          { id: string, prop: string, value: string }
+ *      ]
+ *  }
+ *
+ * This component is build using the 2 components GrotPanel and GrotTable.
+ *
+ * @since 0.1.8
  * @author Jóhan Davidsen <johan.davidsen@fjakkarin.com>
  *
  */
@@ -35288,29 +35799,73 @@ var GrotObjectBox = function (_React$Component) {
     _inherits(GrotObjectBox, _React$Component);
 
     /**
+     * The constructor takes the following parameters:
+     *
+     * @param {Object} object -
+     * @param {boolean} edit -
+     * @param {boolean} expanded -
+     * @param {function} callback -
      *
      */
 
     function GrotObjectBox(props) {
         _classCallCheck(this, GrotObjectBox);
 
-        return _possibleConstructorReturn(this, Object.getPrototypeOf(GrotObjectBox).call(this, props));
+        var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(GrotObjectBox).call(this, props));
+
+        _this.state = {
+            title: props.object.title,
+            expanded: props.expanded,
+            edit: props.edit,
+            properties: props.object.properties
+        };
+
+        _this._onPropertiesChange = _this._onPropertiesChange.bind(_this);
+        _this._onTitleChange = _this._onTitleChange.bind(_this);
+        return _this;
     }
 
     /**
-     *
+     * Returns a HTML string.
+     * @return {React Object}
      */
 
     _createClass(GrotObjectBox, [{
         key: 'render',
         value: function render() {
 
-            var table = _react2.default.createElement(_GrotTable2.default, null);
+            var table = _react2.default.createElement(_GrotTable2.default, { properties: this.properties, callback: this._onPropertiesChange });
 
             return _react2.default.createElement(_GrotPanel2.default, {
-                header: this.props.header,
-                expanded: this.props.expanded,
+                title: this.state.title,
+                edit: this.state.edit,
+                callback: this._onTitleChange,
+                expanded: this.state.expanded,
                 children: table });
+        }
+
+        /**
+         * This function is called when the properties array is updated. This
+         * function also calls the callback function.
+         */
+
+    }, {
+        key: '_onPropertiesChange',
+        value: function _onPropertiesChange(props) {
+            this.props.callback({ title: this.state.title, properties: props });
+            this.setState({ properties: props });
+        }
+
+        /**
+         * This function is called, when the title is updated. This
+         * function also calls the callback function.
+         */
+
+    }, {
+        key: '_onTitleChange',
+        value: function _onTitleChange(title) {
+            this.props.callback({ title: title, properties: this.state.props });
+            this.setState({ title: title });
         }
     }]);
 
@@ -35319,7 +35874,7 @@ var GrotObjectBox = function (_React$Component) {
 
 exports.default = GrotObjectBox;
 
-},{"./GrotPanel":408,"./GrotTable":409,"react":403,"react-bootstrap":73}],408:[function(require,module,exports){
+},{"./GrotPanel":410,"./GrotTable":411,"react":403,"react-bootstrap":73}],410:[function(require,module,exports){
 'use strict';
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -35347,6 +35902,12 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 /**
+ * GrotPanelHeader
+ *
+ * This is a helper class for the GrotPanel class.
+ *
+ * @since 0.1.7
+ * @Author Jóhan Davidsen <johan.davidsen@fjakkarin.com>
  *
  */
 
@@ -35354,6 +35915,15 @@ var GrotPanelHeader = function (_React$Component) {
     _inherits(GrotPanelHeader, _React$Component);
 
     /**
+     * The constructor takes the following parameters:
+     *
+     * @param {string} title - The title of the panel..
+     * @param {boolean} edit - A boolean value to indicate if the panel can be
+     * changed.
+     * @param {function} callback - A callback function, which will be called
+     * everytime the title is changed.
+     * @param {function} toggle - A callback function, which is used to toggle
+     * the open state variable in the parent.
      *
      */
 
@@ -35362,45 +35932,99 @@ var GrotPanelHeader = function (_React$Component) {
 
         var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(GrotPanelHeader).call(this, props));
 
-        _this._renderButton = _this._renderButton.bind(_this);
+        _this.state = {
+            title: props.title,
+            changeTitle: props.edit,
+            edit: false
+        };
+        _this._toggleEdit = _this._toggleEdit.bind(_this);
+        _this._setTitle = _this._setTitle.bind(_this);
         return _this;
     }
 
     /**
-     *
+     * Returns a HTML string.
+     * @return {React Object}
      */
 
     _createClass(GrotPanelHeader, [{
         key: 'render',
         value: function render() {
+            var icon = this.props.expanded ? 'chevron-down' : 'chevron-right';
+            var title = _react2.default.createElement(
+                'h3',
+                { className: 'panel-title' },
+                _react2.default.createElement(
+                    _reactBootstrap.Button,
+                    { onClick: this.props.toggle, bsStyle: 'link', className: 'grot-button-link grot-button-link-edit' },
+                    _react2.default.createElement(_reactBootstrap.Glyphicon, { glyph: icon }),
+                    ' ',
+                    ' ',
+                    this.state.title
+                )
+            );
+            if (this.state.changeTitle) {
+                title = this.state.edit ? _react2.default.createElement(
+                    'h3',
+                    { className: 'panel-title' },
+                    _react2.default.createElement(_reactBootstrap.Input, { type: 'text', ref: 'titleInput', defaultValue: this.state.title }),
+                    _react2.default.createElement(
+                        _reactBootstrap.Button,
+                        { onClick: this._setTitle },
+                        _react2.default.createElement(_reactBootstrap.Glyphicon, { glyph: 'ok' })
+                    ),
+                    _react2.default.createElement(
+                        _reactBootstrap.Button,
+                        { onClick: this._toggleEdit },
+                        _react2.default.createElement(_reactBootstrap.Glyphicon, { glyph: 'remove' })
+                    )
+                ) : _react2.default.createElement(
+                    'h3',
+                    { className: 'panel-title grot-table-header' },
+                    _react2.default.createElement(
+                        _reactBootstrap.Button,
+                        { onClick: this.props.toggle, bsStyle: 'link', className: 'grot-button-link grot-button-link-edit' },
+                        _react2.default.createElement(_reactBootstrap.Glyphicon, { glyph: icon }),
+                        ' ',
+                        ' ',
+                        this.state.title
+                    ),
+                    _react2.default.createElement(
+                        _reactBootstrap.Button,
+                        { onClick: this._toggleEdit, bsStyle: 'link', className: 'grot-button-link grot-button-edit' },
+                        _react2.default.createElement(_reactBootstrap.Glyphicon, { glyph: 'edit' })
+                    )
+                );
+            }
+
             return _react2.default.createElement(
                 'div',
                 null,
-                _react2.default.createElement(
-                    'h3',
-                    { className: 'panel-title' },
-                    this._renderButton()
-                )
+                title
             );
         }
 
         /**
-         *
+         * This function toggles the edit state variable.
          */
 
     }, {
-        key: '_renderButton',
-        value: function _renderButton() {
-            var icon = this.props.expanded ? 'chevron-down' : 'chevron-right';
+        key: '_toggleEdit',
+        value: function _toggleEdit() {
+            this.setState({ edit: !this.state.edit });
+        }
 
-            return _react2.default.createElement(
-                _reactBootstrap.Button,
-                { onClick: this.props.toggle, bsStyle: 'link', className: 'grot-button-link' },
-                _react2.default.createElement(_reactBootstrap.Glyphicon, { glyph: icon }),
-                ' ',
-                ' ',
-                this.props.headerTitle
-            );
+        /**
+         * The function changes the title of the panel and calls the callback
+         * function.
+         */
+
+    }, {
+        key: '_setTitle',
+        value: function _setTitle() {
+            var title = this.refs.titleInput.getValue();
+            this.props.callback(title);
+            this.setState({ title: title, edit: !this.state.edit });
         }
     }]);
 
@@ -35408,6 +36032,13 @@ var GrotPanelHeader = function (_React$Component) {
 }(_react2.default.Component);
 
 /**
+ * GrotPanel
+ *
+ * GrotPanel is a simple panel, which can be expanded and collapsed by clicking
+ * on the title.
+ *
+ * @since 0.1.7
+ * @Author Jóhan Davidsen <johan.davidsen@fjakkarin.com>
  *
  */
 
@@ -35415,6 +36046,16 @@ var GrotPanel = function (_React$Component2) {
     _inherits(GrotPanel, _React$Component2);
 
     /**
+     * This constructor takes the following parameters:
+     *
+     * @param {string} title - Expects a string value to be used as the title of
+     * the panel.
+     * @param {boolean} expanded - A boolean value, which determines if the
+     * intial state of the panel is expanded or not.
+     * @param {boolean} edit - Set if the title can be changed.
+     * @param {function} children - Set component to be viewed inside the panel.
+     * @param {function} callback - A function, which is called everytime the
+     * title is changed.
      *
      */
 
@@ -35424,21 +36065,25 @@ var GrotPanel = function (_React$Component2) {
         var _this2 = _possibleConstructorReturn(this, Object.getPrototypeOf(GrotPanel).call(this, props));
 
         _this2.state = {
-            open: props.expanded
+            open: props.expanded,
+            title: props.title,
+            edit: props.edit
         };
         _this2._toggle = _this2._toggle.bind(_this2);
+        _this2._changeTitle = _this2._changeTitle.bind(_this2);
         return _this2;
     }
 
     /**
-     *
+     * Returns a HTML string.
+     * @return {React Object}
      */
 
     _createClass(GrotPanel, [{
         key: 'render',
         value: function render() {
 
-            var header = _react2.default.createElement(GrotPanelHeader, { headerTitle: this.props.header, toggle: this._toggle, expanded: this.state.open });
+            var header = _react2.default.createElement(GrotPanelHeader, { title: this.props.title, edit: this.state.edit, toggle: this._toggle, callback: this._changeTitle, expanded: this.state.open });
 
             return _react2.default.createElement(
                 _reactBootstrap.Panel,
@@ -35448,13 +36093,24 @@ var GrotPanel = function (_React$Component2) {
         }
 
         /**
-         *
+         * This function toggles the open state of the Panel.
          */
 
     }, {
         key: '_toggle',
         value: function _toggle() {
             this.setState({ open: !this.state.open });
+        }
+
+        /**
+         * This function changes the title and calls the callback function.
+         */
+
+    }, {
+        key: '_changeTitle',
+        value: function _changeTitle(title) {
+            this.setState({ title: title });
+            this.props.callback(title);
         }
     }]);
 
@@ -35463,7 +36119,7 @@ var GrotPanel = function (_React$Component2) {
 
 exports.default = GrotPanel;
 
-},{"./GrotTable":409,"react":403,"react-bootstrap":73}],409:[function(require,module,exports){
+},{"./GrotTable":411,"react":403,"react-bootstrap":73}],411:[function(require,module,exports){
 'use strict';
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -35487,8 +36143,14 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 /**
- * TableRow
+ * GrotTableRow
  *
+ * GrotTableRow is a little helper class for GrotTable. This row represents a
+ * single line of the GrotTable. Each line has 2 column, which take Text as
+ * input. Each line has a icon indicating either a - sign (remove line) or a +
+ * sign (add new line).
+ *
+ * @since 0.1.1
  * @author Jóhan Davidsen <johan.davidsen@fjakkarin.com>
  *
  */
@@ -35506,7 +36168,8 @@ var GrotTableRow = function (_React$Component) {
         key: 'render',
 
         /**
-         *
+         * Returns a React HTML String
+         * @return {React Object}
          */
         value: function render() {
             var icon = _react2.default.createElement(
@@ -35543,6 +36206,10 @@ var GrotTableRow = function (_React$Component) {
 /**
  * GrotTable
  *
+ * The GrotTable is a 2 column table, where the user can add and remove rows as
+ * needed.
+ *
+ * @since 0.1.1
  * @author Jóhan Davidsen <johan.davidsen@fjakkarin.com>
  *
  */
@@ -35551,6 +36218,13 @@ var GrotTable = function (_React$Component2) {
     _inherits(GrotTable, _React$Component2);
 
     /**
+     * The constructor has a limited set of parameters.
+     *
+     * @param {array} properties - The should be an simple JSON array. If
+     * properties is not set; properties will be set to empty.
+     * @param {function} callback - This is the callback function, which will be
+     * called, when the properties array is changed. This function provides the
+     * parameter properties.
      *
      */
 
@@ -35559,16 +36233,24 @@ var GrotTable = function (_React$Component2) {
 
         var _this2 = _possibleConstructorReturn(this, Object.getPrototypeOf(GrotTable).call(this, props));
 
-        _this2.state = {
-            properties: []
-        };
+        if (props.properties) {
+            _this2.state = {
+                properties: props.properties
+            };
+        } else {
+            _this2.state = {
+                properties: []
+            };
+        }
+
         _this2._addRow = _this2._addRow.bind(_this2);
         _this2._removeRow = _this2._removeRow.bind(_this2);
         return _this2;
     }
 
     /**
-     *
+     *  Returns a HTML string.
+     *  @return {React Object}
      */
 
     _createClass(GrotTable, [{
@@ -35642,7 +36324,7 @@ var GrotTable = function (_React$Component2) {
         }
 
         /**
-         *
+         * This function adds a row to the propeties array.
          */
 
     }, {
@@ -35655,10 +36337,11 @@ var GrotTable = function (_React$Component2) {
             prop.value = "";
             value.value = "";
             this.setState({ properties: props });
+            this.props.callback(props);
         }
 
         /**
-         *
+         * This function removes a row from the properties array.
          */
 
     }, {
@@ -35669,6 +36352,7 @@ var GrotTable = function (_React$Component2) {
                 return element.id != id;
             });
             this.setState({ properties: props });
+            this.props.callback(props);
         }
     }]);
 
@@ -35677,4 +36361,4 @@ var GrotTable = function (_React$Component2) {
 
 exports.default = GrotTable;
 
-},{"react":403,"react-bootstrap":73}]},{},[404]);
+},{"react":403,"react-bootstrap":73}]},{},[405]);
