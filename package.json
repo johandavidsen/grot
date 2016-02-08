@@ -4,9 +4,12 @@
   "description": "This package contains a selection of React components, which I use as general building blocks in different React applications.",
   "main": "dist/index.js",
   "scripts": {
+    "test": "./node_modules/.bin/gulp test",
+    "tdd": "./node_modules/.bin/gulp tdd",
+    "test:coverage": "./node_modules/.bin/gulp test:coverage",
+    "dev": "./node_modules/.bin/gulp devel",
     "demo": "./node_modules/.bin/gulp demo",
-    "dist": "./node_modules/.bin/gulp dist",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dist": "./node_modules/.bin/gulp dist"
   },
   "repository": {
     "type": "git",
@@ -19,6 +22,7 @@
   "author": "Johan Davidsen",
   "license": "MIT",
   "dependencies": {
+    "gojs": "^1.5.20",
     "react": "^0.14.7",
     "react-bootstrap": "^0.28.2",
     "react-dom": "^0.14.7"
@@ -35,8 +39,16 @@
     "gulp": "^3.9.0",
     "gulp-babel": "^6.1.2",
     "gulp-concat": "^2.6.0",
+    "gulp-istanbul": "^0.10.3",
     "gulp-less": "^3.0.5",
     "gulp-minify": "0.0.5",
+    "gulp-mocha": "^2.2.0",
+    "gulp-nodemon": "^2.0.6",
+    "gulp-util": "^3.0.7",
+    "isparta": "^4.0.0",
+    "jsdom": "^8.0.2",
+    "react-addons-test-utils": "^0.14.7",
+    "run-sequence": "^1.1.5",
     "vinyl-source-stream": "^1.1.0"
   }
 }

@@ -37,6 +37,10 @@
   background-color: #fff !important;
   border: 0px !important;
 }
+.grot-preview-go {
+  height: 300px;
+  width: 400px;
+}
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
 html {
   font-family: sans-serif;
