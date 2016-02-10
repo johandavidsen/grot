@@ -8,7 +8,7 @@ var _components = require('./components');
 
 var _components2 = _interopRequireDefault(_components);
 
-var _gojs = require('.gojs');
+var _gojs = require('./gojs');
 
 var _gojs2 = _interopRequireDefault(_gojs);
 

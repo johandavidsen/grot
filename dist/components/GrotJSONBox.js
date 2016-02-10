@@ -71,8 +71,7 @@ var GrotJSONBox = function (_React$Component) {
     }, {
         key: 'render',
         value: function render() {
-
-            return _react2.default.createElement(_reactBootstrap.Input, { rows: '10', ref: 'JSONBox', type: 'textarea', readOnly: true });
+            return _react2.default.createElement(_reactBootstrap.Input, { rows: '10', ref: 'JSONBox', defaultValue: this.data, type: 'textarea', readOnly: true });
         }
     }]);
 

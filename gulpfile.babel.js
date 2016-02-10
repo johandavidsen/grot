@@ -111,7 +111,7 @@ import source from 'vinyl-source-stream';
     });
 
     gulp.task("dist", function(){
-        return gulp.src('src/*.js')
+        return gulp.src(['src/*.js', 'src/*/*.js'])
             .pipe(babel({ presets: ["stage-0","es2015", "react"] }))
             // .pipe(concat('grot.js'))
             // .pipe(minify())
