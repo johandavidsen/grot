@@ -39,9 +39,8 @@ class GrotJSONBox extends React.Component {
      * @return {React Object}
      */
     render( ){
-
         return (
-            <Input rows="10" ref="JSONBox" type="textarea" readOnly />
+            <Input rows="10" ref="JSONBox" defaultValue={this.data} type="textarea" readOnly />
         );
     }
 }

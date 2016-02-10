@@ -16,23 +16,12 @@ export default class GrotGOPreviewBox extends React.Component {
     /**
      *
      * @param {String} id -
-     * @param {String} temp -
+     * @param {Object} model -
+     * @param {function} callback -
      */
     constructor( props ){
         super( props );
         this._renderGOJS = this._renderGOJS.bind(this);
-
-        this.model = [
-            { key: 0, title:"Rhonda Hoffman", category:this.props.temp, properties:[] },
-            { key: 1, title:"Roanne Levine", category:this.props.temp, properties:[] },
-            { key: 2, title:"Samantha Langley", category:this.props.temp, properties:[] },
-            { key: 3, title:"Isadora Shepard", category:this.props.temp, properties:[] },
-            { key: 4, title:"Glenna Brown", category:this.props.temp, properties:[] },
-            { key: 5, title:"Taylor Reeves", category:this.props.temp, properties:[] },
-            { key: 6, title:"Sharon Prince", category:this.props.temp, properties:[] },
-            { key: 7, title:"Sydney Graves", category:this.props.temp, properties:[] },
-            { key: 8, title:"Yael Douglas", category:this.props.temp, properties:[] },
-        ];
     }
 
     /**
@@ -57,11 +46,12 @@ export default class GrotGOPreviewBox extends React.Component {
      *
      */
     _renderGOJS(){
+        var self = this;
         let GO = go.GraphObject.make;
         let Div = GO( go.Diagram, this.props.id, {
                 initialContentAlignment: go.Spot.Center,
                 allowZoom: false,
-                allowSelect: false,
+                allowSelect: true,
                 allowHorizontalScroll: false,
                 allowVerticalScroll : false
             }
@@ -72,6 +62,10 @@ export default class GrotGOPreviewBox extends React.Component {
         temp.add("SimpleBox", SimpleBox() );
 
         Div.nodeTemplateMap = temp;
-        Div.model = new go.GraphLinksModel(this.model);
+        Div.model = new go.GraphLinksModel(this.props.model);
+        Div.model.addChangedListener(( changedEvent ) => {
+            this.props.callback( Div.model.nf);
+            }
+        );
     }
 }

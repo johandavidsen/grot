@@ -4,32 +4,17 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _GrotHello = require('./GrotHello');
+var _components = require('./components');
 
-var _GrotHello2 = _interopRequireDefault(_GrotHello);
+var _components2 = _interopRequireDefault(_components);
 
-var _GrotTable = require('./GrotTable');
+var _gojs = require('.gojs');
 
-var _GrotTable2 = _interopRequireDefault(_GrotTable);
-
-var _GrotPanel = require('./GrotPanel');
-
-var _GrotPanel2 = _interopRequireDefault(_GrotPanel);
-
-var _GrotObjectBox = require('./GrotObjectBox');
-
-var _GrotObjectBox2 = _interopRequireDefault(_GrotObjectBox);
-
-var _GrotCredits = require('./GrotCredits');
-
-var _GrotCredits2 = _interopRequireDefault(_GrotCredits);
+var _gojs2 = _interopRequireDefault(_gojs);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = {
-    GrotHello: _GrotHello2.default,
-    GrotTable: _GrotTable2.default,
-    GrotPanel: _GrotPanel2.default,
-    GrotObjectBox: _GrotObjectBox2.default,
-    GrotCredits: _GrotCredits2.default
+    components: _components2.default,
+    gojs: _gojs2.default
 };

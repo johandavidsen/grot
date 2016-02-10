@@ -37050,10 +37050,14 @@ var Demo = function (_React$Component2) {
 
         _this2.state = {
             tableData: [],
-            objecBoxData: { title: "GrotObjectBox", properties: [] }
+            objecBoxData: { title: "GrotObjectBox", properties: [] },
+            goSimpleSet: [{ key: 0, title: "Rhonda Hoffman", category: "SimpleBox", properties: [{ prop: "has", value: "dsdac" }, { prop: "has", value: "dsdac" }, { prop: "has", value: "dsdac" }, { prop: "has", value: "dsdac" }] }, { key: 1, title: "Roanne Levine", category: "SimpleBox", properties: [] }, { key: 2, title: "Samantha Langley", category: "SimpleBox", properties: [] }, { key: 3, title: "Isadora Shepard", category: "SimpleBox", properties: [] }, { key: 4, title: "Glenna Brown", category: "SimpleBox", properties: [{ prop: "has", value: "dsdac" }] }, { key: 5, title: "Taylor Reeves", category: "SimpleBox", properties: [] }, { key: 6, title: "Sharon Prince", category: "SimpleBox", properties: [] }, { key: 7, title: "Sydney Graves", category: "SimpleBox", properties: [{ prop: "has", value: "dsdac" }] }, { key: 8, title: "Yael Douglas", category: "SimpleBox", properties: [] }],
+            goObjectSet: [{ key: 0, title: "Rhonda Hoffman", category: "ObjectWithProps", properties: [{ prop: "has", value: "dsdac" }, { prop: "has", value: "dsdac" }, { prop: "has", value: "dsdac" }, { prop: "has", value: "dsdac" }] }, { key: 1, title: "Roanne Levine", category: "ObjectWithProps", properties: [] }, { key: 2, title: "Samantha Langley", category: "ObjectWithProps", properties: [] }, { key: 3, title: "Isadora Shepard", category: "ObjectWithProps", properties: [] }, { key: 4, title: "Glenna Brown", category: "ObjectWithProps", properties: [{ prop: "has", value: "dsdac" }] }, { key: 5, title: "Taylor Reeves", category: "ObjectWithProps", properties: [] }, { key: 6, title: "Sharon Prince", category: "ObjectWithProps", properties: [] }, { key: 7, title: "Sydney Graves", category: "ObjectWithProps", properties: [{ prop: "has", value: "dsdac" }] }, { key: 8, title: "Yael Douglas", category: "ObjectWithProps", properties: [] }]
         };
         _this2._tableDataIsChanged = _this2._tableDataIsChanged.bind(_this2);
         _this2._objectBoxChanged = _this2._objectBoxChanged.bind(_this2);
+        _this2._goSimpleSetChanged = _this2._goSimpleSetChanged.bind(_this2);
+        _this2._goObjectSetChanged = _this2._goObjectSetChanged.bind(_this2);
         return _this2;
     }
 
@@ -37420,7 +37424,10 @@ var Demo = function (_React$Component2) {
                                     'Demonstration'
                                 ),
                                 'This is a preview of the object.',
-                                _react2.default.createElement(_GrotGOPreviewBox2.default, { id: 'SimpleBox', temp: 'SimpleBox' }),
+                                _react2.default.createElement(_GrotGOPreviewBox2.default, { id: 'SimpleBox', model: this.state.goSimpleSet, callback: this._goSimpleSetChanged }),
+                                _react2.default.createElement(_GrotJSONBox2.default, {
+                                    contents: JSON.stringify(this.state.goSimpleSet, null, "\t")
+                                }),
                                 _react2.default.createElement(
                                     'h4',
                                     null,
@@ -37437,7 +37444,7 @@ var Demo = function (_React$Component2) {
                                     _react2.default.createElement(
                                         'li',
                                         null,
-                                        'Temp - '
+                                        'Model - '
                                     )
                                 )
                             ) }),
@@ -37463,7 +37470,10 @@ var Demo = function (_React$Component2) {
                                     null,
                                     'Demonstration'
                                 ),
-                                _react2.default.createElement(_GrotGOPreviewBox2.default, { id: 'BoxWithProps', temp: 'ObjectWithProps' }),
+                                _react2.default.createElement(_GrotGOPreviewBox2.default, { id: 'BoxWithProps', model: this.state.goObjectSet, callback: this._goObjectSetChanged }),
+                                _react2.default.createElement(_GrotJSONBox2.default, {
+                                    contents: JSON.stringify(this.state.goObjectSet, null, "\t")
+                                }),
                                 _react2.default.createElement(
                                     'h4',
                                     null,
@@ -37480,7 +37490,7 @@ var Demo = function (_React$Component2) {
                                     _react2.default.createElement(
                                         'li',
                                         null,
-                                        'Temp - '
+                                        'Model - '
                                     )
                                 )
                             ) })
@@ -37513,6 +37523,26 @@ var Demo = function (_React$Component2) {
         key: '_objectBoxChanged',
         value: function _objectBoxChanged(object) {
             this.setState({ objecBoxData: object });
+        }
+
+        /**
+         *
+         */
+
+    }, {
+        key: '_goSimpleSetChanged',
+        value: function _goSimpleSetChanged(object) {
+            this.setState({ goSimpleSet: object });
+        }
+
+        /**
+         *
+         */
+
+    }, {
+        key: '_goObjectSetChanged',
+        value: function _goObjectSetChanged(object) {
+            this.setState({ goObjectSet: object });
         }
     }]);
 
@@ -37674,7 +37704,8 @@ var GrotGOPreviewBox = function (_React$Component) {
     /**
      *
      * @param {String} id -
-     * @param {String} temp -
+     * @param {Object} model -
+     * @param {function} callback -
      */
 
     function GrotGOPreviewBox(props) {
@@ -37683,8 +37714,6 @@ var GrotGOPreviewBox = function (_React$Component) {
         var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(GrotGOPreviewBox).call(this, props));
 
         _this._renderGOJS = _this._renderGOJS.bind(_this);
-
-        _this.model = [{ key: 0, title: "Rhonda Hoffman", category: _this.props.temp, properties: [] }, { key: 1, title: "Roanne Levine", category: _this.props.temp, properties: [] }, { key: 2, title: "Samantha Langley", category: _this.props.temp, properties: [] }, { key: 3, title: "Isadora Shepard", category: _this.props.temp, properties: [] }, { key: 4, title: "Glenna Brown", category: _this.props.temp, properties: [] }, { key: 5, title: "Taylor Reeves", category: _this.props.temp, properties: [] }, { key: 6, title: "Sharon Prince", category: _this.props.temp, properties: [] }, { key: 7, title: "Sydney Graves", category: _this.props.temp, properties: [] }, { key: 8, title: "Yael Douglas", category: _this.props.temp, properties: [] }];
         return _this;
     }
 
@@ -37717,11 +37746,14 @@ var GrotGOPreviewBox = function (_React$Component) {
     }, {
         key: '_renderGOJS',
         value: function _renderGOJS() {
+            var _this2 = this;
+
+            var self = this;
             var GO = _gojs2.default.GraphObject.make;
             var Div = GO(_gojs2.default.Diagram, this.props.id, {
                 initialContentAlignment: _gojs2.default.Spot.Center,
                 allowZoom: false,
-                allowSelect: false,
+                allowSelect: true,
                 allowHorizontalScroll: false,
                 allowVerticalScroll: false
             });
@@ -37731,7 +37763,10 @@ var GrotGOPreviewBox = function (_React$Component) {
             temp.add("SimpleBox", (0, _gojs3.SimpleBox)());
 
             Div.nodeTemplateMap = temp;
-            Div.model = new _gojs2.default.GraphLinksModel(this.model);
+            Div.model = new _gojs2.default.GraphLinksModel(this.props.model);
+            Div.model.addChangedListener(function (changedEvent) {
+                _this2.props.callback(Div.model.nf);
+            });
         }
     }]);
 
@@ -37877,8 +37912,7 @@ var GrotJSONBox = function (_React$Component) {
     }, {
         key: 'render',
         value: function render() {
-
-            return _react2.default.createElement(_reactBootstrap.Input, { rows: '10', ref: 'JSONBox', type: 'textarea', readOnly: true });
+            return _react2.default.createElement(_reactBootstrap.Input, { rows: '10', ref: 'JSONBox', defaultValue: this.data, type: 'textarea', readOnly: true });
         }
     }]);
 
@@ -38522,6 +38556,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 /**
  * GrotGOObjects
  *
+ * GrotGOObjects contains several different GoJS objects.
  *
  * @since 0.1.9
  * @author Jóhan Davidsen <johan.davidsen@fjakkarin.com
@@ -38530,12 +38565,25 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var GO = _gojs2.default.GraphObject.make;
 
+/**
+ * SimpleBox
+ *
+ * @since 0.1.9
+ * @author Jóhan Davidsen <johan.davidsen@fjakkarin.com>
+ *
+ */
 function SimpleBox() {
     return GO(_gojs2.default.Node, "Auto", GO(_gojs2.default.Shape, "RoundedRectangle", {
-        stroke: "#fff"
+        fill: "#ffffff"
     }), GO(_gojs2.default.TextBlock, { margin: 3 }, new _gojs2.default.Binding("text", "title")));
 }
 
+/**
+ * ObjectWithProps
+ *
+ * @since 0.1.9
+ * @author Jóhan Davidsen <johan.davidsen@fjakkarin.com>
+ */
 function ObjectWithProps() {
 
     return GO(_gojs2.default.Node, "Spot", {
@@ -38543,25 +38591,29 @@ function ObjectWithProps() {
     }, GO(_gojs2.default.Panel, "Auto", GO(_gojs2.default.Shape, "Rectangle", {
         fill: "#2FAC66"
     }), GO(_gojs2.default.Panel, "Table", {
-        margin: 4
-    }, GO(_gojs2.default.RowColumnDefinition, {
+        defaultAlignment: _gojs2.default.Spot.Left
+    }, new _gojs2.default.Binding("itemArray", "properties").makeTwoWay(), {
+        defaultAlignment: _gojs2.default.Spot.Left,
+        itemTemplate: GO(_gojs2.default.Panel, "TableRow", {
+            stretch: _gojs2.default.GraphObject.Horizontal
+        }, GO(_gojs2.default.TextBlock, new _gojs2.default.Binding("text", "prop").makeTwoWay(), {
+            column: 0,
+            editable: true,
+            margin: new _gojs2.default.Margin(0, 15, 10, 15)
+        }), GO(_gojs2.default.TextBlock, new _gojs2.default.Binding("text", "value").makeTwoWay(), {
+            column: 1,
+            editable: true,
+            margin: new _gojs2.default.Margin(0, 15, 10, 15)
+        }))
+    }, GO(_gojs2.default.Panel, "TableRow", { isPanelMain: true }, GO(_gojs2.default.TextBlock, new _gojs2.default.Binding("text", "title").makeTwoWay(), {
         column: 0,
-        stretch: _gojs2.default.GraphObject.Horizontal,
-        alignment: _gojs2.default.Spot.Left
-    }), GO(_gojs2.default.TextBlock, {
-        row: 0,
-        column: 0,
-        alignment: _gojs2.default.Spot.Left,
-        stroke: "#fff",
+        columnSpan: 2,
         editable: true,
-        isMultiline: false
-    }, new _gojs2.default.Binding("text", "title")), GO(_gojs2.default.TextBlock, "a", {
-        row: 1,
-        column: 0
-    }), GO(_gojs2.default.TextBlock, "a", {
-        row: 1,
-        column: 1
-    }))));
+        stretch: _gojs2.default.GraphObject.Horizontal,
+        margin: 2,
+        font: "bold 10pt sans-serif"
+
+    })))));
 }
 
 exports.default = {
@@ -38584,7 +38636,14 @@ var _GrotGOObjects2 = _interopRequireDefault(_GrotGOObjects);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-exports.default = _GrotGOObjects2.default;
+exports.default = _GrotGOObjects2.default; /**
+                                            * Default export file for the folder gojs.
+                                            *
+                                            * @since 0.1.9
+                                            * @author Jóhan Davidsen <johan.davidsen@fjakkarin.com>
+                                            *
+                                            */
+
 function ObjectWithProps() {
   return _GrotGOObjects2.default.ObjectWithProps();
 }

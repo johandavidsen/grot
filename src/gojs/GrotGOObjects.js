@@ -3,6 +3,7 @@ import go from 'gojs';
 /**
  * GrotGOObjects
  *
+ * GrotGOObjects contains several different GoJS objects.
  *
  * @since 0.1.9
  * @author Jóhan Davidsen <johan.davidsen@fjakkarin.com
@@ -11,10 +12,20 @@ import go from 'gojs';
 
 let GO = go.GraphObject.make;
 
+/**
+ * SimpleBox
+ *
+ * This is a very simple text box. The box has a binding to the title property
+ * in the model.
+ *
+ * @since 0.1.9
+ * @author Jóhan Davidsen <johan.davidsen@fjakkarin.com>
+ *
+ */
 export function SimpleBox(){
     return GO(go.Node, "Auto",
         GO(go.Shape, "RoundedRectangle", {
-                stroke: "#fff"
+                fill: "#ffffff"
             }
         ),
         GO(go.TextBlock,
@@ -23,6 +34,18 @@ export function SimpleBox(){
         );
 }
 
+/**
+ * ObjectWithProps
+ *
+ * The ObjectWithProps is a box with a title and a property list. There is a
+ * binding to the model properties:
+ *
+ * properties - Expected an array with objects, which contains prop and value.
+ * title - Expected a string.
+ *
+ * @since 0.1.9
+ * @author Jóhan Davidsen <johan.davidsen@fjakkarin.com>
+ */
 export function ObjectWithProps(){
 
     return GO(go.Node, "Spot", {
@@ -33,38 +56,49 @@ export function ObjectWithProps(){
                 fill: "#2FAC66"
             }),
             GO(go.Panel, "Table", {
-                    margin: 4
+                    defaultAlignment: go.Spot.Left
                 },
-                GO(go.RowColumnDefinition, {
-                    column: 0,
-                    stretch: go.GraphObject.Horizontal,
-                    alignment: go.Spot.Left
-                }),
-                GO(go.TextBlock, {
-                        row: 0,
-                        column: 0,
-                        alignment: go.Spot.Left,
-                        stroke: "#fff",
-                        editable: true,
-                        isMultiline: false
-                    },
-                    new go.Binding("text","title")
-                ),
-                GO(go.TextBlock, "a", {
-                    row: 1,
-                    column: 0
-                    }
-                ),
-                GO(go.TextBlock, "a", {
-                   row: 1,
-                   column: 1
-                   }
-               )
+                new go.Binding("itemArray", "properties").makeTwoWay(), {
+                    defaultAlignment: go.Spot.Left,
+                    itemTemplate:
+                        GO(go.Panel, "TableRow", {
+                                stretch: go.GraphObject.Horizontal
+                            },
+                            GO(go.TextBlock,
+                                new go.Binding("text","prop").makeTwoWay(), {
+                                column: 0,
+                                editable: true,
+                                margin: new go.Margin (0, 15, 10, 15)
+                            }),
+                            GO(go.TextBlock, new go.Binding("text","value").makeTwoWay(), {
+                                column: 1,
+                                editable: true,
+                                margin: new go.Margin (0, 15, 10, 15)
+                            })
+                        )
+                },
+                GO(go.Panel, "TableRow",
+                    { isPanelMain: true },
+                    GO(go.TextBlock, new go.Binding("text","title").makeTwoWay(),
+                        {
+                            column: 0,
+                            columnSpan: 2,
+                            editable: true,
+                            stretch: go.GraphObject.Horizontal,
+                            margin: 2,
+                            font: "bold 10pt sans-serif",
+
+                        }
+                    )
+                )
             )
         )
     );
 }
 
+/**
+ * The default export.
+ */
 export default {
     ObjectWithProps,
     SimpleBox
