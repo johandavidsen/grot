@@ -7,7 +7,7 @@
  */
 import GrotGOObjects from './GrotGOObjects';
 
-export default GrotGOObjects;
-
 export function ObjectWithProps() { return GrotGOObjects.ObjectWithProps(); }
 export function SimpleBox() { return GrotGOObjects.SimpleBox(); }
+
+export default GrotGOObjects;
