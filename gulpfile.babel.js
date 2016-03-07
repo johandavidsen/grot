@@ -11,6 +11,7 @@ import concat from 'gulp-concat';
 import nodemon from 'gulp-nodemon';
 import mocha from 'gulp-mocha';
 import istanbul from 'gulp-istanbul';
+import uglify from 'gulp-uglify';
 import isparta from 'isparta';
 import runSequence from 'run-sequence';
 import source from 'vinyl-source-stream';
@@ -21,7 +22,7 @@ import source from 'vinyl-source-stream';
     // Source files
     let SRC = 'src/*.js';
     // Test files
-    let TESTS = 'tests/*.js';
+    let TESTS = 'test/*.js';
 
     /*
      * Instrument files using istanbul and isparta
@@ -53,7 +54,7 @@ import source from 'vinyl-source-stream';
     gulp.task('test', function() {
         return gulp.src(TESTS, {read: false})
             .pipe(mocha({
-                require: [__dirname + '/scripts/test.jsdom'] // Prepare environement for React/JSX testing
+                require: [__dirname + '/test/test.jsdom'] // Prepare environement for React/JSX testing
             }));
     });
 
@@ -79,10 +80,10 @@ import source from 'vinyl-source-stream';
      */
     gulp.task("style", function(){
         gulp.src('./node_modules/bootstrap/dist/fonts/*.*')
-            .pipe(gulp.dest('./demo/fonts/'));
-        return gulp.src('less/grot.less')
+            .pipe(gulp.dest('./docs/fonts/'));
+        return gulp.src('src/stylesheet/main.less')
             .pipe(less())
-            .pipe(gulp.dest('demo/style'));
+            .pipe(gulp.dest('./docs/style'));
     });
 
     /**
@@ -97,24 +98,31 @@ import source from 'vinyl-source-stream';
         });
     });
 
+    /**
+     * Build the Demo.
+     */
     gulp.task("demo", ["style"], function () {
         return browserify( {
                             extensions: [".jsx", ".js", ".json"]
                         }).add(
-                                'scripts/buildDemo.js'
+                                'docs/buildDemo.js'
                         ).transform(
                             babelify, { presets: ["stage-0","es2015", "react"] }
                         )
                         .bundle()
                         .pipe(source('bundle.js'))
-                        .pipe(gulp.dest('./demo/dist/'));
+                        .pipe(gulp.dest('./docs/dist/'));
     });
 
+    /**
+     * Build the distributed folder.
+     */
     gulp.task("dist", function(){
         return gulp.src(['src/*.js', 'src/*/*.js'])
             .pipe(babel({ presets: ["stage-0","es2015", "react"] }))
             // .pipe(concat('grot.js'))
             // .pipe(minify())
-            .pipe(gulp.dest('dist/'));
+            // .pipe(uglify())
+            .pipe(gulp.dest('lib/'));
     });
 })();

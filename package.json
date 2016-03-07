@@ -8,7 +8,7 @@
     "tdd": "./node_modules/.bin/gulp tdd",
     "test:coverage": "./node_modules/.bin/gulp test:coverage",
     "dev": "./node_modules/.bin/gulp devel",
-    "demo": "./node_modules/.bin/gulp demo",
+    "docs": "./node_modules/.bin/gulp demo",
     "dist": "./node_modules/.bin/gulp dist"
   },
   "repository": {
@@ -44,6 +44,7 @@
     "gulp-minify": "0.0.5",
     "gulp-mocha": "^2.2.0",
     "gulp-nodemon": "^2.0.6",
+    "gulp-uglify": "^1.5.3",
     "gulp-util": "^3.0.7",
     "isparta": "^4.0.0",
     "jsdom": "^8.0.2",
