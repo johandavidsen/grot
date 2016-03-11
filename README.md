@@ -6,7 +6,7 @@ Grót is a collection of [react](https://www.npmjs.com/package/react) building b
 
 ## Example
 
-Demonstration and documentation of the different components can be found on [johandavidsen.bitbucker.org/Grot](http://johandavidsen.bitbucket.org/Grot).
+Demonstration and documentation of the different components can be found on [johandavidsen.bitbucket.org/Grot](http://johandavidsen.bitbucket.org/Grot).
 
 ## Install
 
