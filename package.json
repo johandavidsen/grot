@@ -1,6 +1,6 @@
 {
   "name": "grot",
-  "version": "0.1.14",
+  "version": "0.1.15",
   "description": "This package contains a selection of React components, which I use as general building blocks in different React applications.",
   "main": "lib/index.js",
   "scripts": {
