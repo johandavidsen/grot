@@ -2,7 +2,11 @@
 
 ## Getting started
 
+Grót is a collection of [react](https://www.npmjs.com/package/react) building blocks, which are heavily dependent on [react-bootstrap](https://www.npmjs.com/package/react-bootstrap).
+
 ## Example
+
+Demonstration and documentation of the different components can be found on [johandavidsen.bitbucker.org/Grot](http://johandavidsen.bitbucket.org/Grot).
 
 ## Install
 
@@ -13,9 +17,3 @@
 ## Changelog
 
 ## License
-
-http://hugogiraudel.com/2015/06/18/styling-react-components-in-sass/
-http://sass-guidelin.es/#variables
-https://github.com/davidkpiano/react-simple-datepicker
-https://github.com/JedWatson/classnames
-http://reactcss.com/

@@ -12,6 +12,7 @@ import nodemon from 'gulp-nodemon';
 import mocha from 'gulp-mocha';
 import istanbul from 'gulp-istanbul';
 import uglify from 'gulp-uglify';
+import cleanCSS from 'gulp-clean-css';
 import isparta from 'isparta';
 import runSequence from 'run-sequence';
 import source from 'vinyl-source-stream';
@@ -78,12 +79,24 @@ import source from 'vinyl-source-stream';
     /**
      * Build style.
      */
-    gulp.task("style", function(){
+    gulp.task("styleDemo", function(){
         gulp.src('./node_modules/bootstrap/dist/fonts/*.*')
             .pipe(gulp.dest('./docs/fonts/'));
         return gulp.src('src/stylesheet/main.less')
             .pipe(less())
             .pipe(gulp.dest('./docs/style'));
+    });
+
+    /**
+     * Build style.
+     */
+    gulp.task("styleDist", function(){
+        gulp.src('./node_modules/bootstrap/dist/fonts/*.*')
+            .pipe(gulp.dest('./lib/fonts/'));
+        return gulp.src('src/stylesheet/main.less')
+            .pipe(less())
+            .pipe(cleanCSS())
+            .pipe(gulp.dest('./lib/style'));
     });
 
     /**
@@ -101,7 +114,7 @@ import source from 'vinyl-source-stream';
     /**
      * Build the Demo.
      */
-    gulp.task("demo", ["style"], function () {
+    gulp.task("demo", ["styleDemo"], function () {
         return browserify( {
                             extensions: [".jsx", ".js", ".json"]
                         }).add(
@@ -117,7 +130,7 @@ import source from 'vinyl-source-stream';
     /**
      * Build the distributed folder.
      */
-    gulp.task("dist", function(){
+    gulp.task("dist", ["styleDist"], function(){
         return gulp.src(['src/*.js', 'src/*/*.js'])
             .pipe(babel({ presets: ["stage-0","es2015", "react"] }))
             // .pipe(concat('grot.js'))

@@ -22,7 +22,6 @@
   "author": "Johan Davidsen",
   "license": "MIT",
   "dependencies": {
-    "gojs": "^1.5.20",
     "react": "^0.14.7",
     "react-bootstrap": "^0.28.2",
     "react-dom": "^0.14.7"
@@ -38,6 +37,7 @@
     "browserify": "^13.0.0",
     "gulp": "^3.9.0",
     "gulp-babel": "^6.1.2",
+    "gulp-clean-css": "^2.0.3",
     "gulp-concat": "^2.6.0",
     "gulp-istanbul": "^0.10.3",
     "gulp-less": "^3.0.5",

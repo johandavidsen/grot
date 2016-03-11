@@ -7,7 +7,6 @@ import GrotPanel from '../src/components/GrotPanel';
 import GrotObjectBox from '../src/components/GrotObjectBox';
 import GrotJSONBox from '../src/components/GrotJSONBox';
 import GrotCredits from '../src/components/GrotCredits';
-import GrotGOPreviewBox from '../src/components/GrotGOPreviewBox';
 import GrotKanbanBoard from '../src/components/GrotKanbanBoard';
 import GrotLogin from '../src/components/GrotLogin';
 
@@ -299,54 +298,6 @@ class Demo extends React.Component {
                                 </div>
                             )
                         }/>
-                    </Tab>
-                    <Tab eventKey="nav-g" title="GoJS Components">
-                        <h2>GoJS Components</h2>
-                        <GrotPanel
-                            title="SimpleBox"
-                            expanded={true}
-                            children={
-                                (
-                                    <div>
-                                        <h3>SimpleBox</h3>
-                                        <h4>Description</h4>
-                                        <p></p>
-                                        <h4>Demonstration</h4>
-                                        This is a preview of the object.
-                                        <GrotGOPreviewBox id="SimpleBox" model={ this.state.goSimpleSet } callback={this._goSimpleSetChanged} />
-                                        <GrotJSONBox
-                                            contents={ JSON.stringify( this.state.goSimpleSet, null, "\t" ) }
-                                            />
-                                        <h4>Parameters</h4>
-                                        <ul>
-                                            <li>Title - </li>
-                                            <li>Model - </li>
-                                        </ul>
-                                    </div>
-                                )
-                            } />
-                            <GrotPanel
-                                title="BoxWithProps"
-                                expanded={true}
-                                children={
-                                    (
-                                        <div>
-                                            <h3>BoxWithProps</h3>
-                                            <h4>Description</h4>
-                                            <p></p>
-                                            <h4>Demonstration</h4>
-                                            <GrotGOPreviewBox id="BoxWithProps" model={ this.state.goObjectSet } callback={this._goObjectSetChanged } />
-                                            <GrotJSONBox
-                                                contents={ JSON.stringify( this.state.goObjectSet, null, "\t" ) }
-                                                />
-                                            <h4>Parameters</h4>
-                                            <ul>
-                                                <li>Title - </li>
-                                                <li>Model - </li>
-                                            </ul>
-                                        </div>
-                                    )
-                                } />
                     </Tab>
                 </Tabs>
                 <h2>Credits</h2>
