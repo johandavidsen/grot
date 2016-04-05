@@ -4,7 +4,10 @@ import { Input, ButtonInput, ListGroup, ListGroupItem } from 'react-bootstrap';
 import GrotPanel from './GrotPanel';
 
 /**
+ * @class GrotPanel
  *
+ * @since 0.1.16
+ * @author Jóhan Davidsen <johan.davidsen@fjakkarin.com>
  */
 export default class GrotLogin extends React.Component {
 

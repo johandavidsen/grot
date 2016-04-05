@@ -2,49 +2,7 @@ import React from 'react';
 import { Button, Table, Input, Glyphicon } from 'react-bootstrap';
 
 /**
- * GrotTableRow
- *
- * GrotTableRow is a little helper class for GrotTable. This row represents a
- * single line of the GrotTable. Each line has 2 column, which take Text as
- * input. Each line has a icon indicating either a - sign (remove line) or a +
- * sign (add new line).
- *
- * @since 0.1.1
- * @author Jóhan Davidsen <johan.davidsen@fjakkarin.com>
- *
- */
-class GrotTableRow extends React.Component {
-
-    /**
-     * Returns a React HTML String
-     * @return {React Object}
-     */
-    render(  ){
-        let icon = (
-            <Button className="grot-button-link" bsStyle="link" value={ this.props.id } onClick={ this.props.remove } >
-                <Glyphicon glyph="minus" />
-            </Button>
-        );
-
-        return(
-            <tr>
-                <td>
-                    <Input type='text' defaultValue={ this.props.prop } className="grot-table-input"/>
-                </td>
-                <td>
-                    <Input type='text' defaultValue={ this.props.value } className="grot-table-input"/>
-                </td>
-                <td>
-                    {icon}
-                </td>
-            </tr>
-        );
-    }
-}
-
-
-/**
- * GrotTable
+ * @class GrotTable
  *
  * The GrotTable is a 2 column table, where the user can add and remove rows as
  * needed.
@@ -53,7 +11,7 @@ class GrotTableRow extends React.Component {
  * @author Jóhan Davidsen <johan.davidsen@fjakkarin.com>
  *
  */
-class GrotTable extends React.Component {
+export default class GrotTable extends React.Component {
 
     /**
      * The constructor has a limited set of parameters.
@@ -148,4 +106,43 @@ class GrotTable extends React.Component {
     }
 }
 
-export default GrotTable;
+/**
+ * @class GrotTableRow
+ *
+ * GrotTableRow is a little helper class for GrotTable. This row represents a
+ * single line of the GrotTable. Each line has 2 column, which take Text as
+ * input. Each line has a icon indicating either a - sign (remove line) or a +
+ * sign (add new line).
+ *
+ * @since 0.1.1
+ * @author Jóhan Davidsen <johan.davidsen@fjakkarin.com>
+ *
+ */
+class GrotTableRow extends React.Component {
+
+    /**
+     * Returns a React HTML String
+     * @return {React Object}
+     */
+    render(  ){
+        let icon = (
+            <Button className="grot-button-link" bsStyle="link" value={ this.props.id } onClick={ this.props.remove } >
+                <Glyphicon glyph="minus" />
+            </Button>
+        );
+
+        return(
+            <tr>
+                <td>
+                    <Input type='text' defaultValue={ this.props.prop } className="grot-table-input"/>
+                </td>
+                <td>
+                    <Input type='text' defaultValue={ this.props.value } className="grot-table-input"/>
+                </td>
+                <td>
+                    {icon}
+                </td>
+            </tr>
+        );
+    }
+}

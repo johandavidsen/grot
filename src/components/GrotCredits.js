@@ -2,7 +2,7 @@ import React from 'react';
 import { Row, Col } from 'react-bootstrap';
 
 /**
- * GrotCredits
+ * @class GrotCredits
  *
  * GrotCredits is along, the same lines as the GrotHello component. All it dose
  * is to display a HTML string.
@@ -10,7 +10,7 @@ import { Row, Col } from 'react-bootstrap';
  * @author Jóhan Davidsen <johan.davidsen@fjakkarin.com>
  *
  */
-class GrotCredits extends React.Component {
+export default class GrotCredits extends React.Component {
 
 
     /**
@@ -28,5 +28,3 @@ class GrotCredits extends React.Component {
         );
     }
 }
-
-export default GrotCredits;

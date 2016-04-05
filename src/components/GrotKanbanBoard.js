@@ -4,57 +4,6 @@ import { Panel , Glyphicon, Button, Row, Col } from 'react-bootstrap';
 import GrotPanel from './GrotPanel';
 
 /**
- * @class GrotKanbanCard
- *
- * @since 0.1.12
- * @author Jóhan Davidsen <johan.davidsen@fjakkarin.com>
- */
-class GrotKanbanCard extends React.Component {
-
-    /**
-     * @param {String} id -
-     * @param {String} title -
-     * @param {String} type -
-     * @param {Date} date -
-     * @param {Object} assignedTo -
-     */
-    constructor( props ){
-        super( props );
-    }
-
-    /**
-     *
-     */
-    render(){
-        return(
-            <Panel header={ this.props.id + " " + this.props.title} >
-                { this.props.type + " " + this.props.date + " " + this.props.assignedTo }
-            </Panel>
-        );
-    }
-}
-
-/**
- *
- */
-GrotKanbanCard.propTypes = {
-    id: React.PropTypes.string,
-    title: React.PropTypes.string
-};
-
-/**
- *
- */
-GrotKanbanCard.defaultProps = {
-    id:"#0",
-    title: "Name of TODO.",
-    type: "Task",
-    date: "Now",
-    assignedTo: "me"
-};
-
-
-/**
  * @class GrotKanbanTable
  *
  * @since 0.1.12
@@ -114,4 +63,54 @@ GrotKanbanBoard.propTypes = {
  */
 GrotKanbanBoard.defaultProps = {
     title: "Kanban Table",
+};
+
+/**
+ * @class GrotKanbanCard
+ *
+ * @since 0.1.12
+ * @author Jóhan Davidsen <johan.davidsen@fjakkarin.com>
+ */
+class GrotKanbanCard extends React.Component {
+
+    /**
+     * @param {String} id -
+     * @param {String} title -
+     * @param {String} type -
+     * @param {Date} date -
+     * @param {Object} assignedTo -
+     */
+    constructor( props ){
+        super( props );
+    }
+
+    /**
+     *
+     */
+    render(){
+        return(
+            <Panel header={ this.props.id + " " + this.props.title} >
+                { this.props.type + " " + this.props.date + " " + this.props.assignedTo }
+            </Panel>
+        );
+    }
+}
+
+/**
+ *
+ */
+GrotKanbanCard.propTypes = {
+    id: React.PropTypes.string,
+    title: React.PropTypes.string
+};
+
+/**
+ *
+ */
+GrotKanbanCard.defaultProps = {
+    id:"#0",
+    title: "Name of TODO.",
+    type: "Task",
+    date: "Now",
+    assignedTo: "me"
 };

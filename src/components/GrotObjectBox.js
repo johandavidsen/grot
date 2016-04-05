@@ -4,7 +4,7 @@ import GrotPanel from './GrotPanel';
 import GrotTable from './GrotTable';
 
 /**
- * GrotObjectBox
+ * @class GrotObjectBox
  *
  * The GrotObjectBox is a component specifically buildt to manipulate a
  * particular JSON object. The structure of this object is the following:
@@ -22,7 +22,7 @@ import GrotTable from './GrotTable';
  * @author Jóhan Davidsen <johan.davidsen@fjakkarin.com>
  *
  */
-class GrotObjectBox extends React.Component {
+export default class GrotObjectBox extends React.Component {
 
     /**
      * The constructor takes the following parameters:
@@ -86,5 +86,3 @@ class GrotObjectBox extends React.Component {
         this.setState({ title: title});
     }
 }
-
-export default GrotObjectBox;

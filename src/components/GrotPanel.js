@@ -3,7 +3,76 @@ import { Input, Panel, Button, Glyphicon } from 'react-bootstrap';
 import GrotTable from './GrotTable';
 
 /**
- * GrotPanelHeader
+ * @class GrotPanel
+ *
+ * GrotPanel is a simple panel, which can be expanded and collapsed by clicking
+ * on the title.
+ *
+ * @since 0.1.7
+ * @Author Jóhan Davidsen <johan.davidsen@fjakkarin.com>
+ *
+ */
+export default class GrotPanel extends React.Component {
+
+    /**
+     * This constructor takes the following parameters:
+     *
+     * @param {string} title - Expects a string value to be used as the title of
+     * the panel.
+     * @param {boolean} expanded - A boolean value, which determines if the
+     * intial state of the panel is expanded or not.
+     * @param {boolean} edit - Set if the title can be changed.
+     * @param {function} children - Set component to be viewed inside the panel.
+     * @param {function} callback - A function, which is called everytime the
+     * title is changed.
+     *
+     */
+    constructor( props ) {
+        super( props);
+        this.state = {
+            open: props.expanded,
+            title: props.title,
+            edit: props.edit
+        };
+        this._toggle = this._toggle.bind(this);
+        this._changeTitle = this._changeTitle.bind(this);
+    }
+
+    /**
+     * Returns a HTML string.
+     * @return {React Object}
+     */
+    render() {
+
+        let header = (
+            <GrotPanelHeader title={ this.props.title } edit={this.state.edit} toggle={ this._toggle } callback={ this._changeTitle} expanded={ this.state.open } />
+        );
+
+        return (
+            <Panel header={ header } collapsible expanded={this.state.open} className="grot-panel">
+                {this.props.children}
+            </Panel>
+        );
+    }
+
+    /**
+     * This function toggles the open state of the Panel.
+     */
+    _toggle(){
+        this.setState({ open: !this.state.open });
+    }
+
+    /**
+     * This function changes the title and calls the callback function.
+     */
+    _changeTitle( title ){
+        this.setState({ title: title});
+        this.props.callback( title );
+    }
+}
+
+/**
+ * @class GrotPanelHeader
  *
  * This is a helper class for the GrotPanel class.
  *
@@ -94,74 +163,3 @@ class GrotPanelHeader extends React.Component {
         this.setState({ title: title, edit: !this.state.edit });
     }
 }
-
-/**
- * GrotPanel
- *
- * GrotPanel is a simple panel, which can be expanded and collapsed by clicking
- * on the title.
- *
- * @since 0.1.7
- * @Author Jóhan Davidsen <johan.davidsen@fjakkarin.com>
- *
- */
-class GrotPanel extends React.Component {
-
-    /**
-     * This constructor takes the following parameters:
-     *
-     * @param {string} title - Expects a string value to be used as the title of
-     * the panel.
-     * @param {boolean} expanded - A boolean value, which determines if the
-     * intial state of the panel is expanded or not.
-     * @param {boolean} edit - Set if the title can be changed.
-     * @param {function} children - Set component to be viewed inside the panel.
-     * @param {function} callback - A function, which is called everytime the
-     * title is changed.
-     *
-     */
-    constructor( props ) {
-        super( props);
-        this.state = {
-            open: props.expanded,
-            title: props.title,
-            edit: props.edit
-        };
-        this._toggle = this._toggle.bind(this);
-        this._changeTitle = this._changeTitle.bind(this);
-    }
-
-    /**
-     * Returns a HTML string.
-     * @return {React Object}
-     */
-    render() {
-
-        let header = (
-            <GrotPanelHeader title={ this.props.title } edit={this.state.edit} toggle={ this._toggle } callback={ this._changeTitle} expanded={ this.state.open } />
-        );
-
-        return (
-            <Panel header={ header } collapsible expanded={this.state.open} className="grot-panel">
-                {this.props.children}
-            </Panel>
-        );
-    }
-
-    /**
-     * This function toggles the open state of the Panel.
-     */
-    _toggle(){
-        this.setState({ open: !this.state.open });
-    }
-
-    /**
-     * This function changes the title and calls the callback function.
-     */
-    _changeTitle( title ){
-        this.setState({ title: title});
-        this.props.callback( title );
-    }
-}
-
-export default GrotPanel;

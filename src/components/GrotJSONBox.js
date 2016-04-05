@@ -2,7 +2,7 @@ import React from 'react';
 import { Input } from 'react-bootstrap';
 
 /**
- * GrotJSONBox
+ * @class GrotJSONBox
  *
  * GrotJSONBox is a very simple component, which is primarily used to display
  * data.
@@ -11,7 +11,7 @@ import { Input } from 'react-bootstrap';
  * @author Jóhan Davidsen <johan.davidsen@fjakkarin.com>
  *
  */
-class GrotJSONBox extends React.Component {
+export default class GrotJSONBox extends React.Component {
 
     /**
      * The constructor takes the following parameters:
@@ -44,5 +44,3 @@ class GrotJSONBox extends React.Component {
         );
     }
 }
-
-export default GrotJSONBox;
