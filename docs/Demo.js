@@ -51,12 +51,12 @@ class APIDocs extends React.Component {
 
         return (
             <div>
-                <h3>{this.title}</h3>
-                <h4>Description</h4>
+                <h4 class="card-title">{this.title}</h4>
+                <h5>Description</h5>
                 {this.desc}
-                <h4>Demonstration</h4>
+                <h5>Demonstration</h5>
                 {this.demonstrationElement}
-                <h4>Props</h4>
+                <h5>Props</h5>
                 { props }
             </div>
         );
@@ -80,36 +80,11 @@ class Demo extends React.Component {
         super( props );
         this.state = {
             tableData: [],
-            objecBoxData: { title: "GrotObjectBox", properties: []},
-            goSimpleSet: [
-                { key: 0, title:"Rhonda Hoffman", category:"SimpleBox", properties:[{prop:"has", value:"dsdac"}, {prop:"has", value:"dsdac"}, {prop:"has", value:"dsdac"}, {prop:"has", value:"dsdac"}] },
-                { key: 1, title:"Roanne Levine", category:"SimpleBox", properties:[] },
-                { key: 2, title:"Samantha Langley", category:"SimpleBox", properties:[] },
-                { key: 3, title:"Isadora Shepard", category:"SimpleBox", properties:[] },
-                { key: 4, title:"Glenna Brown", category:"SimpleBox", properties:[{prop:"has", value:"dsdac"}] },
-                { key: 5, title:"Taylor Reeves", category:"SimpleBox", properties:[] },
-                { key: 6, title:"Sharon Prince", category:"SimpleBox", properties:[] },
-                { key: 7, title:"Sydney Graves", category:"SimpleBox", properties:[{prop:"has", value:"dsdac"}] },
-                { key: 8, title:"Yael Douglas", category:"SimpleBox", properties:[] },
-            ],
-            goObjectSet:  [
-                { key: 0, title:"Rhonda Hoffman", category:"ObjectWithProps", properties:[{prop:"has", value:"dsdac"}, {prop:"has", value:"dsdac"}, {prop:"has", value:"dsdac"}, {prop:"has", value:"dsdac"}] },
-                { key: 1, title:"Roanne Levine", category:"ObjectWithProps", properties:[] },
-                { key: 2, title:"Samantha Langley", category:"ObjectWithProps", properties:[] },
-                { key: 3, title:"Isadora Shepard", category:"ObjectWithProps", properties:[] },
-                { key: 4, title:"Glenna Brown", category:"ObjectWithProps", properties:[{prop:"has", value:"dsdac"}] },
-                { key: 5, title:"Taylor Reeves", category:"ObjectWithProps", properties:[] },
-                { key: 6, title:"Sharon Prince", category:"ObjectWithProps", properties:[] },
-                { key: 7, title:"Sydney Graves", category:"ObjectWithProps", properties:[{prop:"has", value:"dsdac"}] },
-                { key: 8, title:"Yael Douglas", category:"ObjectWithProps", properties:[] },
-            ]
+            objecBoxData: { title: "GrotObjectBox", properties: []}
         };
         this._tableDataIsChanged = this._tableDataIsChanged.bind(this);
         this._objectBoxChanged = this._objectBoxChanged.bind(this);
-        this._goSimpleSetChanged = this._goSimpleSetChanged.bind(this);
-        this._goObjectSetChanged = this._goObjectSetChanged.bind(this);
     }
-
 
     /**
      *
@@ -133,7 +108,7 @@ class Demo extends React.Component {
                     <li>Demonstration of the component.</li>
                     <li>A description of the parameters for the particular component.</li>
                 </ul>
-                <Tabs bsStyle="tabs" defaultActiveKey="nav-g" animation={false}>
+                <Tabs bsStyle="tabs" defaultActiveKey="nav-c" animation={false}>
                     <Tab eventKey="nav-c" title="Bootstrap Components">
                     <h2>Bootstrap Components</h2>
                     <GrotPanel
@@ -318,20 +293,6 @@ class Demo extends React.Component {
      */
     _objectBoxChanged( object ){
         this.setState({ objecBoxData: object });
-    }
-
-    /**
-     *
-     */
-    _goSimpleSetChanged( object){
-        this.setState({ goSimpleSet: object });
-    }
-
-    /**
-     *
-     */
-    _goObjectSetChanged( object){
-        this.setState({ goObjectSet: object });
     }
 }
 
