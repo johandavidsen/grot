@@ -23,7 +23,7 @@ import source from 'vinyl-source-stream';
     // Source files
     let SRC = 'src/*.js';
     // Test files
-    let TESTS = 'test/*.js';
+    let TESTS = 'test/**/*.js';
 
     /*
      * Instrument files using istanbul and isparta

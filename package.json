@@ -9,7 +9,8 @@
     "test:coverage": "./node_modules/.bin/gulp test:coverage",
     "dev": "./node_modules/.bin/gulp devel",
     "docs": "./node_modules/.bin/gulp demo",
-    "dist": "./node_modules/.bin/gulp dist"
+    "dist": "./node_modules/.bin/gulp dist",
+    "postinstall": "npm run dist"
   },
   "repository": {
     "type": "git",
@@ -28,13 +29,14 @@
   },
   "devDependencies": {
     "babel-core": "^6.4.5",
-    "babel-eslint": "^4.1.8",
+    "babel-eslint": "^6.0.2",
     "babel-preset-es2015": "^6.3.13",
     "babel-preset-react": "^6.3.13",
     "babel-preset-stage-0": "^6.3.13",
     "babelify": "^7.2.0",
     "bootstrap": "^3.3.6",
     "browserify": "^13.0.0",
+    "eslint": "^2.7.0",
     "gulp": "^3.9.0",
     "gulp-babel": "^6.1.2",
     "gulp-clean-css": "^2.0.3",
