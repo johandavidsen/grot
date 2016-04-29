@@ -5,6 +5,7 @@ import browserify from 'browserify';
 import gulp from 'gulp';
 import gutil from 'gulp-util';
 import less from 'gulp-less';
+import sass from 'gulp-sass';
 import minify from 'gulp-minify';
 import babel from 'gulp-babel';
 import concat from 'gulp-concat';
@@ -82,8 +83,8 @@ import source from 'vinyl-source-stream';
     gulp.task("styleDemo", function(){
         gulp.src('./node_modules/bootstrap/dist/fonts/*.*')
             .pipe(gulp.dest('./docs/fonts/'));
-        return gulp.src('src/stylesheet/main.less')
-            .pipe(less())
+        return gulp.src('src/stylesheet/main.scss')
+            .pipe(sass())
             .pipe(gulp.dest('./docs/style'));
     });
 
@@ -93,8 +94,9 @@ import source from 'vinyl-source-stream';
     gulp.task("styleDist", function(){
         gulp.src('./node_modules/bootstrap/dist/fonts/*.*')
             .pipe(gulp.dest('./lib/fonts/'));
-        return gulp.src('src/stylesheet/main.less')
-            .pipe(less())
+
+        return gulp.src('src/stylesheet/main.scss')
+            .pipe(sass())
             .pipe(cleanCSS())
             .pipe(gulp.dest('./lib/style'));
     });
