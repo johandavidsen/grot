@@ -4,6 +4,7 @@
   "description": "This package contains a selection of React components, which I use as general building blocks in different React applications.",
   "main": "lib/index.js",
   "scripts": {
+    "outdated": "./node_modules/.bin/npm-check",
     "test": "./node_modules/.bin/gulp test",
     "tdd": "./node_modules/.bin/gulp tdd",
     "test:coverage": "./node_modules/.bin/gulp test:coverage",
@@ -20,13 +21,13 @@
     "React",
     "components"
   ],
-  "author": "Johan Davidsen",
+  "author": "Jóhan Davidsen",
   "license": "MIT",
   "dependencies": {
     "bootstrap-sass": "^3.3.6",
-    "react": "^0.14.7",
-    "react-bootstrap": "^0.28.2",
-    "react-dom": "^0.14.7"
+    "react": "^15.1.0",
+    "react-bootstrap": "^0.29.5",
+    "react-dom": "^15.1.0"
   },
   "devDependencies": {
     "babel-core": "^6.4.5",
@@ -50,8 +51,9 @@
     "gulp-uglify": "^1.5.3",
     "gulp-util": "^3.0.7",
     "isparta": "^4.0.0",
-    "jsdom": "^8.0.2",
-    "react-addons-test-utils": "^0.14.7",
+    "jsdom": "^9.2.1",
+    "npm-check": "^5.2.2",
+    "react-addons-test-utils": "^15.1.0",
     "run-sequence": "^1.1.5",
     "vinyl-source-stream": "^1.1.0"
   }
