@@ -2,15 +2,15 @@ import React from 'react';
 import { Row, Col } from 'react-bootstrap';
 
 /**
- * @class GrotCredits
+ * @class Credits
  *
- * GrotCredits is along, the same lines as the GrotHello component. All it dose
+ * Credits is along, the same lines as the Hello component. All it dose
  * is to display a HTML string.
  *
  * @author Jóhan Davidsen <johan.davidsen@fjakkarin.com>
  *
  */
-export default class GrotCredits extends React.Component {
+export default class Credits extends React.Component {
 
 
     /**

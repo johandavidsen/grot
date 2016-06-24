@@ -2,16 +2,16 @@ import React from 'react';
 import { Input } from 'react-bootstrap';
 
 /**
- * @class GrotJSONBox
+ * @class JSONBox
  *
- * GrotJSONBox is a very simple component, which is primarily used to display
+ * JSONBox is a very simple component, which is primarily used to display
  * data.
  *
  * @since 0.1.8
  * @author Jóhan Davidsen <johan.davidsen@fjakkarin.com>
  *
  */
-export default class GrotJSONBox extends React.Component {
+export default class JSONBox extends React.Component {
 
     /**
      * The constructor takes the following parameters:

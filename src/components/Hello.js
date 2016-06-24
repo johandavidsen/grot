@@ -1,7 +1,7 @@
 import React from 'react';
 
 /**
- * @class GrotHello
+ * @class Hello
  *
  * This is the HelloWorld component for the Grót Module. This function only
  * display a simple HTML string.
@@ -10,7 +10,7 @@ import React from 'react';
  * @author Jóhan Davidsen <johan.davidsen@fjakkarin.com>
  *
  */
-export default  class GrotHello extends React.Component {
+export default  class Hello extends React.Component {
 
     /**
      * Returns a HTML string.
@@ -20,7 +20,7 @@ export default  class GrotHello extends React.Component {
 
         return (
             <h1>
-                Grót - Hello from Grót
+                Hello from Grót
             </h1>
         );
     }

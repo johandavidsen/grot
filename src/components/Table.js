@@ -2,16 +2,16 @@ import React from 'react';
 import { Button, Table, Input, Glyphicon } from 'react-bootstrap';
 
 /**
- * @class GrotTable
+ * @class Table
  *
- * The GrotTable is a 2 column table, where the user can add and remove rows as
+ * The Table is a 2 column table, where the user can add and remove rows as
  * needed.
  *
  * @since 0.1.1
  * @author Jóhan Davidsen <johan.davidsen@fjakkarin.com>
  *
  */
-export default class GrotTable extends React.Component {
+export default class Table extends React.Component {
 
     /**
      * The constructor has a limited set of parameters.
@@ -47,7 +47,7 @@ export default class GrotTable extends React.Component {
     render( ){
         var propComponents = [];
         this.state.properties.forEach(( element ) => {
-            propComponents.push(<GrotTableRow
+            propComponents.push(<TableRow
                                     key={ element.id }
                                     id={ element.id }
                                     prop={ element.prop }
@@ -107,10 +107,10 @@ export default class GrotTable extends React.Component {
 }
 
 /**
- * @class GrotTableRow
+ * @class TableRow
  *
- * GrotTableRow is a little helper class for GrotTable. This row represents a
- * single line of the GrotTable. Each line has 2 column, which take Text as
+ * TableRow is a little helper class for Table. This row represents a
+ * single line of the Table. Each line has 2 column, which take Text as
  * input. Each line has a icon indicating either a - sign (remove line) or a +
  * sign (add new line).
  *
@@ -118,7 +118,7 @@ export default class GrotTable extends React.Component {
  * @author Jóhan Davidsen <johan.davidsen@fjakkarin.com>
  *
  */
-class GrotTableRow extends React.Component {
+class TableRow extends React.Component {
 
     /**
      * Returns a React HTML String

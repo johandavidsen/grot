@@ -1,12 +1,12 @@
 import React from 'react';
 import { Button } from 'react-bootstrap';
-import GrotPanel from './GrotPanel';
-import GrotTable from './GrotTable';
+import Panel from './Panel';
+import Table from './Table';
 
 /**
- * @class GrotObjectBox
+ * @class ObjectBox
  *
- * The GrotObjectBox is a component specifically buildt to manipulate a
+ * The ObjectBox is a component specifically buildt to manipulate a
  * particular JSON object. The structure of this object is the following:
  *
  *  {
@@ -16,13 +16,13 @@ import GrotTable from './GrotTable';
  *      ]
  *  }
  *
- * This component is build using the 2 components GrotPanel and GrotTable.
+ * This component is build using the 2 components anel and Table.
  *
  * @since 0.1.8
  * @author Jóhan Davidsen <johan.davidsen@fjakkarin.com>
  *
  */
-export default class GrotObjectBox extends React.Component {
+export default class ObjectBox extends React.Component {
 
     /**
      * The constructor takes the following parameters:
@@ -54,17 +54,17 @@ export default class GrotObjectBox extends React.Component {
     render( ){
 
         let table = (
-            <GrotTable properties={ this.properties } callback={ this._onPropertiesChange }/>
+            <Table properties={ this.properties } callback={ this._onPropertiesChange }/>
         );
 
         return (
-            <GrotPanel
+            <Panel
                 title={ this.state.title }
                 edit={ this.state.edit }
                 callback={ this._onTitleChange }
                 expanded={this.state.expanded }
                 children={ table } >
-            </GrotPanel>
+            </Panel>
         );
     }
 

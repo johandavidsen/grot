@@ -1,15 +1,15 @@
 import React from 'react';
 import { Input, ButtonInput, ListGroup, ListGroupItem } from 'react-bootstrap';
 
-import GrotPanel from './GrotPanel';
+import Panel from './Panel';
 
 /**
- * @class GrotPanel
+ * @class Login
  *
  * @since 0.1.16
  * @author Jóhan Davidsen <johan.davidsen@fjakkarin.com>
  */
-export default class GrotLogin extends React.Component {
+export default class Login extends React.Component {
 
     /**
      *
@@ -23,7 +23,7 @@ export default class GrotLogin extends React.Component {
      */
     render(){
         return(
-            <GrotPanel title="Login">
+            <Panel title="Login">
                 <form className="grot-login-form">
                     <ListGroup>
                         <ListGroupItem>
@@ -37,7 +37,7 @@ export default class GrotLogin extends React.Component {
                         </ListGroupItem>
                     </ListGroup>
                 </form>
-            </GrotPanel>
+            </Panel>
         );
     }
 }

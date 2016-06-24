@@ -1,18 +1,17 @@
 import React from 'react';
 import { Input, Panel, Button, Glyphicon } from 'react-bootstrap';
-import GrotTable from './GrotTable';
 
 /**
- * @class GrotPanel
+ * @class Panel
  *
- * GrotPanel is a simple panel, which can be expanded and collapsed by clicking
+ * Panel is a simple panel, which can be expanded and collapsed by clicking
  * on the title.
  *
  * @since 0.1.7
  * @Author Jóhan Davidsen <johan.davidsen@fjakkarin.com>
  *
  */
-export default class GrotPanel extends React.Component {
+export default class Panel extends React.Component {
 
     /**
      * This constructor takes the following parameters:
@@ -45,7 +44,7 @@ export default class GrotPanel extends React.Component {
     render() {
 
         let header = (
-            <GrotPanelHeader title={ this.props.title } edit={this.state.edit} toggle={ this._toggle } callback={ this._changeTitle} expanded={ this.state.open } />
+            <PanelHeader title={ this.props.title } edit={this.state.edit} toggle={ this._toggle } callback={ this._changeTitle} expanded={ this.state.open } />
         );
 
         return (
@@ -72,15 +71,15 @@ export default class GrotPanel extends React.Component {
 }
 
 /**
- * @class GrotPanelHeader
+ * @class PanelHeader
  *
- * This is a helper class for the GrotPanel class.
+ * This is a helper class for the Panel class.
  *
  * @since 0.1.7
  * @Author Jóhan Davidsen <johan.davidsen@fjakkarin.com>
  *
  */
-class GrotPanelHeader extends React.Component {
+class PanelHeader extends React.Component {
 
     /**
      * The constructor takes the following parameters:

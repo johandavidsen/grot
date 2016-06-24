@@ -1,15 +1,15 @@
 import React from 'react';
 import { Panel , Glyphicon, Button, Row, Col } from 'react-bootstrap';
 
-import GrotPanel from './GrotPanel';
+import Panel from './Panel';
 
 /**
- * @class GrotKanbanTable
+ * @class KanbanTable
  *
  * @since 0.1.12
  * @author Jóhan Davidsen <johan.davidsen@fjakkarin.com>
  */
-export default class GrotKanbanBoard extends React.Component {
+export default class KanbanBoard extends React.Component {
 
     /**
      * @param {String} title -
@@ -41,11 +41,11 @@ export default class GrotKanbanBoard extends React.Component {
                         </h2>
                     </Col>
                 </Row>
-                <GrotPanel title="test">
-                    <GrotKanbanCard />
-                    <GrotKanbanCard />
-                    <GrotKanbanCard />
-                </GrotPanel>
+                <Panel title="test">
+                    <KanbanCard />
+                    <KanbanCard />
+                    <KanbanCard />
+                </Panel>
             </div>
         );
     }
@@ -54,24 +54,24 @@ export default class GrotKanbanBoard extends React.Component {
 /**
  *
  */
-GrotKanbanBoard.propTypes = {
+KanbanBoard.propTypes = {
     title: React.PropTypes.string
 };
 
 /**
  *
  */
-GrotKanbanBoard.defaultProps = {
+KanbanBoard.defaultProps = {
     title: "Kanban Table",
 };
 
 /**
- * @class GrotKanbanCard
+ * @class KanbanCard
  *
  * @since 0.1.12
  * @author Jóhan Davidsen <johan.davidsen@fjakkarin.com>
  */
-class GrotKanbanCard extends React.Component {
+class KanbanCard extends React.Component {
 
     /**
      * @param {String} id -
@@ -99,7 +99,7 @@ class GrotKanbanCard extends React.Component {
 /**
  *
  */
-GrotKanbanCard.propTypes = {
+KanbanCard.propTypes = {
     id: React.PropTypes.string,
     title: React.PropTypes.string
 };
@@ -107,7 +107,7 @@ GrotKanbanCard.propTypes = {
 /**
  *
  */
-GrotKanbanCard.defaultProps = {
+KanbanCard.defaultProps = {
     id:"#0",
     title: "Name of TODO.",
     type: "Task",

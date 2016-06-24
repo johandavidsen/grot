@@ -6,12 +6,12 @@
  *
  */
 export Hello from './Hello';
-export GrotTable from './GrotTable';
-export GrotPanel from './GrotPanel';
-export GrotObjectBox from './GrotObjectBox';
-export GrotJSONBox from './GrotJSONBox';
-export GrotCredits from './GrotCredits';
-export GrotKanbanBoard from './GrotKanbanBoard';
-export GrotLogin from './GrotLogin';
+export Table from './Table';
+export Panel from './Panel';
+export ObjectBox from './ObjectBox';
+export JSONBox from './JSONBox';
+export Credits from './Credits';
+export KanbanBoard from './KanbanBoard';
+export Login from './Login';
 
 export default { }
