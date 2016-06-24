@@ -1,5 +1,7 @@
 import React from 'react';
 
+import '../stylesheet/components/_Hello.scss';
+
 /**
  * @class Hello
  *
