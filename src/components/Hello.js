@@ -1,6 +1,6 @@
 import React from 'react';
 
-import '../stylesheet/components/_Hello.scss';
+import '../stylesheets/components/_hello.scss';
 
 /**
  * @class Hello
@@ -12,18 +12,8 @@ import '../stylesheet/components/_Hello.scss';
  * @author Jóhan Davidsen <johan.davidsen@fjakkarin.com>
  *
  */
-export default  class Hello extends React.Component {
-
-    /**
-     * Returns a HTML string.
-     * @return {React Object}
-     */
-    render( ){
-
-        return (
-            <h1>
-                Hello from Grót
-            </h1>
-        );
-    }
-}
+export default () => (
+  <h1>
+    Hello from Grót
+  </h1>
+)
