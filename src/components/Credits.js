@@ -1,5 +1,6 @@
-import React from 'react';
-import { Row, Col } from 'react-bootstrap';
+import React from 'react'
+
+import '../stylesheets/components/_credits.scss'
 
 /**
  * @class Credits
@@ -10,21 +11,10 @@ import { Row, Col } from 'react-bootstrap';
  * @author Jóhan Davidsen <johan.davidsen@fjakkarin.com>
  *
  */
-export default class Credits extends React.Component {
-
-
-    /**
-     * Returns a HTML string.
-     * @return {React Object}
-     */
-    render( ){
-
-        return (
-            <Row>
-                <Col lg={12}>
-                    This module was made by <a ref="">Jóhan Davidsen</a>, source code can be found on <a href="">Bitbucket</a> and the module is available on <a href="">NPM</a>.
-                </Col>
-            </Row>
-        );
-    }
-}
+export default ( ) => (
+  <div className="row">
+    <div className="twelve columns">
+      This module was made by <a href="">Jóhan Davidsen</a>, source code can be found on <a href="">Bitbucket</a> and the module is available on <a href="">NPM</a>.
+    </div>
+  </div>
+)
