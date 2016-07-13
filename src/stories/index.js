@@ -7,4 +7,8 @@
  * @author Jóhan Davidsen <johan.davidsen@fjakkarin.com>
  *
  */
-export HelloGrot from './HelloGrot';
+export Hello from './hello'
+export Credits from './credits'
+export Table from './table'
+export Square from './square'
+export Slide from './slide'

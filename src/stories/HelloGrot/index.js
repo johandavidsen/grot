@@ -1,1 +1,0 @@
-export HelloGrot from './HelloGrot';
