@@ -1,0 +1,29 @@
+.square {
+  padding: 10px 15px 10px 15px;
+
+  &-title {
+    input {
+      border: 0px;
+      outline: none;
+      -webkit-appearance: none;
+      border-radius: 0px;
+      width: 100%;
+      padding-bottom: 15px;
+
+      &:focus {
+        border: 0px;
+        border-bottom: 1px #D1D1D1 solid;
+      }
+    }
+  }
+
+  &-body {
+    textarea {
+      border-radius: 0px;
+      width: 100%;
+      border: 0px;
+      border-left: 1px #D1D1D1 solid;
+      resize: none;
+    }
+  }
+}
