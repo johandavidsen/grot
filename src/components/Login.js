@@ -1,5 +1,4 @@
 import React from 'react';
-import { Input, ButtonInput, ListGroup, ListGroupItem } from 'react-bootstrap';
 
 import Panel from './Panel';
 
@@ -10,13 +9,6 @@ import Panel from './Panel';
  * @author Jóhan Davidsen <johan.davidsen@fjakkarin.com>
  */
 export default class Login extends React.Component {
-
-    /**
-     *
-     */
-    constructor( props ){
-        super( props );
-    }
 
     /**
      *
