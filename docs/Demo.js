@@ -1,14 +1,14 @@
 import React from 'react';
 import { Tabs, Tab } from 'react-bootstrap';
 
-import GrotHello from "../src/components/GrotHello";
-import GrotTable from '../src/components/GrotTable';
-import GrotPanel from '../src/components/GrotPanel';
-import GrotObjectBox from '../src/components/GrotObjectBox';
-import GrotJSONBox from '../src/components/GrotJSONBox';
-import GrotCredits from '../src/components/GrotCredits';
-import GrotKanbanBoard from '../src/components/GrotKanbanBoard';
-import GrotLogin from '../src/components/GrotLogin';
+import Hello from "../src/components/Hello";
+import Table from '../src/components/Table';
+import Panel from '../src/components/Panel';
+import ObjectBox from '../src/components/ObjectBox';
+import JSONBox from '../src/components/JSONBox';
+import Credits from '../src/components/Credits';
+import KanbanBoard from '../src/components/KanbanBoard';
+import Login from '../src/components/Login';
 
 /**
  * APIDOCS
@@ -80,7 +80,7 @@ class Demo extends React.Component {
         super( props );
         this.state = {
             tableData: [],
-            objecBoxData: { title: "GrotObjectBox", properties: []}
+            objecBoxData: { title: "ObjectBox", properties: []}
         };
         this._tableDataIsChanged = this._tableDataIsChanged.bind(this);
         this._objectBoxChanged = this._objectBoxChanged.bind(this);
@@ -93,7 +93,7 @@ class Demo extends React.Component {
 
         return (
             <div>
-                <GrotHello />
+                <Hello />
                 <h2>Introduction</h2>
                 <p>
                     The is a demonstation page for the different components in the package Grót.
@@ -111,31 +111,31 @@ class Demo extends React.Component {
                 <Tabs bsStyle="tabs" defaultActiveKey="nav-c" animation={false}>
                     <Tab eventKey="nav-c" title="Bootstrap Components">
                     <h2>Bootstrap Components</h2>
-                    <GrotPanel
-                        title="GrotHello"
+                    <Panel
+                        title="Hello"
                         expanded={false}
                         children={ (
                             <APIDocs
-                                title="GrotHello"
+                                title="Hello"
                                 desc="This is the HelloWorld component for the Grót Package. It dosent take any properties, nore can it be manipulated in any way."
                                 props={ ["There are no props for this object."] }
-                                element={(<GrotHello />)}
+                                element={(<Hello />)}
                                 />
                             )
                         }
                         />
-                    <GrotPanel
-                        title="GrotTable"
+                    <Panel
+                        title="Table"
                         expanded={false}
                         children={
                             (
                                <div>
-                                    <h3>GrotTable</h3>
+                                    <h3>Table</h3>
                                     <h4>Description</h4>
                                     <p>GotTable is a 2 column table, where on can dynamically add and remove rows.</p>
                                     <h4>Demonstration</h4>
-                                    <GrotTable properties={ this.state.tableData } callback={ this._tableDataIsChanged }/>
-                                    <GrotJSONBox
+                                    <Table properties={ this.state.tableData } callback={ this._tableDataIsChanged }/>
+                                    <JSONBox
                                         contents={ JSON.stringify( this.state.tableData, null, "\t" ) }
                                         />
                                     <h4>Props</h4>
@@ -146,18 +146,18 @@ class Demo extends React.Component {
                                 </div>
                              )
                         }/>
-                    <GrotPanel
-                        title="GrotPanel"
+                    <Panel
+                        title="Panel"
                         edit={false}
                         expanded={false}
                         children={
                             (
                             <div>
-                                <h3>GrotPanel</h3>
+                                <h3>Panel</h3>
                                 <h4>Description</h4>
-                                <p>GrotPanel is a relatively simple panel, which has a open/close button and indicator.</p>
+                                <p>Panel is a relatively simple panel, which has a open/close button and indicator.</p>
                                 <h4>Demonstration</h4>
-                                <GrotPanel title="GrotPanel" expanded={false} children="contents." />
+                                <Panel title="Panel" expanded={false} children="contents." />
                                 <h4>Props</h4>
                                 <ul>
                                     <li>Title - Specify the header title.</li>
@@ -169,22 +169,22 @@ class Demo extends React.Component {
                             </div>
                             )
                         }/>
-                    <GrotPanel
-                        title="GrotObjectBox"
+                    <Panel
+                        title="ObjectBox"
                         expanded={false}
                         children={
                             (
                                 <div>
-                                    <h3>GrotObject</h3>
+                                    <h3>Object</h3>
                                     <h4>Description</h4>
                                     <p>
-                                        The GrotObjectBox is a component specifically buildt to manipulate a
+                                        The ObjectBox is a component specifically buildt to manipulate a
                                         particular JSON object.
-                                        This component is build using the 2 components GrotPanel and GrotTable.
+                                        This component is build using the 2 components Panel and Table.
                                     </p>
                                     <h4>Demonstration</h4>
-                                    <GrotObjectBox object={ this.state.objecBoxData } edit={true} expanded={false} callback={this._objectBoxChanged }/>
-                                    <GrotJSONBox contents={ JSON.stringify( this.state.objecBoxData, null, "\t" ) } />
+                                    <ObjectBox object={ this.state.objecBoxData } edit={true} expanded={false} callback={this._objectBoxChanged }/>
+                                    <JSONBox contents={ JSON.stringify( this.state.objecBoxData, null, "\t" ) } />
                                     <h4>Props</h4>
                                     <ul>
                                         <li>Object - Object is expected to have a certain structure.</li>
@@ -195,19 +195,19 @@ class Demo extends React.Component {
                                 </div>
                             )
                         } />
-                    <GrotPanel
-                        title="GrotJSONBox"
+                    <Panel
+                        title="JSONBox"
                         expanded={false}
                         children={
                             (
                                 <div>
-                                    <h3>GrotJSONBox</h3>
+                                    <h3>JSONBox</h3>
                                     <h4>Description</h4>
                                     <p>
-                                        GrotJSONBox is a very simple component, which is primarily used to display data.
+                                        JSONBox is a very simple component, which is primarily used to display data.
                                     </p>
                                     <h4>Demonstration</h4>
-                                    <GrotJSONBox />
+                                    <JSONBox />
                                     <h4>Parameters</h4>
                                     <ul>
                                         <li>There are no props for this object.</li>
@@ -215,18 +215,18 @@ class Demo extends React.Component {
                                 </div>
                             )
                             }/>
-                    <GrotPanel
-                        title="GrotKanbanBoard"
+                    <Panel
+                        title="KanbanBoard"
                         expanded={false}
                         children={
                             (
                                 <div>
-                                    <h3>GrotKanbanBoard</h3>
+                                    <h3>KanbanBoard</h3>
                                     <h4>Description</h4>
                                     <p>
                                     </p>
                                     <h4>Demonstration</h4>
-                                    <GrotKanbanBoard />
+                                    <KanbanBoard />
                                     <h4>Parameters</h4>
                                     <ul>
                                         <li>There are no props for this object.</li>
@@ -234,18 +234,18 @@ class Demo extends React.Component {
                                 </div>
                             )
                         }/>
-                    <GrotPanel
-                        title="GrotLogin"
+                    <Panel
+                        title="Login"
                         expanded={false}
                         children={
                             (
                                 <div>
-                                    <h3>GrotKanbanBoard</h3>
+                                    <h3>KanbanBoard</h3>
                                     <h4>Description</h4>
                                     <p>
                                     </p>
                                     <h4>Demonstration</h4>
-                                    <GrotLogin />
+                                    <Login />
                                     <h4>Parameters</h4>
                                     <ul>
                                         <li>There are no props for this object.</li>
@@ -253,19 +253,19 @@ class Demo extends React.Component {
                                 </div>
                             )
                         }/>
-                    <GrotPanel
-                        title="GrotCredits"
+                    <Panel
+                        title="Credits"
                         expanded={false}
                         children={
                             (
                                 <div>
-                                    <h3>GrotObjectBox</h3>
+                                    <h3>ObjectBox</h3>
                                     <h4>Description</h4>
                                     <p>
-                                        GrotCredits is along, the same lines as the GrotHello component. All it dose is to display a HTML string.
+                                        Credits is along, the same lines as the Hello component. All it dose is to display a HTML string.
                                     </p>
                                     <h4>Demonstration</h4>
-                                    <GrotCredits />
+                                    <Credits />
                                     <h4>Parameters</h4>
                                     <ul>
                                         <li>There are no props for this object.</li>
@@ -276,7 +276,7 @@ class Demo extends React.Component {
                     </Tab>
                 </Tabs>
                 <h2>Credits</h2>
-                <GrotCredits />
+                <Credits />
            </div>
         );
     }
