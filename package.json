@@ -26,7 +26,6 @@
   "author": "Jóhan Davidsen",
   "license": "MIT",
   "dependencies": {
-    "bootstrap-sass": "^3.3.6",
     "classnames": "^2.2.5",
     "react": "^15.1.0",
     "react-dom": "^15.1.0"
