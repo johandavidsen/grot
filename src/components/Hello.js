@@ -1,6 +1,6 @@
-import React from 'react';
+import React from 'react'
 
-import '../stylesheets/components/_hello.scss';
+import '../stylesheets/components/_hello.scss'
 
 /**
  * @class Hello
