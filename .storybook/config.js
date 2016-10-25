@@ -1,9 +1,14 @@
-import { configure } from '@kadira/storybook';
+import { configure } from '@kadira/storybook'
 
-function loadStories() {
+function loadStories () {
   // require as many stories as you need.
-  require("../src/stories/credits")
-  require("../src/stories/hello")
+  require('../src/stories/hello')
+  require('../src/stories/credits')
+  require('../src/stories/login')
+  require('../src/stories/select')
+  require('../src/stories/currency')
+  require('../src/stories/select-user')
+  // require('../src/stories/table')
 }
 
 /**
@@ -15,4 +20,4 @@ function loadStories() {
  * @author Jóhan Davidsen <johan.davidsen@fjakkarin.com>
  *
  */
-configure(loadStories, module);
+configure(loadStories, module)
