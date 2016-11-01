@@ -130,8 +130,6 @@
     border-radius: 0px 0px 0px 3px;
     box-shadow: 0 2px 11px 1px rgba(29, 43, 47, 0.3);
 
-
-
     .profile {
       height: 86px;
 
@@ -311,7 +309,7 @@
   }
 
   $companyColors: #7935ea, #1a99ea, #54bf25, #e7c900, #f27d15, #ef5031;
-  
+
   @for $i from 1 through length($companyColors) {
     .company-ct:nth-child(#{length($companyColors)}n+#{$i}) {
         .company-icon {
