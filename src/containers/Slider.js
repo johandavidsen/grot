@@ -1,5 +1,4 @@
-import React from 'react';
-
+import React from 'react'
 import SliderComp from '../components/SliderComp'
 
 /**
@@ -10,7 +9,7 @@ export default class Slider extends React.Component {
   /**
    *
    */
-  constructor(props) {
+  constructor (props) {
     super(props)
 
     this.updatePosition = this.updatePosition.bind(this)
@@ -24,16 +23,14 @@ export default class Slider extends React.Component {
     }
   }
 
-
   /**
    * @method componentWillMount
    *
    */
-  componentWillMount() {
+  componentWillMount () {
     const images = (this.props.images || []).map((image, count) => {
-        return image + `?rscver${count}`
-      }
-    )
+      return image + `?rscver${count}`
+    })
     this.setState({images})
   }
 
@@ -45,8 +42,8 @@ export default class Slider extends React.Component {
    * @param { int } key -
    *
    */
-  setCurrentPosition( key ){
-    this.updatePosition( key )
+  setCurrentPosition (key) {
+    this.updatePosition(key)
   }
 
   /**
@@ -56,14 +53,14 @@ export default class Slider extends React.Component {
    *
    * @param { int } position -
    */
-  updatePosition( position ) {
+  updatePosition (position) {
     this.setState({ currentPosition: position })
   }
 
   /**
    *
    */
-  calculateShift( offset, amount ) {
+  calculateShift (offset, amount) {
     return offset * amount
   }
 
@@ -73,10 +70,10 @@ export default class Slider extends React.Component {
    * This method calculates the height of the image container and applies the result
    * to the transfrom.
    */
-  sliderStyle(classname) {
+  sliderStyle (classname) {
     const items = document.getElementsByClassName(classname)
 
-    if(items[0]){
+    if (items[0]) {
       let itemHeight = items[0].offsetHeight
       let shift = this.calculateShift(itemHeight, this.state.currentPosition)
 
@@ -92,23 +89,22 @@ export default class Slider extends React.Component {
    *
    * @param { int } key -
    */
-  isOpaque( key ) {
-
-    if( key == this.state.currentPosition ){
-      return "slide-slider-item"
+  isOpaque (key) {
+    if (key === this.state.currentPosition) {
+      return 'slide-slider-item'
     }
 
     // one below currentPosition or one above
-    if( (key - 1) == this.state.currentPosition || ( key + 1) == this.state.currentPosition ){
-      return "slide-slider-item slide-slider-item_transparent"
+    if ((key - 1) === this.state.currentPosition || (key + 1) === this.state.currentPosition) {
+      return 'slide-slider-item slide-slider-item_transparent'
     }
-    return "slide-slider-item slide-slider-item_transparent"
+    return 'slide-slider-item slide-slider-item_transparent'
   }
 
   /**
    *
    */
-  render(){
+  render () {
     return (
       <SliderComp
         images={ this.state.images }
