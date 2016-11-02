@@ -21,6 +21,7 @@ class SelectOrganization extends React.Component {
     }
 
     this._toggle = this._toggle.bind(this)
+    this._onSelect = this._onSelect.bind(this)
   }
 
   /**
@@ -31,6 +32,23 @@ class SelectOrganization extends React.Component {
    */
   _toggle () {
     this.setState({ toggle: !this.state.toggle })
+  }
+
+  /**
+   * @method _onSelect
+   *
+   * This method calls the onChangeMembership function, if defined and toggles
+   * the local state.
+   *
+   */
+  _onSelect (element) {
+    const { onSelect } = this.props
+    if (onSelect) {
+      onSelect(parseInt(element.currentTarget.id, 10))
+    } else {
+      console.log('onSelect is not defined')
+    }
+    this._toggle()
   }
 
   /**
@@ -68,7 +86,7 @@ class SelectOrganization extends React.Component {
           ? <div className='select-organization-component-drop-options'>
             <div className='companies'>
               {options.map((option) => (
-                <div className='company'>
+                <div id={option.id} key={option.id} className='company' onClick={this._onSelect} >
                   <div className='company-icon-ct'>
                     <div className='company-icon'>
                       {option.name.substring(0, 1)}
@@ -98,7 +116,8 @@ class SelectOrganization extends React.Component {
  */
 SelectOrganization.propTypes = {
   selectedOrganization: React.PropTypes.string,
-  options: React.PropTypes.array
+  options: React.PropTypes.array,
+  onSelect: React.PropTypes.func
 }
 
 /**
@@ -108,7 +127,8 @@ SelectOrganization.defaultProps = {
   selectedOrganization: 'Please selected a organization',
   options: [
     { id: '0', name: 'There are no options provided' }
-  ]
+  ],
+  onSelect: (id) => { console.log(id) }
 }
 
 /**
