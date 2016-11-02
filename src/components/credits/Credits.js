@@ -1,6 +1,6 @@
 import React from 'react'
 
-import '../stylesheets/components/_credits.scss'
+import '../../stylesheets/components/_credits.scss'
 
 /**
  * @class Credits

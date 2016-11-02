@@ -1,6 +1,6 @@
 import React from 'react'
 
-import '../stylesheets/components/_hello.scss'
+import '../../stylesheets/components/_hello.scss'
 
 /**
  * @class Hello
@@ -13,7 +13,10 @@ import '../stylesheets/components/_hello.scss'
  *
  */
 export default () => (
-  <h1>
-    Hello from Grót
-  </h1>
+  <div>
+    <h1>
+      Hello from Grót
+    </h1>
+    <h5>A sample library developed by <a href='http://fjakkarin.com'>Jóhan Davidsen</a></h5>
+  </div>
 )
