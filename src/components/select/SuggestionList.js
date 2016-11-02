@@ -1,7 +1,7 @@
 import React from 'react'
-import classNames from 'classNames'
+import classNames from 'classnames'
 
-import '../stylesheets/components/_suggestion-list.scss'
+import '../../stylesheets/components/_suggestion-list.scss'
 
 /**
  *

@@ -1,7 +1,7 @@
-import React from 'react';
-import { storiesOf, action } from '@kadira/storybook';
+import React from 'react'
+import { storiesOf, action } from '@kadira/storybook'
 
-import Select from '../../containers/Select'
+import Select from '../../components/select'
 
 const accountPlan = [
   { id: '0102', description: 'Amazing', probability: '11' },
@@ -17,29 +17,29 @@ const accountPlan = [
   { id: '0111', description: 'Amazing', probability: '85' }
 ]
 
-function onChange (input,resolve) {
+function onChange (input, resolve) {
   // Sort according to probability
-  accountPlan.sort((a,b) => {
+  accountPlan.sort((a, b) => {
     if (a.probability < b.probability) {
-      return 1;
+      return 1
     }
     if (a.probability > b.probability) {
-      return -1;
+      return -1
     }
     // a must be equal to b
-    return 0;
+    return 0
   })
 
   // Sort according to id
-  accountPlan.sort((a,b) => {
+  accountPlan.sort((a, b) => {
     if (a.id > b.id) {
-      return 1;
+      return 1
     }
     if (a.id < b.id) {
-      return -1;
+      return -1
     }
     // a must be equal to b
-    return 0;
+    return 0
   })
 
   resolve(accountPlan.filter((suggestion) => {
@@ -53,11 +53,11 @@ function onChange (input,resolve) {
 
 storiesOf('Select', module)
   .add('Default Select', () => (
-      <Select
-        autoFocus={false}
-        disabled={false}
-        placeholder=''
-        onChange={onChange}
-        />
+    <Select
+      autoFocus={false}
+      disabled={false}
+      placeholder=''
+      onChange={onChange}
+      />
     )
   )

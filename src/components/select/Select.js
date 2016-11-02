@@ -1,9 +1,9 @@
 import React from 'react'
-import classNames from 'classNames'
+import classNames from 'classnames'
 
-import SuggestionList from '../components/SuggestionList'
+import SuggestionList from './SuggestionList'
 
-import '../stylesheets/pages/_select.scss'
+import '../../stylesheets/components/_select.scss'
 
 /**
  *
@@ -124,7 +124,7 @@ class Select extends React.Component {
    *
    */
   _scroll(key) {
-    const {highlightedItem: item, suggestions} = this.state
+    const { highlightedItem: item, suggestions } = this.state
     const lastItem = suggestions.length - 1
     let nextItem
 
