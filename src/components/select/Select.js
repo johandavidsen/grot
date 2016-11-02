@@ -3,7 +3,7 @@ import classNames from 'classnames'
 
 import SuggestionList from './SuggestionList'
 
-import '../../stylesheets/components/_select.scss'
+import './_select.scss'
 
 /**
  *
@@ -96,7 +96,7 @@ class Select extends React.Component {
    *
    *
    */
-  _normalizeInput() {
+  _normalizeInput () {
     return this.state.value.toLowerCase().trim()
   }
 
@@ -105,7 +105,7 @@ class Select extends React.Component {
    *
    *
    */
-  _autoSuggest() {
+  _autoSuggest () {
     const searchTerm = this._normalizeInput()
     // if (!searchTerm) return
     new Promise((resolve) => {
@@ -123,7 +123,7 @@ class Select extends React.Component {
    * @method _scroll
    *
    */
-  _scroll(key) {
+  _scroll (key) {
     const { highlightedItem: item, suggestions } = this.state
     const lastItem = suggestions.length - 1
     let nextItem
@@ -175,7 +175,6 @@ class Select extends React.Component {
    *
    */
   render () {
-
     return (
       <div
         className={
@@ -217,7 +216,7 @@ class Select extends React.Component {
 /**
  *
  */
-Select.PropTypes = {
+Select.propTypes = {
   autoFocus: React.PropTypes.bool,
   placeholder: React.PropTypes.string,
   onSearch: React.PropTypes.func,

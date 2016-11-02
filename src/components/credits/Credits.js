@@ -1,6 +1,6 @@
 import React from 'react'
 
-import '../../stylesheets/components/_credits.scss'
+import './_credits.scss'
 
 /**
  * @class Credits
@@ -20,12 +20,13 @@ class Credits extends React.Component {
    *
    */
   render () {
-   return (
+    let { authorUrl, gitUrl, distUrl } = this.props
+    return (
      <div>
        <p>
-       This module was made by <a href={this.props.authorUrl}>{this.props.author}</a>,<br />
-       source code can be found on <a href={this.props.gitUrl}>{this.props.git}</a><br />
-       and the module is available on <a href={this.props.distUrl}>{this.props.dist}</a>.
+        This module was made by <a href={authorUrl}>{this.props.author}</a>,<br />
+        source code can be found on <a href={gitUrl}>{this.props.git}</a><br />
+        and the module is available on <a href={distUrl}>{this.props.dist}</a>.
        </p>
      </div>
    )
@@ -37,7 +38,7 @@ class Credits extends React.Component {
  *
  * These are the properties, which are required by the component.
  */
-Credits.PropTypes = {
+Credits.propTypes = {
   author: React.PropTypes.string.isRequired,
   authorUrl: React.PropTypes.string.isRequired,
   git: React.PropTypes.string.isRequired,

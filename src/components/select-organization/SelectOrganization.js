@@ -5,6 +5,8 @@ import './_selectOrganization.scss'
 /**
  * @class SelectOrganization
  *
+ * This is a fairly simple dropdown selector.
+ *
  */
 class SelectOrganization extends React.Component {
 
@@ -17,7 +19,8 @@ class SelectOrganization extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
-      toggle: false
+      toggle: false,
+      selected: props.strings['initial']
     }
 
     this._toggle = this._toggle.bind(this)
@@ -37,17 +40,19 @@ class SelectOrganization extends React.Component {
   /**
    * @method _onSelect
    *
-   * This method calls the onChangeMembership function, if defined and toggles
+   * This method calls the onSelect function, if defined and toggles
    * the local state.
    *
    */
   _onSelect (element) {
-    const { onSelect } = this.props
+    const { onSelect, options } = this.props
     if (onSelect) {
       onSelect(parseInt(element.currentTarget.id, 10))
     } else {
       console.log('onSelect is not defined')
     }
+    let selected = options.filter((obj) => { if (obj.id === parseInt(element.currentTarget.id, 10)) return obj })[0]
+    this.setState({ selected: selected.name })
     this._toggle()
   }
 
@@ -56,20 +61,21 @@ class SelectOrganization extends React.Component {
    *
    */
   render () {
-    let { selectedOrganization, options } = this.props
+    let { options } = this.props
+    let { selected } = this.state
 
     return (
       <div className='select-organization'>
         <div className='select-organization-component-box' onClick={this._toggle}>
           <div className='select-organization-component-box-avatar'>
             <div className='avatar'>
-              <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 27 34' ></svg>
+              &nbsp;
             </div>
           </div>
           <div className='select-organization-component-box-info'>
             <div className='info'>
               <div className='company-name'>
-                {selectedOrganization}
+                {selected}
               </div>
             </div>
           </div>
@@ -103,7 +109,7 @@ class SelectOrganization extends React.Component {
               ))}
             </div>
           </div>
-          : <p></p>
+          : <div className='select-organization-component-drop-options-empty'>&nbsp;</div>
           }
         </div>
       </div>
@@ -112,27 +118,29 @@ class SelectOrganization extends React.Component {
 }
 
 /**
- *
+ * Specify the property types.
  */
 SelectOrganization.propTypes = {
-  selectedOrganization: React.PropTypes.string,
   options: React.PropTypes.array,
-  onSelect: React.PropTypes.func
+  onSelect: React.PropTypes.func,
+  strings: React.PropTypes.object
 }
 
 /**
- *
+ * Specify the default properties.
  */
 SelectOrganization.defaultProps = {
-  selectedOrganization: 'Please selected a organization',
   options: [
     { id: '0', name: 'There are no options provided' }
   ],
-  onSelect: (id) => { console.log(id) }
+  onSelect: (id) => { console.log(id) },
+  // This variable can be populated by a translation middeware.
+  strings: {
+    initial: 'Please select an organization'
+  }
 }
 
 /**
- *
- *
+ * @exports SelectOrganization
  */
 export default SelectOrganization

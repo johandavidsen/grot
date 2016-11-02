@@ -1,6 +1,6 @@
 import React from 'react'
 
-import '../../stylesheets/components/_login.scss'
+import './_login.scss'
 
 /**
  * @class Login
@@ -14,21 +14,21 @@ export default class Login extends React.Component {
    *
    */
   render () {
-    return(
+    return (
       <form>
-        <div className="row">
-          <div className="columns">
+        <div>
+          <div>
             <label>Username</label>
-            <input type="text" placeholder="Username" />
+            <input type='text' placeholder='Username' />
           </div>
         </div>
         <div>
           <label>Password</label>
-          <input type="password" placeholder="Password" />
+          <input type='password' placeholder='Password' />
         </div>
         <div>
-          <button type="submit"></button>
-          <button type="button"></button>
+          <button type='submit'></button>
+          <button type='button'></button>
         </div>
       </form>
     )

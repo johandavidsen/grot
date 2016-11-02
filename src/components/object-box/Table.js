@@ -22,10 +22,10 @@ export default class Table extends React.Component {
    * parameter properties.
    *
    */
-  constructor( props ){
-    super( props )
+  constructor (props) {
+    super(props)
 
-    if( props.properties){
+    if (props.properties) {
       this.state = {
         properties: props.properties
       }
@@ -42,52 +42,50 @@ export default class Table extends React.Component {
   /**
    * This function adds a row to the propeties array.
    */
-  _addRow(){
-    let props = this.state.properties;
-    let prop = this.refs.newProp;
-    let value = this.refs.newValue;
-    props.push({ id: Math.random(), prop: prop.value, value: value.value });
-    prop.value = "";
-    value.value = "";
-    this.setState({ properties: props });
-    this.props.callback( props );
+  _addRow () {
+    let props = this.state.properties
+    let prop = this.refs.newProp
+    let value = this.refs.newValue
+    props.push({ id: Math.random(), prop: prop.value, value: value.value })
+    prop.value = ''
+    value.value = ''
+    this.setState({ properties: props })
+    this.props.callback(props)
   }
 
   /**
    * This function removes a row from the properties array.
    */
-  _removeRow( event ){
-    let id = event.currentTarget.value;
-    let props = this.state.properties.filter(( element ) => {
-        return element.id != id;
-      }
-    );
-    this.setState({ properties: props });
-    this.props.callback( props );
+  _removeRow (event) {
+    let id = event.currentTarget.value
+    let props = this.state.properties.filter((element) => {
+      return element.id !== id
+    })
+    this.setState({ properties: props })
+    this.props.callback(props)
   }
 
   /**
    *  Returns a HTML string.
    *  @return {React Object}
    */
-  render( ){
-    var propComponents = [];
-    this.state.properties.forEach(( element ) => {
+  render () {
+    var propComponents = []
+    this.state.properties.forEach((element) => {
       propComponents.push(
-          <TableRow
-            key={ element.id }
-            id={ element.id }
-            prop={ element.prop }
-            value={ element.value }
-            add={ this._addRow }
-            remove={ this._removeRow }
-            />
-        );
-      }
-    );
+        <TableRow
+          key={element.id}
+          id={element.id}
+          prop={element.prop}
+          value={element.value}
+          add={this._addRow}
+          remove={this._removeRow}
+          />
+      ) }
+    )
 
     return (
-      <table className="u-full-width">
+      <table className='u-full-width'>
         <thead>
           <tr>
             <th>Property</th>
@@ -98,18 +96,23 @@ export default class Table extends React.Component {
         <tbody>
           { propComponents }
           <tr>
-            <td><input ref="newProp" type='text' placeholder="Name of property" /></td>
-            <td><input ref="newValue" type='text' placeholder="Value of property" /></td>
+            <td><input ref='newProp' type='text' placeholder='Name of property' /></td>
+            <td><input ref='newValue' type='text' placeholder='Value of property' /></td>
             <td>
-              <button type="button" class="button-primary" onClick={ this._addRow } />
-                {/*<Glyphicon glyph="plus" />*/}
-              {/*</input>*/}
+              <button type='button' className='button-primary' onClick={this._addRow} />
+              {/* <Glyphicon glyph='plus' /> */}
+              {/* </input> */}
             </td>
           </tr>
         </tbody>
       </table>
-    );
+    )
   }
+}
+
+Table.propTypes = {
+  properties: React.PropTypes.object,
+  callback: React.PropTypes.func
 }
 
 /**
@@ -130,22 +133,28 @@ export class TableRow extends React.Component {
    * Returns a React HTML String
    * @return {React Object}
    */
-  render( ){
-
-    return(
+  render () {
+    return (
       <tr>
         <td>
-          <input type='text' defaultValue={ this.props.prop } />
+          <input type='text' defaultValue={this.props.prop} />
         </td>
         <td>
-          <input type='text' defaultValue={ this.props.value } />
+          <input type='text' defaultValue={this.props.value} />
         </td>
         <td>
-          <button type="button" className="button-primary"  value={ this.props.id } onClick={ this.props.remove } >
-            {/*<Glyphicon glyph="minus" />*/}
+          <button type='button' className='button-primary' value={this.props.id} onClick={this.props.remove} >
+            {/* <Glyphicon glyph='minus' /> */}
           </button>
         </td>
       </tr>
-    );
+    )
   }
+}
+
+TableRow.propTypes = {
+  prop: React.PropTypes.string,
+  value: React.PropTypes.string,
+  remove: React.PropTypes.func,
+  id: React.PropTypes.string
 }
