@@ -19,6 +19,29 @@
     float: left;
     cursor: pointer;
 
+    &-avatar {
+      float: left;
+      width: 73px;
+      height: 100%;
+      @include midAlignContent();
+      margin-left: 21px;
+
+      .avatar {
+        border-radius: 50%;
+        width: 40px;
+        height: 33px;
+        background-color: #02596f;
+        text-align: center;
+        padding-top: 7px;
+
+        svg {
+          fill: #00abd6;
+          fill-rule: evenodd;
+          width: 25px;
+        }
+      }
+    }
+
     &-info {
       width: 134px;
       height: 100%;
@@ -42,7 +65,7 @@
   }
 
   &-component-drop {
-    position:relative;
+    position: relative;
 
     &-options {
       width: 270px;
@@ -102,6 +125,16 @@
                 font-weight: 400;
               }
             }
+          }
+        }
+
+        $companyColors: #7935ea, #1a99ea, #54bf25, #e7c900, #f27d15, #ef5031;
+
+        @for $i from 1 through length($companyColors) {
+          .company:nth-child(#{length($companyColors)}n+#{$i}) {
+              .company-icon {
+                background-color: nth($companyColors, $i);
+              }
           }
         }
       }
