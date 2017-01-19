@@ -1,7 +1,21 @@
 @import '../common/GrotBasics';
 
-.grot-login-example {
-  width: 600px;
+$color: #000000;
+
+.grot {
+
+  &-login-example {
+    width: 400px;
+  }
+
+  &-button-holder {
+    display: flex;
+    justify-content: space-between;
+
+    button {
+      align-self: flex-start;
+    }
+  }
 }
 
 .grot-input {
@@ -9,7 +23,7 @@
   font-weight: $grotFontWeight;
   line-height: $grotLineHeight;
   position:relative;
-  margin-top: 45px;
+  margin-top: 25px;
 
   input {
     font-size: 18px;
@@ -17,14 +31,15 @@
     display: block;
     width: 100%;
     border: none;
-    border-bottom: 1px solid #000000;
+    border-bottom: 1px solid $color;
+    box-sizing: border-box;
 
     &:focus {
       outline: none;
     }
   }
 
-  label 				 {
+  label {
     color: #999;
     font-size: 18px;
     font-weight: normal;
@@ -41,7 +56,7 @@
   input:focus ~ label, input:valid ~ label 		{
     top: -20px;
     font-size: 14px;
-    color: #000000;
+    color: $color;
   }
 
   /* active state */
@@ -52,7 +67,7 @@
   .bar 	{
     position: relative;
     display: block;
-    width: 300px;
+    width: 100%;
 
     .bar:before {
       left: 50%;
@@ -69,7 +84,7 @@
     width: 0;
     bottom: 1px;
     position: absolute;
-    background:#000000;
+    background:$color;
     transition: 0.2s ease all;
     -moz-transition: 0.2s ease all;
     -webkit-transition: 0.2s ease all;
@@ -92,15 +107,38 @@
   }
 
   @-webkit-keyframes inputHighlighter {
-    from { background: #000000; }
+    from { background: $color; }
     to 	{ width: 0; background: transparent; }
   }
+
   @-moz-keyframes inputHighlighter {
-    from { background: #000000; }
+    from { background: $color; }
     to 	{ width: 0; background: transparent; }
   }
+
   @keyframes inputHighlighter {
-    from { background:#000000; }
+    from { background:$color; }
     to 	{ width: 0; background: transparent; }
+  }
+}
+
+.grot-button {
+  font-family: $grotFont;
+  font-weight: $grotFontWeight;
+  line-height: $grotLineHeight;
+  border-top: 0px;
+  border-left: 0px;
+  border-right: 0px;
+  border-bottom: 1px solid $color;
+  background-color: #ffffff;
+  padding: 25px 10px 5px 5px;
+  font-size: 18px;
+  font-weight: normal;
+  color: #999;
+  outline: none;
+
+  &:hover {
+    color: $color;
+    border-bottom: 2px solid black;
   }
 }

@@ -28,16 +28,34 @@ export default class Login extends React.Component {
             label='Password'
             />
         </div>
-        {/* <div>
-          <button type='submit'></button>
-          <button type='button'></button>
-        </div>  */}
+        <div className='grot-button-holder'>
+          <Button
+            type='button'
+            label='Clear'
+            />
+          <Button
+            type='submit'
+            label='Submit'
+            />
+        </div>
       </form>
     )
   }
 }
 
+/**
+ * @class Input
+ *
+ * This is a simple pure React Component.
+ *
+ * @since 0.3.1
+ * @author Jóhan Davidsen <johan.davidsen@fjakkarin.com>
+ */
 class Input extends React.Component {
+
+  /**
+   * @method render
+   */
   render () {
     const { type, label } = this.props
     return (
@@ -47,6 +65,27 @@ class Input extends React.Component {
         <span className="bar"></span>
         <label>{label}</label>
       </div>
+    )
+  }
+}
+
+/**
+ * @class Button
+ *
+ * This is a simple pure React Component.
+ *
+ * @since 0.3.1
+ * @author Jóhan Davidsen <johan.davidsen@fjakkarin.com>
+ */
+class Button extends React.Component {
+
+  /**
+   * @method render
+   */
+  render () {
+    const { type, label } = this.props
+    return (
+      <button type={type} className='grot-button'>{label}</button>
     )
   }
 }
