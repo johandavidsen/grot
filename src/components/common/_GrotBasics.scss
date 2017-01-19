@@ -1,0 +1,22 @@
+/** These are references, which could be moved to a different location */
+@import url(https://fonts.googleapis.com/css?family=Raleway);
+
+$grotFont: 'Raleway', sans-serif;
+$grotFontWeight: 300;
+$grotLineHeight: 1.7;
+
+@mixin grot-link () {
+  a {
+    padding-top: 8px;
+    border-bottom: 2px solid white;
+    opacity: 0.5;
+    cursor: pointer;
+    text-decoration: none;
+    color: black;
+
+    &:hover {
+      opacity: 1;
+      border-bottom: 2px solid black;
+    }
+  }
+}
