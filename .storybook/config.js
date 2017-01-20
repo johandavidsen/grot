@@ -7,10 +7,6 @@ function loadStories () {
   require('../src/stories/login')
   require('../src/stories/select')
   require('../src/stories/currency')
-  require('../src/stories/select-user')
-  require('../src/stories/select-organization')
-  require('../src/stories/create-organization')
-  // require('../src/stories/table')
 }
 
 /**
