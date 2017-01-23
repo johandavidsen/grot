@@ -7,6 +7,7 @@ function loadStories () {
   require('../src/stories/login')
   require('../src/stories/select')
   require('../src/stories/currency')
+  require('../src/stories/Contributions')
 }
 
 /**
