@@ -4,7 +4,7 @@
   "description": "This package contains a selection of React components, which I use as general building blocks in different React applications.",
   "main": "lib/",
   "scripts": {
-    "storybook": "start-storybook -p 9001"
+    "storybook": "start-storybook -p 9002"
   },
   "repository": {
     "type": "git",
@@ -19,6 +19,7 @@
   "dependencies": {
     "axios": "^0.15.3",
     "classnames": "^2.2.5",
+    "d3": "^4.4.4",
     "react": "15.4.2",
     "react-dom": "15.4.2",
     "react-select": "^1.0.0-rc.2"
