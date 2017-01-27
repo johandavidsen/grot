@@ -1920,6 +1920,10 @@ d3-zoom@1.1.1:
     d3-selection "1"
     d3-transition "1"
 
+d3@^3.5.3:
+  version "3.5.17"
+  resolved "https://registry.yarnpkg.com/d3/-/d3-3.5.17.tgz#bc46748004378b21a360c9fc7cf5231790762fb8"
+
 d3@^4.4.4:
   version "4.4.4"
   resolved "https://registry.yarnpkg.com/d3/-/d3-4.4.4.tgz#15d4e455687bc7a8ff2eeb4b25354a6ba4f24f57"
@@ -3956,6 +3960,12 @@ rc@~1.1.6:
     ini "~1.3.0"
     minimist "^1.2.0"
     strip-json-comments "~1.0.4"
+
+react-d3-components@^0.6.5:
+  version "0.6.5"
+  resolved "https://registry.yarnpkg.com/react-d3-components/-/react-d3-components-0.6.5.tgz#87b9bea1d1db542cee63691944edce298409ea03"
+  dependencies:
+    d3 "^3.5.3"
 
 react-docgen@^2.12.1:
   version "2.12.1"

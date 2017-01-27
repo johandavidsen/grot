@@ -1,168 +1,88 @@
 import React from 'react'
+import ReactDOM from 'react-dom'
 import * as d3 from 'd3'
+import { LineChart } from 'react-d3-components'
+
+import './Contributions.scss'
 
 /**
  * @class ContributionsChart
  *
- * This is a graphical component, which based on a specific data structure renders
- * a single or several lines across time. This and the other components in this
- * file are based on the tutorial on http://blog.bigbinary.com/2016/02/04/using-d3-js-with-react-js.html
- *
- * @since v0.3.0-1
- * @author Jóhan Davidsen <johan.davidsen@fjakkarin.com>
  *
  */
 class ContributionsChart extends React.Component {
 
   /**
-   * @constructor
-   *
-   * The constructor initializes the local state.
-   *
-   * @prop { object } props -
    *
    */
   constructor (props) {
     super(props)
     this.state = {
-      height: props.height || 300,
-      width: props.width || 600
+      data: {
+        label: '',
+        values: [
+          { x: new Date(2014, 2, 5), y: 0},
+          { x: new Date(2015, 2, 5), y: 0},
+        ]
+      },
+      xScale: null,
+      width: 0
+    }
+    this._handleResize = this._handleResize.bind(this)
+  }
+
+  /**
+   *
+   */
+  componentDidMount () {
+    window.addEventListener('resize', this._handleResize)
+  }
+
+  /**
+   *
+   */
+  componentWillReceiveProps(nextProps) {
+    const { data } = this.state
+
+    if (nextProps.data && nextProps.data.size > 0) {
+      let newValues = []
+      nextProps.data.forEach((value, key) => {
+        newValues.push({ x: new Date(key), y: value })
+      })
+      this.setState({ data: { ...data, values: newValues } })
+      this._handleResize()
     }
   }
 
   /**
-   * @method render
-   *
    *
    */
-  render() {
-    const { data } = this.props
-    const { height, width } = this.state
+  _handleResize () {
+    const element = ReactDOM.findDOMNode(this)
+    const width = element.parentNode.offsetWidth
 
-    // Init the x scale
-    let xScale = d3.scaleLinear()
-      .range([0, 100])
-
-    // Init the y scale
-    let yScale = d3.scaleLinear()
-      .domain([data.yMin, data.yMax])
-      .range([height, 30])
-
-    return (
-      <svg width={width} height={height} style={{ paddingBottom: '10px'}} >
-        <DataSeries
-          xScale={xScale}
-          yScale={yScale}
-          data={data}
-          width={width}
-          height={height}
-          />
-      </svg>
-   )
-  }
-}
-
-/**
- * @class DataSeries
- *
- * This component is used to build the different lines based on the data
- * structure.
- *
- * @since v0.3.0-1
- * @author Jóhan Davidsen <johan.davidsen@fjakkarin.com>
- *
- */
-class DataSeries extends React.Component {
-
-  /**
-   * @constructor
-   *
-   * The constructor initializes the local state.
-   *
-   * @prop { object } props -
-   *
-   */
-  constructor (props) {
-    super(props)
-    this.state = {
-      colors: d3.schemeCategory10
-    }
-  }
-
-  /**
-   * @method render
-   *
-   *
-   */
-  render() {
-    let { data, xScale, yScale, } = this.props
-    const { colors } = this.state
-
-    let line = d3.line()
-      .curve(d3.curveBasis)
-      .x((d) => { return xScale(d.x) })
-      .y((d) => { return yScale(d.y) })
-
-    let lines = data.points.map((series, id) => {
-      return (
-        <Line
-          path={line(series)}
-          stroke={colors[id]}
-          key={id}
-          />
-      )
+    this.setState({
+      width: width,
+      xScale: d3.scaleTime().domain([new Date(2015, 2, 5), new Date(2015, 2, 26)]).range([0, width])
     })
-
-    return (
-      <g>
-        <g>{lines}</g>
-      </g>
-    )
-  }
-}
-
-/**
- * @class Line
- *
- *
- *
- * @since v0.3.0-1
- * @author Jóhan Davidsen <johan.davidsen@fjakkarin.com>
- *
- */
-class Line extends React.Component {
-
-  /**
-   * @constructor
-   *
-   * The constructor initializes the local state.
-   *
-   * @prop { object } props -
-   *
-   */
-  constructor (props) {
-    super(props)
-    this.state = {
-      fill: 'none',
-      strokeWidth: 3
-    }
   }
 
   /**
-   * @method render
-   *
    *
    */
   render () {
-    const { path, stroke, } = this.props
-    const { fill, strokeWidth } = this.state
+    let { data, width, xScale } = this.state
+    console.log(data)
     return (
-      <path
-        d={path}
-        fill={fill}
-        stroke={stroke}
-        strokeWidth={strokeWidth}
-        />
+      <div id='contributions'>
+        <LineChart
+          data={data}
+          width={width}
+          height={50}
+          margin={{top: 20, bottom: 0, left: 0, right: 0}}
+          xScale={xScale}
+          />
+      </div>
     )
   }
 }
