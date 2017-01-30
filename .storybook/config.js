@@ -6,6 +6,7 @@ function loadStories () {
   require('../src/stories/credits')
   require('../src/stories/login')
   require('../src/stories/select')
+  require('../src/stories/checkbox')
   require('../src/stories/currency')
   require('../src/stories/Contributions')
 }
