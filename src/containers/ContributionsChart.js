@@ -22,7 +22,24 @@ class ContributionsChart extends React.Component {
         label: '',
         values: [
           { x: new Date(2014, 2, 5), y: 0},
-          { x: new Date(2015, 2, 5), y: 0},
+          { x: new Date(2014, 3, 5), y: 20},
+          { x: new Date(2014, 4, 5), y: 10},
+          { x: new Date(2014, 5, 5), y: 50},
+          { x: new Date(2014, 6, 5), y: 40},
+          { x: new Date(2014, 7, 5), y: 10},
+          { x: new Date(2014, 8, 5), y: 10},
+          { x: new Date(2014, 9, 5), y: 10},
+          { x: new Date(2015, 4, 5), y: 10},
+          { x: new Date(2015, 5, 5), y: 50},
+          { x: new Date(2015, 6, 5), y: 40},
+          { x: new Date(2015, 7, 5), y: 10},
+          { x: new Date(2015, 8, 5), y: 10},
+          { x: new Date(2015, 9, 5), y: 20},
+          { x: new Date(2016, 9, 5), y: 50},
+          { x: new Date(2017, 9, 5), y: 40},
+          { x: new Date(2018, 9, 5), y: 20},
+          { x: new Date(2019, 9, 5), y: 30},
+          { x: new Date(2020, 9, 5), y: 40}
         ]
       },
       xScale: null,
@@ -43,7 +60,6 @@ class ContributionsChart extends React.Component {
    */
   componentWillReceiveProps(nextProps) {
     const { data } = this.state
-
     if (nextProps.data && nextProps.data.size > 0) {
       let newValues = []
       nextProps.data.forEach((value, key) => {
@@ -63,7 +79,7 @@ class ContributionsChart extends React.Component {
 
     this.setState({
       width: width,
-      xScale: d3.scaleTime().domain([new Date(2015, 2, 5), new Date(2015, 2, 26)]).range([0, width])
+      xScale: d3.scaleTime().domain([new Date(2015, 2, 5), new Date(2015, 2, 26)]).range([0, width % 2])
     })
   }
 
@@ -72,7 +88,7 @@ class ContributionsChart extends React.Component {
    */
   render () {
     let { data, width, xScale } = this.state
-    console.log(data)
+    // console.log(data)
     return (
       <div id='contributions'>
         <LineChart
@@ -81,6 +97,7 @@ class ContributionsChart extends React.Component {
           height={50}
           margin={{top: 20, bottom: 0, left: 0, right: 0}}
           xScale={xScale}
+          interpolate='basis'
           />
       </div>
     )

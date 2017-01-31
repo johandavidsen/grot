@@ -1,9 +1,19 @@
 import React from 'react'
 import axios from 'axios'
+import moment from 'moment'
+import twix from 'twix'
 import LineChart from './ContributionsChart'
 
+/**
+ * @class Contributions
+ *
+ *
+ */
 class Contributions extends React.Component {
 
+  /**
+   * @constructor
+   */
   constructor (props) {
     super(props)
     this.state = {
@@ -14,18 +24,36 @@ class Contributions extends React.Component {
     }
   }
 
+  /**
+   * @method componentDidMount
+   *
+   */
   componentDidMount () {
-
     this.setState({ loading: true })
-     axios.get('https://api.github.com/users/johandavidsen/events')
+    axios.get('https://api.github.com/users/johandavidsen/events')
       .then((response) => {
         const { data, headers } = response
         // Filter data by type === 'PushEvent'
         const contributions = data.filter((entry) => { if (entry.type ==='PushEvent') { return entry } })
         // Initialize the resultant data structure
         let results = new Map()
-        // Build data structure based on data
+        //
+        var oneDay = 24*60*60*1000;
+        // Get currentDate
+        const currentDate = new Date()
+        // Set 3 months back
+        let oldDate = new Date()
+        oldDate.setMonth(oldDate.getMonth() - 3)
+        // Populate the results
+        var itr = moment.twix(oldDate, currentDate).iterate('days')
+        while(itr.hasNext()){
+          let tempDate = itr.next().toDate()
+          let tempKey = tempDate.getFullYear() + '-' + (tempDate.getMonth() + 1) + '-' + tempDate.getDate()
+          results.set(tempKey, 1)
+        }
+        // 1Build data structure based on data
         contributions.map((contribution) => {
+          // console.log(contribution)
           // Build date object
           let date = new Date(contribution.created_at)
           // Build the key
@@ -48,9 +76,12 @@ class Contributions extends React.Component {
       })
   }
 
+  /**
+   * @method render
+   *
+   */
   render () {
     const { loading, successfull, error, stats } = this.state
-    console.log()
     return (
       <div>
         <LineChart
@@ -61,4 +92,7 @@ class Contributions extends React.Component {
   }
 }
 
+/**
+ * @exports Contributions
+ */
 export default Contributions
