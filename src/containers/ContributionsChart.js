@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import * as d3 from 'd3'
+import moment from 'moment'
 import { LineChart } from 'react-d3-components'
 
 import './Contributions.scss'
@@ -8,11 +9,22 @@ import './Contributions.scss'
 /**
  * @class ContributionsChart
  *
+ * This is the layout class. This class gives a data structure to the LineChart
+ * component. This class also takes case of any resize function calls.
+ *
+ * @since v0.3.0-1
+ * @author Jóhan Davidsen <johan.davidsen@fjakkarin.com>
  *
  */
 class ContributionsChart extends React.Component {
 
   /**
+   * @constructor
+   *
+   * The constructor initializes the local state and binds the local methods to
+   * this class.
+   *
+   * @prop { object } props -
    *
    */
   constructor (props) {
@@ -49,6 +61,9 @@ class ContributionsChart extends React.Component {
   }
 
   /**
+   * @method componentDidMount
+   *
+   * This method binds the local method _handleResize to the window event resize.
    *
    */
   componentDidMount () {
@@ -56,6 +71,10 @@ class ContributionsChart extends React.Component {
   }
 
   /**
+   * @method componentWillReceiveProps
+   *
+   * This method is called as soon as the component receives a new prop and updates
+   * the local state accordingly.
    *
    */
   componentWillReceiveProps(nextProps) {
@@ -66,29 +85,47 @@ class ContributionsChart extends React.Component {
         newValues.push({ x: new Date(key), y: value })
       })
       this.setState({ data: { ...data, values: newValues } })
-      this._handleResize()
+      this._handleResize(newValues)
     }
   }
 
   /**
+   * @method _handleResize
+   *
+   * This method is called on window resize event and it adjusts the width of the
+   * graph according to the witdh of the screen.
+   *
+   * @prop { object or array } values -
    *
    */
-  _handleResize () {
+  _handleResize (values) {
+    const { data } = this.state
     const element = ReactDOM.findDOMNode(this)
-    const width = element.parentNode.offsetWidth
-
-    this.setState({
-      width: width,
-      xScale: d3.scaleTime().domain([new Date(2015, 2, 5), new Date(2015, 2, 26)]).range([0, width % 2])
-    })
+    if (element) {
+      const width = element.parentNode.offsetWidth
+      if (values.type === 'resize') {
+        this.setState({
+          width: width,
+          xScale: d3.scaleTime().domain([moment(data.values[0].x), new Date()]).range([0, width])
+        })
+      } else {
+        this.setState({
+          width: width,
+          xScale: d3.scaleTime().domain([moment(values[0].x), new Date()]).range([0, width])
+        })
+      }
+    }
   }
 
   /**
+   * @method render
+   *
+   * The render method returns a JSX structure, that React will use to render
+   * this component.
    *
    */
   render () {
     let { data, width, xScale } = this.state
-    // console.log(data)
     return (
       <div id='contributions'>
         <LineChart
@@ -106,5 +143,9 @@ class ContributionsChart extends React.Component {
 
 /**
  * @exports ContributionsChart
+ *
+ * The default export is the ContributionsChart class, written by Jóhan Davidsen
+ * <johan.davidsen@fjakkarin.com>
+ *
  */
 export default ContributionsChart

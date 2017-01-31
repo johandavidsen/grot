@@ -7,12 +7,20 @@ import LineChart from './ContributionsChart'
 /**
  * @class Contributions
  *
+ * This is the data layer component for the package Contributions. The aim of this
+ * component is to load the required data based on the properties given to the
+ * component.
+ *
+ * @since v0.3.0-1
+ * @author Jóhan Davidsen <johan.davidsen@fjakkarin.com>
  *
  */
 class Contributions extends React.Component {
 
   /**
    * @constructor
+   *
+   * The constructor initializes the local state with the default properties.
    */
   constructor (props) {
     super(props)
@@ -26,6 +34,9 @@ class Contributions extends React.Component {
 
   /**
    * @method componentDidMount
+   *
+   * This method dose all the heavy lifting, as it calls the github API and
+   * transforms the data to a data structure that can be used to build a graph.
    *
    */
   componentDidMount () {
@@ -49,7 +60,7 @@ class Contributions extends React.Component {
         while(itr.hasNext()){
           let tempDate = itr.next().toDate()
           let tempKey = tempDate.getFullYear() + '-' + (tempDate.getMonth() + 1) + '-' + tempDate.getDate()
-          results.set(tempKey, 1)
+          results.set(tempKey, 0)
         }
         // 1Build data structure based on data
         contributions.map((contribution) => {
@@ -79,6 +90,9 @@ class Contributions extends React.Component {
   /**
    * @method render
    *
+   * The render method returns a JSX structure, that React will use to render
+   * this component.
+   *
    */
   render () {
     const { loading, successfull, error, stats } = this.state
@@ -94,5 +108,9 @@ class Contributions extends React.Component {
 
 /**
  * @exports Contributions
+ *
+ * The default export is the Contributions class, written by Jóhan Davidsen
+ * <johan.davidsen@fjakkarin.com>
+ *
  */
 export default Contributions
