@@ -126,13 +126,14 @@ class ContributionsChart extends React.Component {
    */
   render () {
     let { data, width, xScale } = this.state
+    console.log(data)
     return (
       <div id='contributions'>
         <LineChart
           data={data}
           width={width}
           height={50}
-          margin={{top: 20, bottom: 0, left: 0, right: 0}}
+          margin={{ top: 20, bottom: 0, left: 0, right: 0 }}
           xScale={xScale}
           interpolate='basis'
           />
