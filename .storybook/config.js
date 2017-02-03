@@ -8,7 +8,7 @@ function loadStories () {
   require('../src/stories/select')
   require('../src/stories/checkbox')
   require('../src/stories/currency')
-  require('../src/stories/Contributions')
+  require('../src/stories/contributions')
 }
 
 /**
