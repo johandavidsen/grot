@@ -5,9 +5,7 @@ module.exports = {
   entry: path.resolve(__dirname, '../src/containers/contributions'),
   output: {
     path: path.resolve(__dirname, '../lib'),
-    filename: 'index.js',
-    libraryTarget: 'umd',
-    library: 'grot'
+    filename: 'index.js'
   },
   module: {
     loaders: [
