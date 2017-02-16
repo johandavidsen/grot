@@ -4,7 +4,7 @@ import * as d3 from 'd3'
 import moment from 'moment'
 import { LineChart } from 'react-d3-components'
 
-import './Contributions.scss'
+// import './Contributions.scss'
 
 /**
  * @class ContributionsChart
