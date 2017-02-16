@@ -2,14 +2,17 @@ const webpack = require('webpack')
 const path = require('path')
 
 module.exports = {
-  entry: path.resolve(__dirname, '../src/containers/contributions'),
+  entry: {
+    index: './src/index.js',
+    Contributions: './src/containers/Contributions.js',
+    ContributionsChart: './src/containers/ContributionsChart.js'
+  },
   output: {
-    path: path.resolve(__dirname, '../lib'),
-    filename: 'index.js'
+    filename: '[name].js',
+    path: path.resolve(__dirname, '../lib')
   },
   module: {
     loaders: [
-        { test: /\.css?$/, loaders: [ 'style-loader', 'raw' ], include: path.resolve(__dirname, '../') },
         { test: /\.scss$/, include: /src/, loaders: [ 'style-loader', 'css-loader', 'sass-loader' ] },
         {
           test: /\.js$/,
