@@ -9,6 +9,7 @@ function loadStories () {
   require('../src/stories/checkbox')
   require('../src/stories/currency')
   require('../src/stories/contributions')
+  require('../src/stories/option-menu')
 }
 
 /**
