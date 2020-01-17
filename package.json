@@ -4,8 +4,9 @@
   "description": "This package contains a selection of React components, which I use as general building blocks in different React applications.",
   "main": "lib/",
   "scripts": {
-    "storybook": "start-storybook -p 9002",
-    "prepublish": "./node_modules/.bin/webpack --config scripts/webpack.conf.js"
+    "storybook": "start-storybook -p 6006",
+    "prepublish": "./node_modules/.bin/webpack --config scripts/webpack.conf.js",
+    "build-storybook": "build-storybook"
   },
   "repository": {
     "type": "git",
@@ -18,33 +19,24 @@
   "author": "Jóhan Davidsen",
   "license": "MIT",
   "dependencies": {
-    "axios": "^0.15.3",
+    "axios": "^0.19.1",
     "classnames": "^2.2.5",
     "d3": "^4.4.4",
     "moment": "^2.17.1",
-    "react": "^15.4.2",
+    "react": "^15.6.2",
     "react-d3-components": "^0.6.5",
-    "react-dom": "^15.4.2",
+    "react-dom": "^15.6.2",
     "react-select": "^1.0.0-rc.2",
     "twix": "^1.1.3"
   },
   "devDependencies": {
-    "@kadira/storybook": "^2.35.3",
-    "babel-cli": "^6.23.0",
-    "babel-core": "6.22.1",
-    "babel-eslint": "7.1.1",
-    "babel-loader": "6.2.10",
-    "babel-plugin-add-module-exports": "^0.2.1",
-    "babel-polyfill": "6.22.0",
-    "babel-preset-es2015": "6.22.0",
-    "babel-preset-react": "6.22.0",
-    "babel-preset-stage-0": "6.22.0",
-    "css-loader": "0.26.1",
-    "node-sass": "4.3.0",
-    "raw-loader": "^0.5.1",
-    "sass-loader": "4.1.1",
+    "@babel/core": "^7.8.3",
+    "@storybook/addon-actions": "^5.3.6",
+    "@storybook/addon-links": "^5.3.6",
+    "@storybook/addons": "^5.3.6",
+    "@storybook/react": "^5.3.6",
+    "babel-loader": "^8.0.6",
     "standard": "^8.6.0",
-    "style-loader": "^0.13.1",
-    "webpack": "^2.2.1"
+    "webpack-cli": "^3.3.10"
   }
 }
