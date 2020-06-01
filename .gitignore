@@ -5,6 +5,7 @@ logs
 npm-debug.log*
 
 # Dependency directories
+.idea
 node_modules
 lib
 src/backup
