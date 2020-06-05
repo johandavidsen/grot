@@ -1,6 +1,5 @@
 import React from 'react'
-
-import './Hello.scss'
+/** import './Hello.scss' */
 
 /**
  * @class Hello
@@ -17,6 +16,6 @@ export default () => (
     <h1>
       Hello from Grót
     </h1>
-    <h5>A sample library developed by <a href='http://fjakkarin.com'>Jóhan Davidsen</a></h5>
+    <h5>A sample library developed by <a href='http://fjakkarin.com'>Jóhan H. Dam-Davidsen</a></h5>
   </div>
 )

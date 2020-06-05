@@ -10,7 +10,7 @@ class CurrenciesSuggestions extends React.Component {
    *
    */
   render () {
-    let { suggestions, highlightedItem, onSelection } = this.props
+    const { suggestions, highlightedItem, onSelection } = this.props
     return (
       <ul
         className={classnames('currency-suggestions')}
@@ -33,11 +33,11 @@ class CurrenciesSuggestions extends React.Component {
   }
 }
 
-CurrenciesSuggestions.propTypes = {
-  suggestions: React.PropTypes.array,
-  highlightedItem: React.PropTypes.object,
-  onSelection: React.PropTypes.func
-}
+// CurrenciesSuggestions.propTypes = {
+//  suggestions: React.PropTypes.array,
+//  highlightedItem: React.PropTypes.object,
+//  onSelection: React.PropTypes.func
+// }
 
 /**
  *

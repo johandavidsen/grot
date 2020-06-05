@@ -4,7 +4,7 @@ import classnames from 'classnames'
 import Currencies from './Currencies'
 import CurrenciesSuggestions from './CurrenciesSuggestions'
 
-import './_currency.scss'
+/** import './_currency.scss' */
 
 /**
  *
@@ -193,18 +193,18 @@ class Currency extends React.Component {
 /**
  *
  */
-Currency.propTypes = {
-  currency: React.PropTypes.string.isRequired,
-  amount: React.PropTypes.number.isRequired
-}
+// Currency.propTypes = {
+//  currency: React.PropTypes.string.isRequired,
+//  amount: React.PropTypes.number.isRequired
+// }
 
 /**
  *
  */
-Currency.defaultProps = {
-  currency: 'NOK',
-  amount: 1000
-}
+// Currency.defaultProps = {
+//  currency: 'NOK',
+//  amount: 1000
+// }
 
 /**
  *

@@ -1,6 +1,5 @@
 import React from 'react'
-
-import './Checkbox.scss'
+/** import './Checkbox.scss' */
 
 /**
  * @class Checkbox

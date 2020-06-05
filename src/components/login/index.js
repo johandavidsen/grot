@@ -1,6 +1,5 @@
 import React from 'react'
-
-import './Login.scss'
+/** import './Login.scss' */
 
 /**
  * @class Login

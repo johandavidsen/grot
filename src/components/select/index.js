@@ -1,7 +1,6 @@
 import React from 'react'
 import ReactSelect from 'react-select'
-
-import './Select.scss'
+/** import './Select.scss' */
 
 class Select extends React.Component {
 
@@ -9,17 +8,15 @@ class Select extends React.Component {
     const { name } = this.props
     return (
       <div className='grot-select'>
-        <ReactSelect
-          name={name}
-          />
+        <ReactSelect name={name} />
       </div>
     )
   }
 }
 
-Select.propTypes = {
-  name: React.PropTypes.string.isRequired
-}
+// Select.propTypes = {
+//  name: React.PropTypes.string.isRequired
+// }
 
 export default Select
 // import classNames from 'classnames'

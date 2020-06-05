@@ -1,5 +1,5 @@
 import React from 'react'
-import './OptionMenu.scss'
+/** import './OptionMenu.scss' */
 
 /**
  * @class OptionMenu

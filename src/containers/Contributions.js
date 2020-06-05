@@ -132,9 +132,7 @@ class Contributions extends React.Component {
     const { loading, successfull, error, stats } = this.state
     return (
       <div>
-        <LineChart
-          data={stats}
-          />
+        <LineChart data={stats} />
       </div>
     )
   }
