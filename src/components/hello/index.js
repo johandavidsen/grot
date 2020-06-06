@@ -1,5 +1,5 @@
 import React from 'react'
-/** import './Hello.scss' */
+import './Hello.scss'
 
 /**
  * @class Hello

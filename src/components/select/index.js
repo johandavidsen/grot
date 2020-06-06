@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactSelect from 'react-select'
-/** import './Select.scss' */
+import './Select.scss'
 
 class Select extends React.Component {
 

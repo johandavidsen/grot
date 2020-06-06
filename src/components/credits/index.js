@@ -1,5 +1,5 @@
 import React from 'react'
-/** import './Credits.scss' */
+import './Credits.scss'
 
 /**
  * @class Credits

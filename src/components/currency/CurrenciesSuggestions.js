@@ -14,7 +14,7 @@ class CurrenciesSuggestions extends React.Component {
     return (
       <ul
         className={classnames('currency-suggestions')}
-        >
+      >
         {suggestions.map((curr, index) => {
           return (
             <li
@@ -23,7 +23,7 @@ class CurrenciesSuggestions extends React.Component {
                 classnames({ selected: (highlightedItem === index) })
               }
               onClick={() => { onSelection(curr.code) }}
-              >
+            >
               {curr.code}
             </li>
           )

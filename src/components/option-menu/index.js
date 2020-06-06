@@ -1,5 +1,5 @@
 import React from 'react'
-/** import './OptionMenu.scss' */
+import './OptionMenu.scss'
 
 /**
  * @class OptionMenu
@@ -29,10 +29,10 @@ export default class OptionMenu extends React.Component {
     this.state = {
       open: false
     }
-    this._onBlur = this._onBlur.bind(this)
-    this._toggle = this._toggle.bind(this)
-    this._firstButtonKeyDown = this._firstButtonKeyDown.bind(this)
-    this._lastButtonKeyDown = this._lastButtonKeyDown.bind(this)
+    this.handleOnBlur = this._onBlur.bind(this)
+    this.handleToggle = this._toggle.bind(this)
+    this.handleFirstButtonKeyDown = this._firstButtonKeyDown.bind(this)
+    this.handleLastButtonKeyDown = this._lastButtonKeyDown.bind(this)
   }
 
   /**
@@ -106,12 +106,12 @@ export default class OptionMenu extends React.Component {
   render () {
     const { open } = this.state
     return (
-      <div className='grot-option-menu' onClick={this._toggle} onBlur={this._onBlur} >
-        <button className='option-toggle' onClick={this._toggle} onKeyDown={this._firstButtonKeyDown} />
+      <div className='grot-option-menu' onClick={this.handleToggle} onBlur={this.handleOnBlur}>
+        <button className='option-toggle' onClick={this.handleToggle} onKeyDown={this.handleFirstButtonKeyDown} />
         {open && <ul className='option-menu-content'>
           <li className='option-menu-item'><div className='bullit' /><button>Look, mom</button></li>
           <li className='option-menu-item'><div className='bullit' /><button>A options menu</button></li>
-          <li className='option-menu-item'><div className='bullit' /><button onKeyDown={this._lastButtonKeyDown}>Pretty nice, right?</button></li>
+          <li className='option-menu-item'><div className='bullit' /><button onKeyDown={this.handleLastButtonKeyDown}>Pretty nice, right?</button></li>
         </ul>
         }
       </div>
