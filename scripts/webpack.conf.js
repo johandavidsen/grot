@@ -1,9 +1,9 @@
-const webpack = require('webpack')
+require('webpack')
 const path = require('path')
 
 module.exports = {
   entry: {
-    index: './src/index.js',
+    index: './src/0-Hello.stories.js',
     Contributions: './src/containers/Contributions.js',
     ContributionsChart: './src/containers/ContributionsChart.js'
   },
@@ -18,9 +18,8 @@ module.exports = {
         test: /\.js$/,
         loaders: ['babel-loader?presets[]=es2015,presets[]=stage-0,presets[]=react'],
         exclude: /(node_modules|bower_components)/,
-        include: path.join(__dirname, '../src'),
+        include: path.join(__dirname, '../src')
       }
     ]
   }
 }
-

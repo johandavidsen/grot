@@ -1,5 +1,4 @@
 import React from 'react'
-
 import './Login.scss'
 
 /**
@@ -20,23 +19,23 @@ export default class Login extends React.Component {
           <Input
             type='email'
             label='Email'
-            />
+          />
         </div>
         <div>
           <Input
             type='password'
             label='Password'
-            />
+          />
         </div>
         <div className='grot-button-holder'>
           <Button
             type='button'
             label='Clear'
-            />
+          />
           <Button
             type='submit'
             label='Submit'
-            />
+          />
         </div>
       </form>
     )
@@ -61,8 +60,8 @@ class Input extends React.Component {
     return (
       <div className='grot-input'>
         <input type={type} required />
-        <span className="highlight"></span>
-        <span className="bar"></span>
+        <span className='highlight' />
+        <span className='bar' />
         <label>{label}</label>
       </div>
     )
